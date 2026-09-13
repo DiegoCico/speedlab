@@ -196,6 +196,48 @@
 @keyframes seg-tick { 0% { transform: scale(1.12); } 100% { transform: scale(1); } }
 .seg-value.tick { animation: seg-tick .08s steps(2) 1; }
 
+/* ---- Homepage ----------------------------------------------------------- */
+.hero { text-align: center; margin: var(--sp-5) 0 var(--sp-4); }
+.hero h1 { font-size: clamp(2.2rem, 8vw, 4rem); }
+.hero .lead { max-width: 46ch; margin-left: auto; margin-right: auto; }
+
+/* Daily challenge card — the streak/daily surface */
+.daily {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3) var(--sp-4);
+  justify-content: space-between;
+  background: var(--c-panel); border: var(--bd-2) solid var(--c-line);
+  border-radius: 10px; box-shadow: var(--shadow-hard-lg);
+  padding: var(--sp-3) var(--sp-4); margin: var(--sp-4) 0;
+}
+.daily .d-main { display: flex; flex-direction: column; gap: 0.15rem; }
+.daily .d-eyebrow { font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; color: var(--c-amber); font-size: 0.85rem; }
+.daily .d-name { font-weight: 900; font-size: clamp(1.3rem, 4vw, 1.8rem); text-transform: uppercase; letter-spacing: -0.01em; }
+.daily .d-right { display: flex; align-items: center; gap: var(--sp-4); }
+.streak-badge {
+  display: flex; flex-direction: column; align-items: center; line-height: 1;
+  background: var(--c-panel-2); border: var(--bd) solid var(--c-line);
+  border-radius: var(--radius); padding: 0.5rem 0.8rem; min-width: 4.5rem; text-align: center;
+}
+.streak-badge .num { font-family: var(--font-seg); font-size: 1.8rem; color: var(--c-go); }
+.streak-badge .lbl { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--c-ink-dim); margin-top: 0.25rem; }
+
+/* Category section heading with a hard rule */
+.cat-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-3);
+  border-bottom: var(--bd) solid var(--c-line); padding-bottom: 0.4rem; margin: var(--sp-5) 0 var(--sp-3);
+}
+.cat-head h2 { margin: 0; }
+.cat-head .count { font-weight: 800; color: var(--c-ink-dim); font-size: 0.85rem; }
+
+/* "Soon" tile variant for not-yet-built tests (non-links, no 404s) */
+.tile.soon { opacity: 0.62; box-shadow: none; cursor: default; }
+.tile.soon:hover { transform: none; box-shadow: none; }
+.tile .t-soon {
+  display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+  background: var(--c-amber); color: var(--c-line); border: 2px solid var(--c-line);
+  padding: 0 0.3rem; border-radius: 3px; margin-bottom: 0.35rem;
+}
+
 /* ---- Reaction Time Test ------------------------------------------------- */
 .react-stage {
   position: relative; z-index: 2; flex: 1; width: 100%;

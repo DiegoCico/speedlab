@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Regenerate whenever pages are added. Only live URLs belong here. -->
   <url>
+    <loc>https://speedlab.lol/</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://speedlab.lol/all-tests/</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://speedlab.lol/cps-test/</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>

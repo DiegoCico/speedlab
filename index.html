@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SpeedLab — Click Speed, Reaction & Reflex Tests</title>
+<meta name="description" content="Fast, free speed and reflex tests: click speed, spacebar, reaction time, typing and more. No sign-up, works on any device, your scores stay in your browser.">
+<link rel="canonical" href="https://speedlab.lol/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="SpeedLab — Speed & Reflex Tests">
+<meta property="og:description" content="Click speed, spacebar, reaction time, typing and more. Fast, free, no sign-up.">
+<meta property="og:url" content="https://speedlab.lol/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SpeedLab — Speed & Reflex Tests">
+<meta name="twitter:description" content="Click speed, spacebar, reaction time, typing and more. Fast, free, no sign-up.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/default.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"SpeedLab","url":"https://speedlab.lol/","description":"Fast, free speed and reflex tests including click speed, spacebar, reaction time and typing."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":"Speed and reflex tests","itemListElement":[
+{"@type":"ListItem","position":1,"name":"CPS Test","url":"https://speedlab.lol/cps-test/"},
+{"@type":"ListItem","position":2,"name":"Spacebar Clicker","url":"https://speedlab.lol/spacebar-clicker/"},
+{"@type":"ListItem","position":3,"name":"Reaction Time Test","url":"https://speedlab.lol/reaction-time-test/"}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🔊</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="hero">
+    <h1>Test your speed &amp; reflexes</h1>
+    <p class="lead">Short, sharp tests for click speed, reaction time, typing and more. No sign-up, nothing to install — just start clicking. Your bests are saved right here in your browser.</p>
+    <p style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+      <a class="btn btn-p1" href="/cps-test/">Take the CPS test</a>
+      <a class="btn btn-p2" href="/all-tests/">Browse all tests</a>
+    </p>
+  </div>
+
+  <!-- Daily challenge + streak (populated by site.js from data-tests) -->
+  <section class="daily" id="daily"
+    data-tests="cps-test:CPS Test,spacebar-clicker:Spacebar Clicker,reaction-time-test:Reaction Time Test"
+    aria-label="Daily challenge">
+    <div class="d-main">
+      <span class="d-eyebrow">Today's challenge</span>
+      <span class="d-name" data-daily-name>CPS Test</span>
+    </div>
+    <div class="d-right">
+      <span class="streak-badge">
+        <span class="num" id="streakCount">0</span>
+        <span class="lbl" id="streakLabel">day streak</span>
+      </span>
+      <a class="btn btn-p1" data-daily-link href="/cps-test/">Play it</a>
+    </div>
+  </section>
+
+  <!-- Popular / featured (only built tests link out) -->
+  <div class="cat-head"><h2>Popular tests</h2></div>
+  <div class="tile-grid">
+    <a class="tile" href="/cps-test/"><span class="t-kbd">Mouse</span><span class="t-name">CPS Test</span><span class="t-desc">Clicks per second — the classic click speed test.</span></a>
+    <a class="tile" href="/spacebar-clicker/"><span class="t-kbd">Keyboard</span><span class="t-name">Spacebar Clicker</span><span class="t-desc">How fast can you hit the spacebar?</span></a>
+    <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Wait for green, then click. Measure your reflexes.</span></a>
+  </div>
+
+  <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+  <div class="content">
+    <h2>What you can test here</h2>
+    <p>SpeedLab is a growing collection of quick browser tests grouped into a few families. Every test loads instantly, plays with a mouse or a touchscreen, and turns your result into a rank so you always know where you stand. Nothing is saved anywhere but your own device.</p>
+    <ul>
+      <li><strong>Mouse &amp; clicking</strong> — click speed, jitter, butterfly, drag, double-click and more.</li>
+      <li><strong>Reaction</strong> — visual and audio reaction time, aim training, whack-a-mole.</li>
+      <li><strong>Keyboard</strong> — typing speed, key mashing, and alphabet or number sprints.</li>
+      <li><strong>Memory &amp; brain</strong> — number, sequence and visual memory challenges.</li>
+    </ul>
+    <p>New tests are added regularly. See everything on the <a href="/all-tests/">all tests</a> page.</p>
+
+    <h2>Why SpeedLab</h2>
+    <p>No accounts, no pop-ups, no tracking, and no cookies. Sound is off by default, so it's safe to open on a shared or school computer. Each test works offline once it has loaded, and your personal bests follow you between visits because they live in your browser's local storage.</p>
+  </div>
+
+  <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device — nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">© 2026 SpeedLab · No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/site.js?v=1" defer></script>
+</body>
+</html>
