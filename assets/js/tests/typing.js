@@ -128,7 +128,7 @@
 
     function paintCursor(typedLen, correct) {
       for (var i = 0; i < spans.length; i++) {
-        var s = spans[i], cls = "ch";
+        var s = spans[i], cls = "ch" + (target.charAt(i) === " " ? " sp" : "");
         if (i < typedLen) cls += (input.value.charAt(i) === target.charAt(i)) ? " good" : " bad";
         else if (i === typedLen) cls += " cur";
         s.className = cls;
