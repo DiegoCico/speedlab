@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Whack-a-Mole — Reflex &amp;amp; Reaction Game | SpeedLab</title>
+<meta name="description" content="Play whack-a-mole and test your reflexes. Bop as many moles as you can in 30 seconds, see your rank, and beat your best. Works on mouse and touch.">
+<link rel="canonical" href="https://speedlab.lol/whack-a-mole/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Whack-a-Mole — Reflex Game">
+<meta property="og:description" content="Bop as many moles as you can in 30 seconds. Test your reflexes.">
+<meta property="og:url" content="https://speedlab.lol/whack-a-mole/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/whack-a-mole.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Whack-a-Mole — Reflex Game">
+<meta name="twitter:description" content="Bop as many moles as you can in 30 seconds. Test your reflexes.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/whack-a-mole.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Whack-a-Mole","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/whack-a-mole/","description":"Bop as many moles as you can in 30 seconds in this reflex game.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Whack-a-Mole","item":"https://speedlab.lol/whack-a-mole/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long is a round of whack-a-mole?","acceptedAnswer":{"@type":"Answer","text":"Each round lasts 30 seconds. Your score is the total number of moles you hit before time runs out."}},{"@type":"Question","name":"What is a good whack-a-mole score?","acceptedAnswer":{"@type":"Answer","text":"Around 16 to 22 hits is a solid round. 28 to 35 is fast, and 40 or more is excellent."}},{"@type":"Question","name":"Do the moles get faster?","acceptedAnswer":{"@type":"Answer","text":"Yes. The time each mole stays up slowly shrinks as the clock counts down, so the final seconds are the hardest."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the moles instead of clicking. The grid and timing work exactly the same on touch."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#startBtn">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Whack-a-Mole</li>
+      </ol>
+    </nav>
+
+    <h1>Whack-a-Mole</h1>
+    <p class="lead">Moles pop up around the grid, one at a time. Bop as many as you can before they duck back down. You have 30 seconds — how many can you hit?</p>
+
+    <section class="cabinet" id="whack" aria-label="Whack-a-mole">
+      <div class="marquee">Whack-a-Mole</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="hits">0</span></div>
+              <div class="readout-label">Hits</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">30</span></div>
+              <div class="readout-label">Seconds left</div>
+            </div>
+          </div>
+          <div class="mole-wrap">
+            <div class="mole-grid" id="grid">
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+          <button class="mole-hole" type="button" aria-label="Mole hole"></button>
+            </div>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn p1" id="startBtn" type="button">Start</button>
+        <button class="arcade-btn" id="restart" type="button" hidden>Restart</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How whack-a-mole works</h2>
+      <p>Press start and moles begin popping up in the nine holes, one at a time. Click or tap a mole while it is up to score a hit; if you are too slow it ducks back down and the next one appears somewhere else. You have <strong>30 seconds</strong>, and your score is the number of moles you bop. The moles get a little quicker as the clock runs down, so a strong finish really counts.</p>
+
+      <h2>What is a good score?</h2>
+      <p>Because the moles speed up, the last ten seconds are where good players pull ahead. As a rough guide:</p>
+      <ul>
+        <li><strong>Under 10 hits</strong> &mdash; just getting warmed up.</li>
+        <li><strong>16 to 22 hits</strong> &mdash; a solid, steady round.</li>
+        <li><strong>28 to 35 hits</strong> &mdash; fast reflexes and good accuracy.</li>
+        <li><strong>40+ hits</strong> &mdash; excellent; you barely miss a mole.</li>
+      </ul>
+
+      <h2>Tips to score higher</h2>
+      <ul>
+        <li><strong>Rest your gaze on the centre</strong> of the grid so you can see every hole at once.</li>
+        <li><strong>Move to the mole, don't hunt for it</strong> &mdash; trust the movement you catch out of the corner of your eye.</li>
+        <li><strong>Don't over-click.</strong> One accurate tap per mole beats mashing the grid.</li>
+      </ul>
+      <p>Enjoy this? The <a href="/aim-trainer/">aim trainer</a> is the precision version, and the <a href="/reaction-time-test/">reaction time test</a> measures your raw reflexes.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How long is a round of whack-a-mole?</summary>
+          <p>Each round lasts 30 seconds. Your score is the total number of moles you hit before time runs out.</p>
+        </details>
+        <details>
+          <summary>What is a good whack-a-mole score?</summary>
+          <p>Around 16 to 22 hits is a solid round. 28 to 35 is fast, and 40 or more is excellent.</p>
+        </details>
+        <details>
+          <summary>Do the moles get faster?</summary>
+          <p>Yes. The time each mole stays up slowly shrinks as the clock counts down, so the final seconds are the hardest.</p>
+        </details>
+        <details>
+          <summary>Does it work on a phone?</summary>
+          <p>Yes. Tap the moles instead of clicking. The grid and timing work exactly the same on touch.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/aim-trainer/"><span class="t-kbd">Reaction</span><span class="t-name">Aim Trainer</span><span class="t-desc">Hit 30 targets, measure ms each.</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/cps-test/"><span class="t-kbd">Mouse</span><span class="t-name">CPS Test</span><span class="t-desc">How fast can you click?</span></a>
+        <a class="tile" href="/tap-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Tap Speed Test</span><span class="t-desc">How fast can you tap?</span></a>
+        <a class="tile" href="/spacebar-clicker/"><span class="t-kbd">Keyboard</span><span class="t-name">Spacebar Clicker</span><span class="t-desc">How fast can you hit space?</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/whack-a-mole.js?v=1" defer></script>
+</body>
+</html>

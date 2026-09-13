@@ -238,6 +238,61 @@
   padding: 0 0.3rem; border-radius: 3px; margin-bottom: 0.35rem;
 }
 
+/* ---- Aim Trainer -------------------------------------------------------- */
+.aim-arena {
+  position: relative; z-index: 2; flex: 1; min-height: 260px;
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  background: var(--c-panel-2);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; touch-action: manipulation;
+}
+.aim-target {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--c-p1); border: var(--bd) solid var(--c-line);
+  box-shadow: var(--shadow-hard); cursor: pointer; padding: 0;
+  font-weight: 900; color: var(--c-line); text-transform: uppercase;
+}
+.aim-target:not(.aim-start) { position: absolute; }
+/* concentric bullseye ring */
+.aim-target:not(.aim-start)::after {
+  content: ""; position: absolute; inset: 14px; border-radius: 50%;
+  border: 3px solid var(--c-line);
+}
+.aim-start { position: static; width: auto; height: auto; border-radius: 999px; padding: 0.7rem 1.4rem; font-size: 1.1rem; box-shadow: var(--shadow-hard-lg); }
+.aim-target:active { transform: translate(2px,2px); box-shadow: 0 0 0 var(--c-line); }
+
+/* ---- Whack-a-Mole ------------------------------------------------------- */
+.mole-wrap { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+.mole-grid {
+  flex: 1; display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2); min-height: 260px;
+}
+.mole-hole {
+  position: relative; border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  background: var(--c-panel-2); cursor: pointer; overflow: hidden;
+  box-shadow: inset 0 0 0 3px #05030d; touch-action: manipulation; padding: 0;
+}
+.mole-hole::after {
+  content: ""; position: absolute; left: 50%; top: 100%;
+  width: 62%; height: 62%; transform: translate(-50%, 0) scale(0.2);
+  background: var(--c-go); border: var(--bd) solid var(--c-line); border-radius: 50% 50% 45% 45%;
+  transition: transform .08s steps(2), top .08s steps(2); opacity: 0;
+}
+.mole-hole.up::after { top: 20%; transform: translate(-50%, 0) scale(1); opacity: 1; }
+/* two eyes on the mole */
+.mole-hole.up::before {
+  content: ""; position: absolute; z-index: 2; left: 50%; top: 34%;
+  width: 8px; height: 8px; border-radius: 50%;
+  transform: translateX(-50%);
+  background: var(--c-line);
+  box-shadow: -9px 0 0 var(--c-line), 9px 0 0 var(--c-line);
+}
+.mole-start { display: flex; align-items: center; justify-content: center; }
+
+/* ---- Click Counter ------------------------------------------------------ */
+.counter-controls { display: flex; gap: 0.6rem; justify-content: center; margin-top: var(--sp-3); }
+.counter-note { text-align: center; color: var(--c-ink-dim); font-size: 0.85rem; margin-top: var(--sp-2); }
+
 /* ---- Typing Speed Test -------------------------------------------------- */
 .type-stage { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; gap: var(--sp-3); }
 .type-passage {

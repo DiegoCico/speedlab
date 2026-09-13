@@ -56,11 +56,29 @@
       dist: [[2,2],[3,6],[4,14],[5,26],[6,40],[7,54],[8,68],[9,80],
              [10,88],[11,93],[12,96],[14,99],[16,99.8]]
     },
+    rightclick: {
+      unit: "CPS", higherIsBetter: true,
+      bounds: [2.5, 4, 5.5, 7, 8.5, 10],
+      dist: [[1,2],[2,8],[3,18],[4,33],[5,50],[6,66],[7,79],[8,88],
+             [9,93],[10,96],[12,99],[14,99.8]]
+    },
     typing: {
       unit: "WPM", higherIsBetter: true,
       bounds: [25, 40, 55, 70, 90, 110],
       dist: [[10,1],[20,8],[30,22],[40,42],[45,52],[50,62],[60,78],[70,88],
              [80,94],[90,97],[100,98.5],[120,99.6],[140,99.9]]
+    },
+    aim: {                       /* milliseconds per target — lower is better */
+      unit: "ms", higherIsBetter: false,
+      bounds: [300, 400, 500, 650, 850, 1100],
+      dist: [[220,1],[280,6],[340,18],[400,32],[470,48],[550,63],[650,77],
+             [800,88],[950,94],[1200,98],[1600,99.6]]
+    },
+    whack: {                     /* moles bopped in 30s — higher is better */
+      unit: "hits", higherIsBetter: true,
+      bounds: [10, 16, 22, 28, 35, 43],
+      dist: [[4,3],[8,12],[12,26],[16,42],[22,60],[28,76],[35,88],
+             [43,95],[52,99]]
     }
   };
 
@@ -425,7 +443,12 @@
       });
       document.addEventListener("keyup", release);
     } else {
-      els.pad.addEventListener("pointerdown", function (e) { e.preventDefault(); bump(); });
+      // cfg.button: undefined = any button, 0 = left only, 2 = right only
+      els.pad.addEventListener("pointerdown", function (e) {
+        e.preventDefault();
+        if (cfg.button != null && e.button !== cfg.button) return;
+        bump();
+      });
       els.pad.addEventListener("pointerup", release);
       els.pad.addEventListener("pointercancel", release);
       els.pad.addEventListener("contextmenu", function (e) { e.preventDefault(); });

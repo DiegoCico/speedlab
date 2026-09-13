@@ -213,9 +213,10 @@ def cabinet_counter(spec):
         f'        <button class="opt" data-dur="{d}" type="button" aria-pressed="{"true" if d == default else "false"}">'
         f'{("No timer" if d == 0 else str(d) + "s")}</button>' for d in durs)
     key_attr = f' data-key="{c["key"]}"' if c.get("input") == "key" else ""
+    btn_attr = f' data-button="{c["button"]}"' if c.get("button") else ""
     timer_start = "&#8734;" if default == 0 else str(default)
     return f"""    <section class="cabinet" id="clicker"
-      data-testid="{c['testid']}" data-input="{c.get('input','pointer')}"{key_attr}
+      data-testid="{c['testid']}" data-input="{c.get('input','pointer')}"{key_attr}{btn_attr}
       data-durations="{','.join(str(d) for d in durs)}" data-default="{default}"
       data-name="{esc(c['name'])}" aria-label="{esc(spec['crumb'])}">
       <div class="marquee">{esc(c['marquee'])}</div>

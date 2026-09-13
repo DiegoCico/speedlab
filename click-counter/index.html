@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Click Counter — Free Online Tally Counter | SpeedLab</title>
+<meta name="description" content="A free online click counter and tally counter. Click or tap to count anything — laps, people, reps, inventory. Your count saves automatically in your browser.">
+<link rel="canonical" href="https://speedlab.lol/click-counter/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Click Counter — Free Online Tally Counter">
+<meta property="og:description" content="Click or tap to count anything. Your count saves automatically.">
+<meta property="og:url" content="https://speedlab.lol/click-counter/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/click-counter.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Click Counter — Free Online Tally Counter">
+<meta name="twitter:description" content="Click or tap to count anything. Your count saves automatically.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/click-counter.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Click Counter","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/click-counter/","description":"A free online tally counter that saves your count in your browser.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Click Counter","item":"https://speedlab.lol/click-counter/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does my count get saved?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your count is stored in your browser on this device, so it stays even if you close the page. It is never uploaded anywhere."}},{"@type":"Question","name":"How do I reset the counter?","acceptedAnswer":{"@type":"Answer","text":"Press the Reset button to set the count back to zero. Use the minus button to subtract one if you miscount."}},{"@type":"Question","name":"Does the click counter work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once the page has loaded once, it works with no internet connection."}},{"@type":"Question","name":"Can I count with my keyboard?","acceptedAnswer":{"@type":"Answer","text":"Yes. Focus the count button and press space or enter to add one, which is handy for fast counting at a desk."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#pad">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Click Counter</li>
+      </ol>
+    </nav>
+
+    <h1>Click Counter</h1>
+    <p class="lead">A simple tally counter for counting anything — laps, people, reps, or inventory. Tap the big button to add one; your count saves automatically on this device.</p>
+
+    <section class="cabinet" id="clickcounter" aria-label="Click counter">
+      <div class="marquee">Click Counter</div>
+
+      <div class="screen" id="screen">
+        <div class="readout-row">
+          <div class="readout">
+            <div class="seg-wrap"><span class="seg-value tnum" id="count">0</span></div>
+            <div class="readout-label">Count</div>
+          </div>
+        </div>
+        <div class="play-area">
+          <button class="click-pad is-armed" id="pad" type="button" aria-label="Add one to the count">
+            <span data-pad-title>Tap to count</span>
+            <span class="hint">Click or tap here to add one</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="counter-controls">
+        <button class="btn btn-ghost" id="minus" type="button">&minus;&nbsp;1</button>
+        <button class="btn btn-ghost" id="reset" type="button">Reset</button>
+      </div>
+      <p class="counter-note">Your count saves automatically on this device.</p>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the click counter works</h2>
+      <p>Tap or click the big button to add one to the count. Use the <strong>&minus; 1</strong> button to fix a miscount and <strong>Reset</strong> to start over from zero. There is no timer and no score &mdash; it is a plain tally counter, the kind people use for real tasks. Your current count is saved automatically in your browser, so you can close the page and pick up exactly where you left off.</p>
+
+      <h2>What people use a tally counter for</h2>
+      <ul>
+        <li><strong>Counting people</strong> coming through a door or joining an event.</li>
+        <li><strong>Laps or reps</strong> while running, swimming, or working out.</li>
+        <li><strong>Stock and inventory</strong> when counting items by hand.</li>
+        <li><strong>Games and hobbies</strong> &mdash; scores, stitches in knitting, or collectible counts.</li>
+      </ul>
+      <p>Because it works offline once loaded and keeps your number on your own device, it is a handy replacement for a physical handheld clicker &mdash; no batteries, and it is always in your pocket.</p>
+
+      <h2>Tips</h2>
+      <p>On a phone, add this page to your home screen for one-tap access. The keyboard works too: focus the button and press space or enter to count up. If you need to count how fast you can click instead of keeping a running tally, try the <a href="/cps-test/">CPS test</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Does my count get saved?</summary>
+          <p>Yes. Your count is stored in your browser on this device, so it stays even if you close the page. It is never uploaded anywhere.</p>
+        </details>
+        <details>
+          <summary>How do I reset the counter?</summary>
+          <p>Press the Reset button to set the count back to zero. Use the minus button to subtract one if you miscount.</p>
+        </details>
+        <details>
+          <summary>Does the click counter work offline?</summary>
+          <p>Yes. Once the page has loaded once, it works with no internet connection.</p>
+        </details>
+        <details>
+          <summary>Can I count with my keyboard?</summary>
+          <p>Yes. Focus the count button and press space or enter to add one, which is handy for fast counting at a desk.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/cps-test/"><span class="t-kbd">Mouse</span><span class="t-name">CPS Test</span><span class="t-desc">Count clicks against the clock.</span></a>
+        <a class="tile" href="/tap-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Tap Speed Test</span><span class="t-desc">How fast can you tap?</span></a>
+        <a class="tile" href="/spacebar-clicker/"><span class="t-kbd">Keyboard</span><span class="t-name">Spacebar Clicker</span><span class="t-desc">How fast can you hit space?</span></a>
+        <a class="tile" href="/right-click-test/"><span class="t-kbd">Mouse</span><span class="t-name">Right Click Test</span><span class="t-desc">How fast can you right click?</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/click-counter.js?v=1" defer></script>
+</body>
+</html>

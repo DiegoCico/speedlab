@@ -26,6 +26,7 @@
     var input = root.getAttribute("data-input") || "pointer";
     var key = root.getAttribute("data-key");
     if (key === "") key = null;                 // empty attr = "any key"
+    var buttonAttr = root.getAttribute("data-button");   // "right" = right button only
     var baseName = root.getAttribute("data-name") || "Speed Test";
     var unit = conf.unit;
 
@@ -46,6 +47,7 @@
       testId: testId,
       input: input,
       key: key,
+      button: buttonAttr === "right" ? 2 : (buttonAttr === "left" ? 0 : null),
       duration: current,
       storageKey: keyFor(current),
       testName: nameFor(current),
