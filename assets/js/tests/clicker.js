@@ -1,8 +1,8 @@
 /* ==========================================================================
    SPEEDLAB — tests/clicker.js
    Generic "count events in a window" test, driven entirely by data-* on the
-   root <section id="clicker">. Powers Kohi, Jitter, Butterfly, Tap Speed and
-   Key Press from one file — a new counter test is just markup + a config entry.
+   root <section id="clicker">. Powers Tap Speed and Key Press from one file —
+   a new counter test is just markup + a config entry.
 
    Root attributes:
      data-testid     key into SPEEDLAB.config (ranks + percentiles + unit)

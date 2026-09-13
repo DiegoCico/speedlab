@@ -49,11 +49,16 @@
     var target = "", spans = [], state = "idle", startTs = 0, raf = 0, endTimer = 0, lineH = 30;
 
     function renderPassage() {
-      target = buildPassage(220);
+      var words = buildPassage(220).split(" ");
+      target = words.join(" ");
+      // Each word is one wrap unit (letters stay together); a space span sits
+      // between words as the wrap point. Span order matches target char order.
       var html = "";
-      for (var i = 0; i < target.length; i++) {
-        var c = target.charAt(i);
-        html += '<span class="ch">' + (c === " " ? "&nbsp;" : c) + "</span>";
+      for (var w = 0; w < words.length; w++) {
+        html += '<span class="word">';
+        for (var j = 0; j < words[w].length; j++) html += '<span class="ch">' + words[w].charAt(j) + "</span>";
+        html += "</span>";
+        if (w < words.length - 1) html += '<span class="ch sp"> </span>';
       }
       lines.innerHTML = html;
       spans = lines.querySelectorAll(".ch");

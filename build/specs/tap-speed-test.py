@@ -50,7 +50,7 @@ SPEC = {
         {"slug": "cps-test", "kbd": "Mouse", "name": "CPS Test", "desc": "The mouse version of this test."},
         {"slug": "spacebar-clicker", "kbd": "Keyboard", "name": "Spacebar Clicker", "desc": "How fast can you hit space?"},
         {"slug": "reaction-time-test", "kbd": "Reaction", "name": "Reaction Time Test", "desc": "Green means go."},
-        {"slug": "kohi-click-test", "kbd": "Mouse", "name": "Kohi Click Test", "desc": "Click speed for Minecraft."},
+        {"slug": "key-press-test", "kbd": "Keyboard", "name": "Key Press Speed Test", "desc": "How fast can you mash keys?"},
         {"slug": "swipe-speed-test", "kbd": "Mobile", "name": "Swipe Speed Test", "desc": "How fast can you swipe?"},
         {"slug": "all-tests", "kbd": "Browse", "name": "All Tests", "desc": "Every speed and reflex test."},
     ],

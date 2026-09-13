@@ -2,7 +2,7 @@
    SPEEDLAB — engine.js
    Shared test engine: config registry, localStorage personal bests, rank
    mapping, percentile interpolation, sound (off by default), a reusable
-   "counter test" harness (CPS / spacebar / tap / jitter / kohi ...), the
+   "counter test" harness (CPS / spacebar / tap / key-press ...), the
    result flow, confetti/shake, and streak + daily-challenge helpers.
 
    Everything hangs off a single global: window.SPEEDLAB
@@ -43,13 +43,7 @@
       dist: [[150,1],[180,4],[200,10],[220,22],[240,38],[260,52],[270,58],
              [285,66],[300,74],[330,85],[360,92],[400,96],[450,98.5],[550,99.7]]
     },
-    /* Kohi + Tap mirror a normal click; Key Press mirrors the spacebar. */
-    kohi: {
-      unit: "CPS", higherIsBetter: true,
-      bounds: [3, 4.5, 6, 7.5, 9, 11],
-      dist: [[1,1],[2,4],[3,9],[4,19],[5,33],[6,48],[6.5,55],[7,63],
-             [8,78],[9,88],[10,93],[11,96],[12,98],[14,99.5],[16,99.9]]
-    },
+    /* Tap mirrors a normal click; Key Press mirrors the spacebar. */
     tap: {
       unit: "TPS", higherIsBetter: true,
       bounds: [3, 4.5, 6, 7.5, 9, 11],
@@ -61,19 +55,6 @@
       bounds: [4, 5.5, 7, 8.5, 10, 12],
       dist: [[2,2],[3,6],[4,14],[5,26],[6,40],[7,54],[8,68],[9,80],
              [10,88],[11,93],[12,96],[14,99],[16,99.8]]
-    },
-    /* Technique clicks run much faster than a normal click. */
-    jitter: {
-      unit: "CPS", higherIsBetter: true,
-      bounds: [6, 8, 10, 12, 14, 16],
-      dist: [[3,1],[4,3],[6,10],[8,24],[10,42],[11,52],[12,62],[13,71],
-             [14,79],[16,90],[18,96],[20,98.5],[24,99.8]]
-    },
-    butterfly: {
-      unit: "CPS", higherIsBetter: true,
-      bounds: [8, 10, 12, 14, 16, 18],
-      dist: [[4,1],[6,4],[8,12],[10,26],[12,44],[13,54],[14,63],[15,71],
-             [16,79],[18,90],[20,95],[22,98],[26,99.8]]
     },
     typing: {
       unit: "WPM", higherIsBetter: true,
@@ -328,8 +309,8 @@
 
   /* ---- Counter-test harness --------------------------------------------
      Powers every "count events in a window" test (CPS, spacebar, tap,
-     jitter, butterfly, kohi, key-press...). A new such test is just a
-     config object. Wires input, timer, live readout, and the result flow.
+     key-press...). A new such test is just a config object. Wires input,
+     timer, live readout, and the result flow.
 
      cfg = {
        testId, storageKey, duration (sec; 0 = no timer / forever),
