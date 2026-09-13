@@ -108,7 +108,9 @@
     var target = "", spans = [], state = "idle", startTs = 0, raf = 0, endTimer = 0, lineH = 30;
 
     function renderPassage() {
-      var words = buildPassage(220).split(" ");
+      // enough words for the whole run even at a fast pace (~170 wpm + buffer)
+      var minWords = Math.max(220, Math.ceil(duration / 60 * 180) + 40);
+      var words = buildPassage(minWords).split(" ");
       target = words.join(" ");
       // Each word is one wrap unit (letters stay together); a space span sits
       // between words as the wrap point. Span order matches target char order.
@@ -222,6 +224,7 @@
     // duration selector
     var opts = root.querySelectorAll(".seg-select .opt");
     Array.prototype.forEach.call(opts, function (b) {
+      if (b.tagName === "A") return;   // variant pages use links; let them navigate
       b.addEventListener("click", function () {
         duration = parseInt(b.getAttribute("data-dur"), 10);
         Array.prototype.forEach.call(opts, function (o) { o.setAttribute("aria-pressed", "false"); });

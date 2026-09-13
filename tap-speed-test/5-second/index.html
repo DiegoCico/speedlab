@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tap Speed Test — 5-Second Tapping Test</title>
+<meta name="description" content="How fast can you tap in 5 seconds? Take the 5 seconds tap speed test, see your taps per second, and beat your best on any phone or tablet.">
+<link rel="canonical" href="https://speedlab.lol/tap-speed-test/5-second/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="5-Second Tap Speed Test">
+<meta property="og:description" content="How fast can you tap in 5 seconds?">
+<meta property="og:url" content="https://speedlab.lol/tap-speed-test/5-second/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/tap-speed-test.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="5-Second Tap Speed Test">
+<meta name="twitter:description" content="How fast can you tap in 5 seconds?">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/tap-speed-test.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Tap Speed Test (5 Seconds)","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/tap-speed-test/5-second/","description":"Measure how fast you can tap the screen in 5 seconds.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Tap Speed Test","item":"https://speedlab.lol/tap-speed-test/"},{"@type":"ListItem","position":4,"name":"5 Seconds","item":"https://speedlab.lol/tap-speed-test/5-second/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good tap speed?","acceptedAnswer":{"@type":"Answer","text":"About 6 to 7 taps per second with one finger is average. Two fingers can push well past 10."}},{"@type":"Question","name":"Does it work on a computer?","acceptedAnswer":{"@type":"Answer","text":"Yes. Clicking the pad with a mouse works exactly like tapping."}},{"@type":"Question","name":"Does each length save its own best?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your best is stored separately for every tap duration on this device."}},{"@type":"Question","name":"Is tapping the same as CPS?","acceptedAnswer":{"@type":"Answer","text":"It's measured the same way and lands in a similar range; tap speed is the touchscreen name for it."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#pad">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li><a href="/tap-speed-test/">Tap Speed Test</a></li>
+        <li aria-current="page">5 Seconds</li>
+      </ol>
+    </nav>
+
+    <h1>5-Second Tap Speed Test</h1>
+    <p class="lead">Tap the pad as fast as you can for 5 seconds — a quick burst of tapping. The timer starts on your first tap.</p>
+
+    <section class="cabinet" id="clicker" data-testid="tap" data-input="pointer" data-default="5" data-name="Tap Speed Test" aria-label="Tap Speed Test">
+      <div class="marquee">Tap Speed Test</div>
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout"><div class="seg-wrap"><span class="seg-value tnum" id="clicks">0</span></div><div class="readout-label">Taps</div></div>
+            <div class="readout small"><div class="seg-wrap"><span class="seg-value tnum" id="timer">5</span></div><div class="readout-label">Seconds left</div></div>
+          </div>
+          <div class="play-area">
+            <button class="click-pad is-armed" id="pad" type="button" aria-describedby="c-help">
+              <span data-pad-title>Start</span><span class="hint" data-pad-hint>Tap here as fast as you can</span>
+            </button>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+      <div style="text-align:center;margin-top:1rem"><button class="arcade-btn p1" id="restart" type="button" hidden>Reset</button></div>
+      <div class="seg-select" role="group" aria-label="Test duration" id="c-help">
+        <a class="opt" href="/tap-speed-test/5-second/" aria-pressed="true">5s</a>
+        <a class="opt" href="/tap-speed-test/10-second/" aria-pressed="false">10s</a>
+      </div>
+      <div class="pb-strip"><span>Personal best <span class="pb-val" data-pb>&mdash;</span></span><button data-clear type="button">Clear my scores</button></div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>The 5 seconds tap test</h2>
+      <p>A quick burst of tapping. Your score is your taps per second over the full 5 seconds, and this length keeps its own personal best. It works with a finger on a touchscreen or a mouse on a computer.</p>
+
+      <h2>Try other lengths</h2>
+      <p>Other tap lengths: <a href="/tap-speed-test/10-second/">10 Seconds</a>. Or use the main <a href="/tap-speed-test/">tap speed test</a>.</p>
+
+      <h2>How to tap faster</h2>
+      <ul>
+        <li><strong>Use two fingers or thumbs</strong> alternating like a drum roll.</li>
+        <li><strong>Rest your device</strong> on a surface so your hand is free to move.</li>
+        <li><strong>Keep taps light and quick</strong> rather than hard.</li>
+      </ul>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is a good tap speed?</summary>
+          <p>About 6 to 7 taps per second with one finger is average. Two fingers can push well past 10.</p>
+        </details>
+        <details>
+          <summary>Does it work on a computer?</summary>
+          <p>Yes. Clicking the pad with a mouse works exactly like tapping.</p>
+        </details>
+        <details>
+          <summary>Does each length save its own best?</summary>
+          <p>Yes. Your best is stored separately for every tap duration on this device.</p>
+        </details>
+        <details>
+          <summary>Is tapping the same as CPS?</summary>
+          <p>It's measured the same way and lands in a similar range; tap speed is the touchscreen name for it.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/tap-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Tap Speed Test</span><span class="t-desc">The main tap test.</span></a>
+        <a class="tile" href="/cps-test/"><span class="t-kbd">Mouse</span><span class="t-name">CPS Test</span><span class="t-desc">The mouse version.</span></a>
+        <a class="tile" href="/spacebar-clicker/"><span class="t-kbd">Keyboard</span><span class="t-name">Spacebar Clicker</span><span class="t-desc">How fast can you hit space?</span></a>
+        <a class="tile" href="/swipe-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Swipe Speed Test</span><span class="t-desc">How fast can you swipe?</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/clicker.js?v=1" defer></script>
+</body>
+</html>

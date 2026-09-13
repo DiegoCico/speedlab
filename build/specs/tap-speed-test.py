@@ -35,7 +35,10 @@ SPEC = {
         <li><strong>Rest your device</strong> on a table so your hand is free to move fast.</li>
         <li><strong>Stay loose</strong> &mdash; light, quick taps beat hard, tense ones.</li>
       </ul>
-      <p>On a computer? The <a href="/cps-test/">CPS test</a> and <a href="/spacebar-clicker/">spacebar clicker</a> are the mouse and keyboard versions of the same idea.</p>""",
+      <p>On a computer? The <a href="/cps-test/">CPS test</a> and <a href="/spacebar-clicker/">spacebar clicker</a> are the mouse and keyboard versions of the same idea.</p>
+
+      <h2>Tap test by length</h2>
+      <p>Each timed length has its own page and personal best: <a href="/tap-speed-test/5-second/">5 second</a> &middot; <a href="/tap-speed-test/10-second/">10 second</a>.</p>""",
     "faq": [
         ("What is a good tap speed?",
          "About 6 to 7 taps per second with one finger is average. Above 8 is fast, and holding over 10 usually means using two fingers."),

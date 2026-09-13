@@ -79,7 +79,10 @@ SPEC = {
         <li><strong>Use all ten fingers</strong> and let each one cover its own keys.</li>
         <li><strong>Practise little and often.</strong> A few short tests a day build real muscle memory.</li>
       </ul>
-      <p>Want raw finger speed instead of real words? Try the <a href="/key-press-test/">key press speed test</a>, or race the <a href="/alphabet-typing-test/">alphabet</a> from A to Z.</p>""",
+      <p>Want raw finger speed instead of real words? Try the <a href="/key-press-test/">key press speed test</a>, or race the <a href="/alphabet-typing-test/">alphabet</a> from A to Z.</p>
+
+      <h2>Typing test by length</h2>
+      <p>Each length has its own page and personal best: <a href="/typing-speed-test/15-second/">15 second</a> &middot; <a href="/typing-speed-test/30-second/">30 second</a> &middot; <a href="/typing-speed-test/1-minute/">1 minute</a> &middot; <a href="/typing-speed-test/3-minute/">3 minute</a> &middot; <a href="/typing-speed-test/5-minute/">5 minute</a>.</p>""",
     "faq": [
         ("What is a good typing speed?",
          "The average is about 40 WPM. Comfortable touch typists reach 60 to 80, and professionals type over 100 words per minute."),
