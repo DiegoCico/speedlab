@@ -238,6 +238,49 @@
   padding: 0 0.3rem; border-radius: 3px; margin-bottom: 0.35rem;
 }
 
+/* ---- Memory tests (shared) --------------------------------------------- */
+.mem-stage { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+.mem-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--sp-3); text-align: center; }
+.mem-hint { color: var(--c-ink-dim); font-size: 0.9rem; max-width: 32ch; margin: 0; }
+.mem-feedback { font-weight: 800; min-height: 1.2em; margin: 0; }
+.mem-feedback.good { color: var(--c-go); }
+.mem-feedback.bad { color: var(--c-p1); }
+.mem-lives { display: flex; gap: 0.35rem; justify-content: center; }
+.mem-lives .life { width: 14px; height: 14px; border: 2px solid var(--c-line); border-radius: 50%; background: var(--c-p1); }
+.mem-lives .life.gone { background: #2a1f47; }
+
+/* Number Memory */
+.mem-number {
+  font-family: var(--font-seg); color: var(--c-amber);
+  font-size: clamp(2.6rem, 12vw, 5rem); line-height: 1;
+  text-shadow: 0 0 12px rgba(255,197,49,0.45); letter-spacing: 0.05em;
+  word-break: break-all;
+}
+.mem-bar { width: min(320px, 80%); height: 12px; background: #2a1f47; border: var(--bd) solid var(--c-line); border-radius: 999px; overflow: hidden; }
+.mem-bar-fill { height: 100%; width: 100%; background: var(--c-amber); }
+.mem-input {
+  font-family: var(--font-seg); font-size: 2rem; text-align: center; width: min(320px, 90%);
+  color: var(--c-amber); background: var(--c-screen);
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius); padding: 0.4rem 0.6rem;
+}
+
+/* Grids (Sequence / Visual / Chimp) */
+.mem-grid { display: grid; gap: var(--sp-2); margin: 0 auto; width: 100%; max-width: 420px; }
+.mem-cell {
+  aspect-ratio: 1 / 1; border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  background: var(--c-panel); box-shadow: inset 0 0 0 3px #05030d;
+  cursor: pointer; padding: 0; touch-action: manipulation;
+  font-family: var(--font-seg); font-size: clamp(1.1rem, 5vw, 1.8rem); color: var(--c-ink);
+  display: flex; align-items: center; justify-content: center;
+  transition: background-color .08s steps(2);
+}
+.mem-cell.lit { background: var(--c-p2); }
+.mem-cell.good { background: var(--c-go); }
+.mem-cell.bad { background: var(--c-p1); }
+.mem-cell.hidden-num { color: transparent; background: var(--c-p1); }
+.mem-cell.blank { background: var(--c-panel-2); cursor: default; box-shadow: none; border-color: transparent; }
+.mem-cell.numbered { background: var(--c-panel-2); }
+
 /* ---- Color Match (Stroop) ---------------------------------------------- */
 .stroop-area {
   position: relative; z-index: 2; flex: 1;

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visual Memory Test — Remember the Tiles | SpeedLab</title>
+<meta name="description" content="Test your visual memory. Tiles flash on a grid, then you click them from memory. The grid grows each level. How many levels can you clear?">
+<link rel="canonical" href="https://speedlab.lol/visual-memory/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Visual Memory Test — Remember the Tiles">
+<meta property="og:description" content="Tiles flash, then you click them from memory. The grid grows each level.">
+<meta property="og:url" content="https://speedlab.lol/visual-memory/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/visual-memory.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Visual Memory Test — Remember the Tiles">
+<meta name="twitter:description" content="Tiles flash, then you click them from memory. The grid grows each level.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/visual-memory.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Visual Memory","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/visual-memory/","description":"Tiles flash on a grid and you reproduce them from memory as the grid grows.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Visual Memory","item":"https://speedlab.lol/visual-memory/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good visual memory score?","acceptedAnswer":{"@type":"Answer","text":"Around level 6 to 8 is average. Level 10 to 12 is strong, and 15 or higher is excellent."}},{"@type":"Question","name":"How many lives do I get?","acceptedAnswer":{"@type":"Answer","text":"Three. Each wrong tile costs one life, and the game ends when all three are gone. Your score is the level you reached."}},{"@type":"Question","name":"Does the grid get bigger?","acceptedAnswer":{"@type":"Answer","text":"Yes. As you level up the grid grows and more tiles flash, so each level is harder than the last."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the tiles you remember. It works the same on touch and mouse."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#startBtn">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Visual Memory</li>
+      </ol>
+    </nav>
+
+    <h1>Visual Memory Test</h1>
+    <p class="lead">A set of tiles flashes on the grid, then vanishes. Click every tile you saw from memory. The grid grows each level — how far can you go on three lives?</p>
+
+    <section class="cabinet" id="visualmem" aria-label="Visual memory test">
+      <div class="marquee">Visual Memory</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="level">1</span></div>
+              <div class="readout-label">Level</div>
+            </div>
+            <div class="readout small">
+              <div class="mem-lives" id="lives" aria-label="Lives"></div>
+              <div class="readout-label">Lives</div>
+            </div>
+          </div>
+          <div class="mem-stage">
+            <p class="mem-feedback" id="status"></p>
+            <div class="mem-grid" id="grid"></div>
+            <div class="mem-center" id="startWrap">
+              <button class="arcade-btn p1" id="startBtn" type="button">Start</button>
+              <p class="mem-hint">Some tiles flash. Click them all from memory. The grid grows each level; three lives.</p>
+            </div>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn" id="restart" type="button" hidden>Restart</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the visual memory test works</h2>
+      <p>Each level, a group of tiles lights up for a moment and then goes dark. Your job is to click exactly those tiles from memory. Clear them all and you move up a level, where the grid is bigger and more tiles flash. Click a wrong tile and you lose one of your three lives; lose all three and the game ends. Your score is the highest level you reach, so it rewards a sharp eye and a steady memory.</p>
+
+      <h2>What is a good visual memory score?</h2>
+      <ul>
+        <li><strong>Under 4</strong> &mdash; a casual attempt.</li>
+        <li><strong>6 to 8</strong> &mdash; right around average.</li>
+        <li><strong>10 to 12</strong> &mdash; a strong, focused run.</li>
+        <li><strong>15+</strong> &mdash; excellent visual memory.</li>
+      </ul>
+
+      <h2>How to remember more tiles</h2>
+      <ul>
+        <li><strong>See the shape,</strong> not the tiles &mdash; group them into lines, corners, or clusters.</li>
+        <li><strong>Look at the whole grid</strong> while it flashes rather than darting between tiles.</li>
+        <li><strong>Click the ones you are sure of first</strong> to protect your lives.</li>
+      </ul>
+      <p>For more brain tests, try <a href="/number-memory/">number memory</a>, <a href="/sequence-memory/">sequence memory</a>, and the <a href="/chimp-test/">chimp test</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is a good visual memory score?</summary>
+          <p>Around level 6 to 8 is average. Level 10 to 12 is strong, and 15 or higher is excellent.</p>
+        </details>
+        <details>
+          <summary>How many lives do I get?</summary>
+          <p>Three. Each wrong tile costs one life, and the game ends when all three are gone. Your score is the level you reached.</p>
+        </details>
+        <details>
+          <summary>Does the grid get bigger?</summary>
+          <p>Yes. As you level up the grid grows and more tiles flash, so each level is harder than the last.</p>
+        </details>
+        <details>
+          <summary>Does it work on a phone?</summary>
+          <p>Yes. Tap the tiles you remember. It works the same on touch and mouse.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/sequence-memory/"><span class="t-kbd">Memory</span><span class="t-name">Sequence Memory</span><span class="t-desc">Repeat the growing pattern.</span></a>
+        <a class="tile" href="/number-memory/"><span class="t-kbd">Memory</span><span class="t-name">Number Memory</span><span class="t-desc">Remember the growing number.</span></a>
+        <a class="tile" href="/chimp-test/"><span class="t-kbd">Memory</span><span class="t-name">Chimp Test</span><span class="t-desc">Click the numbers in order.</span></a>
+        <a class="tile" href="/aim-trainer/"><span class="t-kbd">Reaction</span><span class="t-name">Aim Trainer</span><span class="t-desc">Hit 30 targets, measure ms each.</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/visual-memory.js?v=1" defer></script>
+</body>
+</html>

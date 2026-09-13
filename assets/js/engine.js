@@ -100,6 +100,26 @@
       unit: "correct", higherIsBetter: true,
       bounds: [8, 14, 20, 26, 33, 40],
       dist: [[4,3],[8,14],[14,32],[20,52],[26,70],[33,85],[40,94],[48,99]]
+    },
+    numbermemory: {              /* digits remembered — higher is better */
+      unit: "digits", higherIsBetter: true,
+      bounds: [4, 6, 8, 10, 12, 14],
+      dist: [[3,2],[5,15],[6,30],[7,48],[8,63],[9,75],[10,85],[11,91],[13,97],[16,99.5]]
+    },
+    sequencemem: {               /* longest sequence — higher is better */
+      unit: "level", higherIsBetter: true,
+      bounds: [4, 6, 8, 10, 13, 16],
+      dist: [[2,2],[4,16],[6,38],[8,60],[10,78],[12,89],[15,96],[20,99.5]]
+    },
+    visualmem: {                 /* level reached — higher is better */
+      unit: "level", higherIsBetter: true,
+      bounds: [4, 6, 8, 10, 12, 15],
+      dist: [[2,2],[4,18],[6,40],[8,62],[10,80],[12,90],[15,97],[18,99.5]]
+    },
+    chimp: {                     /* numbers reached — higher is better */
+      unit: "numbers", higherIsBetter: true,
+      bounds: [6, 8, 10, 12, 15, 18],
+      dist: [[4,3],[6,15],[8,35],[10,58],[12,76],[14,88],[16,94],[20,99]]
     }
   };
 
