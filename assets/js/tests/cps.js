@@ -45,6 +45,7 @@
     // Duration selector — switches the live test and its stored best.
     var opts = root.querySelectorAll(".seg-select .opt");
     Array.prototype.forEach.call(opts, function (b) {
+      if (b.tagName === "A") return;   // variant pages use links; let them navigate
       b.addEventListener("click", function () {
         var n = parseInt(b.getAttribute("data-dur"), 10);
         conf.duration = n;

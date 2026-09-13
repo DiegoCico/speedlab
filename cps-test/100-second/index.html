@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPS Test — 100 Second Click Speed Test</title>
+<meta name="description" content="Take the 100 second CPS test and measure your click speed in clicks per second. Free, instant, works on any device — beat your best and see your rank.">
+<link rel="canonical" href="https://speedlab.lol/cps-test/100-second/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="100 Second CPS Test — Click Speed">
+<meta property="og:description" content="Measure your click speed over 100 seconds. Beat your best.">
+<meta property="og:url" content="https://speedlab.lol/cps-test/100-second/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/cps-test.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="100 Second CPS Test — Click Speed">
+<meta name="twitter:description" content="Measure your click speed over 100 seconds. Beat your best.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/cps-test.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPS Test (100 Seconds)","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/cps-test/100-second/","description":"Measure your click speed over 100 seconds in clicks per second.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"CPS Test","item":"https://speedlab.lol/cps-test/"},{"@type":"ListItem","position":4,"name":"100 Seconds","item":"https://speedlab.lol/cps-test/100-second/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good 100 second CPS score?","acceptedAnswer":{"@type":"Answer","text":"About 5.5 clicks per second is a solid score over 100 seconds. Shorter tests read higher, longer tests lower."}},{"@type":"Question","name":"How is the score calculated?","acceptedAnswer":{"@type":"Answer","text":"It's your total clicks divided by 100 seconds. Click 40 times in a 100-second test and that's 0.4 CPS."}},{"@type":"Question","name":"Does each duration save its own best?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your personal best is stored separately for every CPS length on this device."}},{"@type":"Question","name":"Which CPS test length is standard?","acceptedAnswer":{"@type":"Answer","text":"The 5-second test is the most common and the fairest all-round measure of click speed."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#pad">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li><a href="/cps-test/">CPS Test</a></li>
+        <li aria-current="page">100 Seconds</li>
+      </ol>
+    </nav>
+
+    <h1>100 Second CPS Test</h1>
+    <p class="lead">Click as fast as you can for 100 seconds — the famous 100-second marathon. The clock starts on your first click.</p>
+
+    <section class="cabinet" id="cps" data-duration="100" aria-label="CPS test">
+      <div class="marquee">100 Second Click Test</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="clicks">0</span></div>
+              <div class="readout-label">Clicks</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">100</span></div>
+              <div class="readout-label">Seconds left</div>
+            </div>
+          </div>
+          <div class="play-area">
+            <button class="click-pad is-armed" id="pad" type="button" aria-describedby="cps-help">
+              <span data-pad-title>Click to start</span>
+              <span class="hint" data-pad-hint>Click here as fast as you can for 100s</span>
+            </button>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn p1" id="restart" type="button" hidden>Reset</button>
+      </div>
+
+      <div class="seg-select" role="group" aria-label="Test duration" id="cps-help">
+        <a class="opt" href="/cps-test/1-second/" aria-pressed="false">1s</a>
+        <a class="opt" href="/cps-test/2-second/" aria-pressed="false">2s</a>
+        <a class="opt" href="/cps-test/5-second/" aria-pressed="false">5s</a>
+        <a class="opt" href="/cps-test/10-second/" aria-pressed="false">10s</a>
+        <a class="opt" href="/cps-test/15-second/" aria-pressed="false">15s</a>
+        <a class="opt" href="/cps-test/20-second/" aria-pressed="false">20s</a>
+        <a class="opt" href="/cps-test/30-second/" aria-pressed="false">30s</a>
+        <a class="opt" href="/cps-test/60-second/" aria-pressed="false">60s</a>
+        <a class="opt" href="/cps-test/100-second/" aria-pressed="true">100s</a>
+      </div>
+
+      <div class="pb-strip">
+        <span>Personal best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>The 100 second click speed test</h2>
+      <p>The 100-second CPS test is the marathon of click speed — a well-known challenge precisely because holding any real rate for over a minute and a half is brutal. Survival and consistency beat raw speed. Your score is your total clicks divided by 100, and every 100-second run keeps its own personal best on this device.</p>
+
+      <h2>What is a good score on the 100 second test?</h2>
+      <p>On this length, around <strong>5.5 CPS</strong> is a solid result for a normal click. Shorter tests let you post a higher number from a single burst; longer tests pull your average down toward the rate you can truly sustain. Compare your result across lengths to see where your clicking falls off.</p>
+
+      <h2>Try other lengths</h2>
+      <p>Every CPS duration has its own page: <a href="/cps-test/1-second/">1s</a> · <a href="/cps-test/2-second/">2s</a> · <a href="/cps-test/5-second/">5s</a> · <a href="/cps-test/10-second/">10s</a> · <a href="/cps-test/15-second/">15s</a> · <a href="/cps-test/20-second/">20s</a> · <a href="/cps-test/30-second/">30s</a> · <a href="/cps-test/60-second/">60s</a>. Prefer the standard? Use the main <a href="/cps-test/">CPS test</a>.</p>
+
+      <h2>How to click faster</h2>
+      <ul>
+        <li><strong>Match your effort to the clock.</strong> Burst on the short tests; pace yourself on the long ones.</li>
+        <li><strong>Stay loose.</strong> A tense hand slows down fast, especially past ten seconds.</li>
+        <li><strong>Rest your hand on the mouse</strong> and let your finger do the work.</li>
+      </ul>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is a good 100 second CPS score?</summary>
+          <p>About 5.5 clicks per second is a solid score over 100 seconds. Shorter tests read higher, longer tests lower.</p>
+        </details>
+        <details>
+          <summary>How is the score calculated?</summary>
+          <p>It's your total clicks divided by 100 seconds. Click 40 times in a 100-second test and that's 0.4 CPS.</p>
+        </details>
+        <details>
+          <summary>Does each duration save its own best?</summary>
+          <p>Yes. Your personal best is stored separately for every CPS length on this device.</p>
+        </details>
+        <details>
+          <summary>Which CPS test length is standard?</summary>
+          <p>The 5-second test is the most common and the fairest all-round measure of click speed.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/cps-test/"><span class="t-kbd">Mouse</span><span class="t-name">CPS Test</span><span class="t-desc">The standard click speed test.</span></a>
+        <a class="tile" href="/spacebar-clicker/"><span class="t-kbd">Keyboard</span><span class="t-name">Spacebar Clicker</span><span class="t-desc">How fast can you hit space?</span></a>
+        <a class="tile" href="/tap-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Tap Speed Test</span><span class="t-desc">How fast can you tap?</span></a>
+        <a class="tile" href="/right-click-test/"><span class="t-kbd">Mouse</span><span class="t-name">Right Click Test</span><span class="t-desc">How fast can you right click?</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/cps.js?v=1" defer></script>
+</body>
+</html>

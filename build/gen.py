@@ -37,9 +37,24 @@ def breadcrumb_ld(spec):
     items = [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{DOMAIN}/"},
         {"@type": "ListItem", "position": 2, "name": "All Tests", "item": f"{DOMAIN}/all-tests/"},
-        {"@type": "ListItem", "position": 3, "name": spec["crumb"], "item": f'{DOMAIN}/{spec["slug"]}/'},
     ]
+    pos = 3
+    parent = spec.get("parent")   # {"name","slug"} for variant pages
+    if parent:
+        items.append({"@type": "ListItem", "position": pos, "name": parent["name"],
+                      "item": f'{DOMAIN}/{parent["slug"]}/'})
+        pos += 1
+    items.append({"@type": "ListItem", "position": pos, "name": spec["crumb"],
+                  "item": f'{DOMAIN}/{spec["slug"]}/'})
     return jsonld({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items})
+
+def crumbs_html(spec):
+    lis = ['<li><a href="/">Home</a></li>', '<li><a href="/all-tests/">All Tests</a></li>']
+    parent = spec.get("parent")
+    if parent:
+        lis.append(f'<li><a href="/{parent["slug"]}/">{esc(parent["name"])}</a></li>')
+    lis.append(f'<li aria-current="page">{esc(spec["crumb"])}</li>')
+    return "\n        ".join(lis)
 
 def faq_ld(spec):
     ents = [{"@type": "Question", "name": q,
@@ -132,9 +147,7 @@ SHELL = """<!doctype html>
   <div>
     <nav class="crumbs" aria-label="Breadcrumb">
       <ol>
-        <li><a href="/">Home</a></li>
-        <li><a href="/all-tests/">All Tests</a></li>
-        <li aria-current="page">{crumb}</li>
+        {crumbs}
       </ol>
     </nav>
 
@@ -269,7 +282,7 @@ def render(spec):
         og_image=spec["og_image"],
         software_ld=software_ld(spec), breadcrumb_ld=breadcrumb_ld(spec), faq_ld=faq_ld(spec),
         skip_target=spec.get("skip_target", "pad"),
-        crumb=esc(spec["crumb"]), h1=esc(spec["h1"]), lead=esc(spec["lead"]),
+        crumbs=crumbs_html(spec), h1=esc(spec["h1"]), lead=esc(spec["lead"]),
         cabinet=spec["cabinet"].rstrip("\n"),
         content=spec["content"].rstrip("\n"),
         faq_html=faq_html(spec), related=related_html(spec), scripts=scripts_html(spec),
