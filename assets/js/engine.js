@@ -79,6 +79,27 @@
       bounds: [10, 16, 22, 28, 35, 43],
       dist: [[4,3],[8,12],[12,26],[16,42],[22,60],[28,76],[35,88],
              [43,95],[52,99]]
+    },
+    alphabet: {                  /* seconds to type A-Z — lower is better */
+      unit: "s", higherIsBetter: false,
+      bounds: [6, 8, 11, 15, 20, 28],
+      dist: [[4,1],[6,10],[8,28],[10,45],[13,62],[16,76],[20,88],[26,95],[35,99]]
+    },
+    number: {                    /* seconds to type 1-100 — lower is better */
+      unit: "s", higherIsBetter: false,
+      bounds: [35, 50, 70, 95, 130, 180],
+      dist: [[25,1],[35,12],[45,28],[55,42],[70,58],[90,74],[115,87],[150,95],[210,99]]
+    },
+    audioreaction: {             /* ms to react to a beep — lower is better */
+      unit: "ms", higherIsBetter: false,
+      bounds: [160, 190, 220, 260, 320, 400],
+      dist: [[130,1],[160,6],[185,18],[210,34],[235,50],[260,64],[290,77],
+             [330,88],[400,95],[480,99]]
+    },
+    stroop: {                    /* correct answers in 30s — higher is better */
+      unit: "correct", higherIsBetter: true,
+      bounds: [8, 14, 20, 26, 33, 40],
+      dist: [[4,3],[8,14],[14,32],[20,52],[26,70],[33,85],[40,94],[48,99]]
     }
   };
 

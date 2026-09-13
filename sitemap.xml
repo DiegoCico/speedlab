@@ -97,4 +97,28 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://speedlab.lol/alphabet-typing-test/</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedlab.lol/number-typing-test/</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedlab.lol/audio-reaction-test/</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedlab.lol/color-match/</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
