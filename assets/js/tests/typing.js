@@ -8,24 +8,83 @@
   "use strict";
   function $(id) { return document.getElementById(id); }
 
-  var WORDS = ("the of to and a in is it you that he was for on are with as his they at be this from i have or " +
-    "by one had not but what all were when we there can an your which their said if do will each about how up out " +
-    "them then she many some so these would other into has more her two like him see time could no make than first " +
-    "been its who now people my made over did down only way find use may water long little very after words called " +
-    "just where most know get through back much go good new write our used me man too any day same right look think " +
-    "also around another came come work three word must because does part even place well such here take why help " +
-    "put different away again off went old number great tell men say small every found still between name should " +
-    "home big give air line set own under read last never us left end along while might next sound below saw " +
-    "something thought both few those always show large often together asked house world going want school important " +
-    "until form food keep children feet land side without boy once animal life enough took four head above kind began").split(" ");
+  /* A big library of varied, general-audience sentences. Each run shuffles
+     and samples these, so the passage is effectively never the same twice and
+     covers a wide vocabulary — no single text to memorise. */
+  var SENTENCES = [
+    "The quick brown fox jumps over the lazy dog near the river.",
+    "A cup of hot chocolate tastes best on a cold winter morning.",
+    "Bright yellow buses lined up outside the school gates at eight.",
+    "The old lighthouse blinked steadily through the thick grey fog.",
+    "She packed her bag with snacks, a map, and a warm jacket.",
+    "Deep in the forest, an owl watched the moon rise over the pines.",
+    "Every planet in our solar system travels around the sun.",
+    "The chef sliced fresh tomatoes and scattered basil on the pizza.",
+    "A gentle breeze carried the smell of rain across the open field.",
+    "Curious dolphins followed the small boat all the way to shore.",
+    "He tightened his laces and sprinted the last lap of the race.",
+    "The library was silent except for the soft turning of pages.",
+    "Colorful kites danced above the beach on that windy afternoon.",
+    "Fresh bread from the bakery filled the whole street with warmth.",
+    "The train rattled past green hills and quiet little villages.",
+    "Stars appeared one by one as the sky slowly turned dark blue.",
+    "Her drawing showed a castle, a dragon, and a bright orange sun.",
+    "The scientist recorded every result carefully in her notebook.",
+    "Tall waves crashed against the rocks and sprayed the wooden pier.",
+    "A tiny spider spun a perfect web between the garden fence posts.",
+    "They roasted marshmallows and told stories around the campfire.",
+    "The city lights sparkled like scattered jewels far below the plane.",
+    "Grandma's recipe called for two eggs, some sugar, and fresh lemon.",
+    "The puppy chased its tail in happy circles across the lawn.",
+    "Snow fell quietly, covering the rooftops in a soft white blanket.",
+    "The museum displayed ancient coins, old maps, and giant fossils.",
+    "A rainbow stretched across the valley after the summer storm.",
+    "He fixed the bike chain, pumped the tires, and rode off grinning.",
+    "The band practiced late, filling the garage with loud, happy noise.",
+    "Bees moved from flower to flower, gathering pollen in the sun.",
+    "The astronaut floated gently past the window of the space station.",
+    "Warm sand slipped between our toes as we walked along the coast.",
+    "The clever raccoon opened the latch and stole the picnic basket.",
+    "Autumn leaves crunched under our boots on the long forest trail.",
+    "She solved the tricky puzzle just before the timer ran out.",
+    "The market buzzed with music, bright stalls, and the smell of spice.",
+    "A single candle lit the room while the storm raged outside.",
+    "The farmer watched the wheat sway like golden waves in the wind.",
+    "Two friends built a fort out of blankets and old cardboard boxes.",
+    "The river wound slowly through the canyon, carving the red stone.",
+    "He counted the stars until his eyes grew heavy and he fell asleep.",
+    "The robot rolled across the floor, beeping softly as it worked.",
+    "Fresh mint and cold lemonade made the hot afternoon feel easy.",
+    "The mountain peak vanished into a ring of thick white clouds.",
+    "Her kite climbed higher and higher until it was just a tiny dot.",
+    "The cat stretched, yawned, and curled up in the warm patch of sun.",
+    "We followed the winding path down to the quiet hidden beach.",
+    "The teacher smiled as the class finally understood the puzzle.",
+    "A brave little mouse crept past the sleeping cat to reach the cheese.",
+    "Thunder rumbled far away while we played cards by the window.",
+    "The garden burst into color when spring finally arrived that year.",
+    "Sailboats drifted across the bay under a clear and endless sky.",
+    "He wrote a short note, folded it twice, and slid it under the door.",
+    "The bakery sold out of donuts before the morning was even over.",
+    "Fireflies blinked in the tall grass as the summer night grew cool."
+  ];
 
-  function buildPassage(n) {
-    var w = [], last = -1, idx;
-    for (var i = 0; i < n; i++) {
-      do { idx = Math.floor(Math.random() * WORDS.length); } while (idx === last);
-      last = idx; w.push(WORDS[idx]);
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
     }
-    return w.join(" ");
+    return a;
+  }
+
+  function buildPassage(minWords) {
+    var pool = shuffle(SENTENCES.slice()), out = [], count = 0, k = 0;
+    while (count < minWords) {
+      if (k >= pool.length) { pool = shuffle(SENTENCES.slice()); k = 0; }
+      var s = pool[k++];
+      out.push(s); count += s.split(" ").length;
+    }
+    return out.join(" ");
   }
 
   function init() {
