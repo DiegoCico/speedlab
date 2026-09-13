@@ -86,6 +86,7 @@
 .readout .seg-value.go { text-shadow: 0 0 12px rgba(43,232,107,0.45); }
 
 /* ---- Click pad (the primary play surface) ------------------------------ */
+.play { flex: 1; display: flex; flex-direction: column; gap: var(--sp-3); }
 .play-area { position: relative; z-index: 2; flex: 1; display: flex; }
 .click-pad {
   flex: 1; width: 100%;
@@ -194,3 +195,33 @@
 /* value "tick" feedback when the count increments */
 @keyframes seg-tick { 0% { transform: scale(1.12); } 100% { transform: scale(1); } }
 .seg-value.tick { animation: seg-tick .08s steps(2) 1; }
+
+/* ---- Reaction Time Test ------------------------------------------------- */
+.react-stage {
+  position: relative; z-index: 2; flex: 1; width: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem; cursor: pointer; user-select: none; -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  color: var(--c-line); background: var(--c-p2);
+  border: var(--bd-2) solid var(--c-line); border-radius: 8px;
+  box-shadow: var(--shadow-hard-lg);
+  font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
+  min-height: 240px;
+}
+.react-stage.is-wait  { background: #E5484D; }              /* red — hold */
+.react-stage.is-go    { background: var(--c-go); }          /* green — click! */
+.react-stage.is-early { background: #FF8A00; }              /* too soon */
+.react-big { font-size: clamp(1.6rem, 6vw, 2.6rem); text-align: center; padding: 0 1rem; }
+.react-sub { font-size: 0.85rem; font-weight: 800; color: rgba(0,0,0,0.55); text-transform: none; letter-spacing: 0; text-align: center; padding: 0 1rem; }
+.react-ms { font-family: var(--font-seg); font-size: clamp(2.4rem, 10vw, 4rem); color: var(--c-line); }
+
+/* per-attempt result slots below the screen */
+.react-slots { display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap; margin-top: var(--sp-3); }
+.react-slot {
+  min-width: 3.4rem; padding: 0.35rem 0.5rem; text-align: center;
+  background: var(--c-panel-2); border: var(--bd) solid var(--c-line);
+  border-radius: var(--radius); font-weight: 800; font-size: 0.8rem; color: var(--c-ink-dim);
+}
+.react-slot .n { display: block; font-family: var(--font-seg); font-size: 1rem; color: var(--c-ink-dim); }
+.react-slot.filled { border-color: var(--c-amber); }
+.react-slot.filled .n { color: var(--c-amber); }

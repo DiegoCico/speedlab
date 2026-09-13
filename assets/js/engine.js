@@ -304,7 +304,8 @@
   SPEEDLAB.counterTest = function (cfg) {
     var conf = SPEEDLAB.config[cfg.testId];
     var els = cfg.els;
-    var forever = !cfg.duration || cfg.duration <= 0;
+    // Read live so a single instance can switch between timed and ∞ modes.
+    function isForever() { return !cfg.duration || cfg.duration <= 0; }
     var scoreFn = cfg.score || function (c, sec) { return sec > 0 ? c / sec : 0; };
     var fmtFn = cfg.formatScore || function (n) { return (Math.round(n * 10) / 10).toFixed(1); };
 
@@ -318,7 +319,7 @@
       }
     }
     function setTimer(sec) {
-      if (els.timer) els.timer.textContent = forever ? "∞" : Math.ceil(sec);
+      if (els.timer) els.timer.textContent = isForever() ? "∞" : Math.ceil(sec);
     }
 
     function reset() {
@@ -329,7 +330,7 @@
       if (els.play) els.play.hidden = false;
       els.result.classList.remove("show"); els.result.innerHTML = "";
       els.pad.classList.remove("is-pressed"); els.pad.classList.add("is-armed");
-      els.pad.querySelector("[data-pad-title]").textContent = forever ? "TAP TO COUNT" : startWord();
+      els.pad.querySelector("[data-pad-title]").textContent = startWord();
       els.pad.querySelector("[data-pad-hint]").textContent = hintText();
       els.pad.disabled = false;
       if (els.restart) els.restart.hidden = true;
@@ -338,18 +339,19 @@
     function hintText() {
       if (cfg.input === "key") {
         var k = cfg.key === " " ? "SPACEBAR" : (cfg.key ? ("the " + cfg.key + " key") : "any key");
-        return forever ? "Hit " + k + " — no timer" : "Hit " + k + " as fast as you can for " + cfg.duration + "s";
+        return isForever() ? "Hit " + k + " — no timer, count as high as you can" : "Hit " + k + " as fast as you can for " + cfg.duration + "s";
       }
-      return forever ? "Click here — no timer" : "Click here as fast as you can for " + cfg.duration + "s";
+      return isForever() ? "Click here — no timer, count as high as you can" : "Click here as fast as you can for " + cfg.duration + "s";
     }
 
     function begin() {
       state = "running"; startTs = performance.now();
+      var fv = isForever();
       els.pad.classList.remove("is-armed");
-      els.pad.querySelector("[data-pad-title]").textContent = forever ? "KEEP GOING" : "GO!";
-      els.pad.querySelector("[data-pad-hint]").textContent = forever ? "Press Stop when done" : "";
-      if (els.restart) { els.restart.hidden = false; }
-      if (!forever) {
+      els.pad.querySelector("[data-pad-title]").textContent = fv ? "KEEP GOING" : "GO!";
+      els.pad.querySelector("[data-pad-hint]").textContent = fv ? "Hit Stop when you're done" : "";
+      if (els.restart) { els.restart.hidden = false; els.restart.textContent = fv ? "Stop" : "Reset"; }
+      if (!fv) {
         endTimer = setTimeout(finish, cfg.duration * 1000);
       }
       loop();
@@ -357,7 +359,7 @@
     function loop() {
       if (state !== "running") return;
       var elapsed = (performance.now() - startTs) / 1000;
-      if (!forever) setTimer(Math.max(0, cfg.duration - elapsed));
+      if (!isForever()) setTimer(Math.max(0, cfg.duration - elapsed));
       raf = requestAnimationFrame(loop);
     }
     function bump() {
@@ -376,7 +378,7 @@
       els.pad.disabled = true;
       if (els.play) els.play.hidden = true;
       if (els.restart) els.restart.hidden = true;
-      var elapsed = forever ? (performance.now() - startTs) / 1000 : cfg.duration;
+      var elapsed = isForever() ? (performance.now() - startTs) / 1000 : cfg.duration;
       var s = scoreFn(count, elapsed);
       SPEEDLAB.renderResult({
         cfg: conf, storageKey: cfg.storageKey, container: els.result,
@@ -393,6 +395,9 @@
       els.pad.addEventListener("pointerup", release);
       document.addEventListener("keydown", function (e) {
         if (state === "done") return;
+        // Don't hijack keys aimed at other controls (links, sound toggle...).
+        var ae = document.activeElement;
+        if (ae && ae !== els.pad && /^(A|BUTTON|SUMMARY|INPUT|SELECT|TEXTAREA)$/.test(ae.tagName)) return;
         if (cfg.key && e.key !== cfg.key) return;
         if (cfg.key === " " && (e.key === " " || e.code === "Space")) { e.preventDefault(); }
         if (e.repeat) return;               // ignore held-key auto-repeat
@@ -416,7 +421,7 @@
     }
 
     if (els.restart) els.restart.addEventListener("click", function () {
-      if (forever && state === "running") { finish(); } else { reset(); }
+      if (isForever() && state === "running") { finish(); } else { reset(); }
     });
 
     reset();

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reaction Time Test — Check Your Reflexes | SpeedLab</title>
+<meta name="description" content="Test your reaction time: wait for green, then click. Five tries, averaged in milliseconds, with your rank and how you compare. Works on any device.">
+<link rel="canonical" href="https://speedlab.lol/reaction-time-test/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Reaction Time Test — Check Your Reflexes">
+<meta property="og:description" content="Wait for green, then click. Five tries, averaged in milliseconds, with your rank.">
+<meta property="og:url" content="https://speedlab.lol/reaction-time-test/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/reaction-time-test.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reaction Time Test — Check Your Reflexes">
+<meta name="twitter:description" content="Wait for green, then click. Five tries, averaged in milliseconds, with your rank.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/reaction-time-test.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Reaction Time Test","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/reaction-time-test/","description":"Measure your visual reaction time in milliseconds over five tries.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},
+{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},
+{"@type":"ListItem","position":3,"name":"Reaction Time Test","item":"https://speedlab.lol/reaction-time-test/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a good reaction time?","acceptedAnswer":{"@type":"Answer","text":"The average human reaction time to a visual signal is about 270 milliseconds. Under 250ms is quick, and under 200ms is very fast."}},
+{"@type":"Question","name":"What is the average reaction time?","acceptedAnswer":{"@type":"Answer","text":"For clicking when a screen turns green, most people average roughly 250 to 300 milliseconds, with 270ms being a common midpoint."}},
+{"@type":"Question","name":"Why did it say too soon?","acceptedAnswer":{"@type":"Answer","text":"You clicked while the screen was still red, before it turned green. That attempt does not count — just click again to retry it."}},
+{"@type":"Question","name":"How can I improve my reaction time?","acceptedAnswer":{"@type":"Answer","text":"Stay relaxed and focused, watch for the colour change rather than anticipating it, and take the test when you are rested. Practice helps a little, but most improvement is being alert."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#stage">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🔊</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Reaction Time Test</li>
+      </ol>
+    </nav>
+
+    <h1>Reaction Time Test</h1>
+    <p class="lead">Wait for the screen to turn green, then click as fast as you can. You get five tries and we average them. Click too early on red and that try doesn't count.</p>
+
+    <section class="cabinet" id="reaction" aria-label="Reaction time test">
+      <div class="marquee">Reaction Time</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <button class="react-stage" id="stage" type="button">
+            <span class="react-big" id="stageTitle">Click to start</span>
+            <span class="react-sub" id="stageSub">Wait for green, then click. 5 tries.</span>
+          </button>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div class="react-slots" id="slots" aria-label="Your attempts"></div>
+
+      <div class="pb-strip">
+        <span>Best average <span class="pb-val" data-pb>—</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the reaction time test works</h2>
+      <p>When you start, the screen turns <strong>red</strong> — that's your cue to wait. After a random delay it flips to <strong>green</strong>, and a timer starts the instant it does. Click as fast as you can and we measure the gap in milliseconds. The delay is random every time so you can't guess it; if you click while it's still red, we flag it as “too soon” and let you redo that try. After five clean tries we average them into your score.</p>
+      <p>You can react with a mouse, a tap, or the spacebar — whichever is fastest for you. The average is what counts, so one unlucky try won't wreck your result.</p>
+
+      <h2>What is a good reaction time?</h2>
+      <p>The average person clicks about <strong>270 milliseconds</strong> after the screen turns green. That number includes the time for your eyes to see the change, your brain to process it, and your finger to move — so there's a floor to how low anyone can go. Here's the rough scale:</p>
+      <ul>
+        <li><strong>Over 330 ms</strong> — Snail to Turtle. Tired, distracted, or just warming up.</li>
+        <li><strong>240 to 280 ms</strong> — Rabbit. Right around the human average.</li>
+        <li><strong>200 to 240 ms</strong> — Cheetah to Falcon. Sharp and focused.</li>
+        <li><strong>Under 200 ms</strong> — Lightning. Genuinely fast reflexes.</li>
+      </ul>
+
+      <h2>How to improve your reaction time</h2>
+      <p>Most of your score is simply how alert you are, so the biggest gains come from the basics: take the test rested, cut distractions, and watch for the colour change instead of trying to predict it. Anticipating the green feels faster but usually leads to “too soon” misfires that hurt your average. A little practice smooths out your timing, but nobody trains their way past human biology.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is a good reaction time?</summary>
+          <p>About 270 ms is average. Under 250 ms is quick, and under 200 ms is very fast.</p>
+        </details>
+        <details>
+          <summary>What is the average reaction time?</summary>
+          <p>For clicking when a screen turns green, most people average roughly 250 to 300 ms, around 270 ms in the middle.</p>
+        </details>
+        <details>
+          <summary>Why did it say “too soon”?</summary>
+          <p>You clicked while the screen was still red. That try doesn't count — just click again to retry it.</p>
+        </details>
+        <details>
+          <summary>How can I get faster?</summary>
+          <p>Stay relaxed and alert, react to the change rather than guessing it, and take the test when you're rested.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/cps-test/"><span class="t-kbd">Mouse</span><span class="t-name">CPS Test</span><span class="t-desc">How fast can you click?</span></a>
+        <a class="tile" href="/spacebar-clicker/"><span class="t-kbd">Keyboard</span><span class="t-name">Spacebar Clicker</span><span class="t-desc">How fast can you hit the spacebar?</span></a>
+        <a class="tile" href="/aim-trainer/"><span class="t-kbd">Reaction</span><span class="t-name">Aim Trainer</span><span class="t-desc">Hit 30 targets, measure ms each.</span></a>
+        <a class="tile" href="/whack-a-mole/"><span class="t-kbd">Reaction</span><span class="t-name">Whack-a-Mole</span><span class="t-desc">Bop the moles for 30 seconds.</span></a>
+        <a class="tile" href="/audio-reaction-test/"><span class="t-kbd">Reaction</span><span class="t-name">Audio Reaction Test</span><span class="t-desc">React to a beep instead of a colour.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">See every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device — nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">© 2026 SpeedLab · No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/reaction.js?v=1" defer></script>
+</body>
+</html>
