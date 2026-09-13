@@ -1,0 +1,196 @@
+/* ==========================================================================
+   SPEEDLAB — arcade.css
+   The arcade-cabinet system: frame, CRT screen, seven-segment readout,
+   physical buttons, rank meter, result panel, and consequence-only motion.
+   ========================================================================== */
+
+/* ---- Cabinet frame ------------------------------------------------------ */
+.cabinet {
+  position: relative;
+  background: var(--c-panel);
+  border: var(--bd-2) solid var(--c-line);
+  border-radius: 10px;
+  box-shadow: var(--shadow-hard-lg);
+  padding: var(--sp-3);
+  margin-top: var(--sp-3);
+}
+/* corner "bolts" */
+.cabinet::before, .cabinet::after {
+  content: ""; position: absolute; width: 10px; height: 10px;
+  background: var(--c-panel-2); border: 2px solid var(--c-line); border-radius: 50%;
+  top: 8px;
+}
+.cabinet::before { left: 8px; }
+.cabinet::after  { right: 8px; }
+@media (min-width: 640px) { .cabinet { padding: var(--sp-4); } }
+
+/* Marquee title strip above the screen */
+.marquee {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background: var(--c-p1); color: var(--c-line);
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+  font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  padding: 0.4rem 0.75rem; margin-bottom: var(--sp-3); text-align: center;
+}
+
+/* ---- CRT screen --------------------------------------------------------- */
+.screen {
+  position: relative; overflow: hidden;
+  background: var(--c-screen);
+  border: var(--bd-2) solid var(--c-line);
+  border-radius: 8px;
+  /* recessed bezel: hard inset shadow, no blur */
+  box-shadow: inset 0 0 0 3px #05030d, inset 0 0 0 6px #1c1636;
+  padding: var(--sp-4) var(--sp-3);
+  min-height: 340px;                 /* reserve height → no layout shift */
+  display: flex; flex-direction: column; gap: var(--sp-3);
+}
+@media (min-width: 640px) { .screen { min-height: 380px; padding: var(--sp-5) var(--sp-4); } }
+
+/* scanline pattern (a 1px repeating pattern, not a decorative colour wash) */
+.screen::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.25) 3px
+  );
+}
+
+/* ---- Seven-segment readout --------------------------------------------- */
+.readout-row {
+  display: flex; align-items: flex-end; justify-content: center;
+  gap: var(--sp-5); flex-wrap: wrap; position: relative; z-index: 2;
+}
+.readout { text-align: center; }
+.readout-label {
+  font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em;
+  font-size: 0.7rem; color: var(--c-ink-dim); margin-top: 0.35rem;
+}
+.seg-wrap { position: relative; display: inline-block; }
+.seg-value, .seg-ghost {
+  font-family: var(--font-seg);
+  font-weight: 700; line-height: 1;
+  font-size: clamp(3.5rem, 18vw, 7rem);
+}
+.readout.small .seg-value, .readout.small .seg-ghost { font-size: clamp(1.8rem, 8vw, 3rem); }
+/* faint "off" segments sitting behind the live value — classic LCD look */
+.seg-ghost { position: absolute; inset: 0; color: var(--c-amber); opacity: 0.08; }
+.seg-value { position: relative; color: var(--c-amber); }
+.seg-value.go { color: var(--c-go); }
+/* static glow — no animation, safe for reduced-motion */
+.readout .seg-value { text-shadow: 0 0 12px rgba(255,197,49,0.45); }
+.readout .seg-value.go { text-shadow: 0 0 12px rgba(43,232,107,0.45); }
+
+/* ---- Click pad (the primary play surface) ------------------------------ */
+.play-area { position: relative; z-index: 2; flex: 1; display: flex; }
+.click-pad {
+  flex: 1; width: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem; cursor: pointer; user-select: none; -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  color: var(--c-line); background: var(--c-p1);
+  border: var(--bd-2) solid var(--c-line); border-radius: 8px;
+  box-shadow: var(--shadow-hard-lg);
+  font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  transition: transform .05s steps(2), box-shadow .05s steps(2), background-color .05s;
+}
+.click-pad .hint { font-size: 0.8rem; font-weight: 800; color: rgba(0,0,0,0.6); text-transform: none; letter-spacing: 0; }
+.click-pad:active,
+.click-pad.is-pressed { transform: translate(6px, 6px); box-shadow: 0 0 0 var(--c-line); background: #ff5c93; }
+.click-pad.is-armed { background: var(--c-go); }
+.click-pad:disabled { cursor: default; }
+
+/* ---- Physical round arcade button (start / restart) -------------------- */
+.arcade-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 3.5rem; height: 3.5rem; padding: 0 1.25rem;
+  font-weight: 900; text-transform: uppercase; font-size: 1.1rem;
+  color: var(--c-line); background: var(--c-p2);
+  border: var(--bd-2) solid var(--c-line); border-radius: 999px;
+  box-shadow: var(--shadow-hard-lg); cursor: pointer;
+  transition: transform .06s steps(2), box-shadow .06s steps(2);
+}
+.arcade-btn.p1 { background: var(--c-p1); }
+.arcade-btn:active { transform: translate(6px, 6px); box-shadow: 0 0 0 var(--c-line); }
+
+/* ---- Duration / mode selector ------------------------------------------ */
+.seg-select { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin: var(--sp-3) 0 0; }
+.seg-select .opt {
+  font-weight: 800; font-size: 0.85rem; cursor: pointer;
+  color: var(--c-ink); background: var(--c-panel-2);
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  padding: 0.35rem 0.6rem; box-shadow: 3px 3px 0 var(--c-line);
+  transition: transform .06s steps(2), box-shadow .06s steps(2);
+}
+.seg-select .opt[aria-pressed="true"] { background: var(--c-amber); color: var(--c-line); }
+.seg-select .opt:active { transform: translate(3px,3px); box-shadow: 0 0 0 var(--c-line); }
+
+/* ---- Rank badge + segmented power meter -------------------------------- */
+.rank-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--c-panel-2); border: var(--bd) solid var(--c-line);
+  border-radius: var(--radius); box-shadow: var(--shadow-hard);
+  padding: 0.5rem 0.75rem;
+}
+.rank-badge .r-name {
+  font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; font-size: 1.1rem;
+}
+.meter { display: inline-flex; gap: 3px; }
+.meter .cell {
+  width: 8px; height: 20px; background: #2a1f47;
+  border: 2px solid var(--c-line); border-radius: 2px;
+}
+.meter .cell.on { background: var(--tier, var(--c-amber)); }
+
+/* ---- Result panel ------------------------------------------------------- */
+.result { display: none; text-align: center; position: relative; z-index: 2; }
+.result.show { display: block; }
+.result .result-rank { display: flex; justify-content: center; margin-bottom: var(--sp-3); }
+.result .pct { font-weight: 800; color: var(--c-ink); margin: var(--sp-2) 0; }
+.result .pct b { color: var(--c-go); }
+.stat-line {
+  display: flex; justify-content: center; gap: var(--sp-4); flex-wrap: wrap;
+  color: var(--c-ink-dim); font-weight: 800; font-size: 0.9rem; margin: var(--sp-2) 0 var(--sp-3);
+}
+.stat-line .v { color: var(--c-amber); }
+.stat-line .v.new { color: var(--c-go); }
+.result-actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: var(--sp-3); }
+.result-actions .btn { box-shadow: var(--shadow-hard); }
+
+/* personal-best banner shown under the screen at all times */
+.pb-strip {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  margin-top: var(--sp-3); padding: var(--sp-2) var(--sp-3);
+  background: var(--c-panel-2); border: var(--bd) solid var(--c-line);
+  border-radius: var(--radius); font-weight: 800; font-size: 0.9rem;
+}
+.pb-strip .pb-val { color: var(--c-amber); font-family: var(--font-seg); font-size: 1.1rem; }
+.pb-strip button { color: var(--c-ink-dim); background: none; border: none; cursor: pointer; font-weight: 700; text-decoration: underline; font-size: 0.8rem; }
+
+/* ---- Consequence-only motion ------------------------------------------- */
+/* screen shake on a new personal best */
+@keyframes screen-shake {
+  0%,100% { transform: translate(0,0); }
+  20% { transform: translate(-4px, 2px); }
+  40% { transform: translate(4px, -2px); }
+  60% { transform: translate(-3px, -2px); }
+  80% { transform: translate(3px, 2px); }
+}
+.shake { animation: screen-shake .35s steps(3) 1; }
+
+/* hard-edged pixel confetti (square, no blur, no rotation) */
+.confetti-layer { position: fixed; inset: 0; pointer-events: none; z-index: 60; overflow: hidden; }
+.confetti-bit { position: absolute; width: 10px; height: 10px; top: -12px; }
+@keyframes confetti-fall {
+  to { transform: translateY(110vh); }
+}
+.confetti-bit { animation: confetti-fall linear forwards; }
+
+/* value "tick" feedback when the count increments */
+@keyframes seg-tick { 0% { transform: scale(1.12); } 100% { transform: scale(1); } }
+.seg-value.tick { animation: seg-tick .08s steps(2) 1; }

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPS Test — Click Speed Test (5 Seconds) | SpeedLab</title>
+<meta name="description" content="Take the CPS test and measure your click speed in clicks per second. Free, instant, works on any device — beat your personal best and see how you rank.">
+<link rel="canonical" href="https://speedlab.lol/cps-test/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="CPS Test — Click Speed Test">
+<meta property="og:description" content="Measure your click speed in clicks per second. Beat your best and see how you rank.">
+<meta property="og:url" content="https://speedlab.lol/cps-test/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/cps-test.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CPS Test — Click Speed Test">
+<meta name="twitter:description" content="Measure your click speed in clicks per second. Beat your best and see how you rank.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/cps-test.png">
+
+<!-- Self-hosted fonts: preload the two that render above the fold -->
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPS Test","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/cps-test/","description":"Measure your click speed in clicks per second with a free online CPS test.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},
+{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},
+{"@type":"ListItem","position":3,"name":"CPS Test","item":"https://speedlab.lol/cps-test/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a good CPS score?","acceptedAnswer":{"@type":"Answer","text":"The average click speed is about 6 to 7 clicks per second. Anything above 8 CPS is fast, and scores above 11 CPS put you in the top few percent of clickers."}},
+{"@type":"Question","name":"What is the average CPS?","acceptedAnswer":{"@type":"Answer","text":"For a standard 5-second test the average is roughly 6.5 clicks per second for most people using a normal single-finger click."}},
+{"@type":"Question","name":"How is CPS calculated?","acceptedAnswer":{"@type":"Answer","text":"CPS is your total number of clicks divided by the length of the test in seconds. Click 40 times in a 5-second test and your score is 8 CPS."}},
+{"@type":"Question","name":"How can I click faster?","acceptedAnswer":{"@type":"Answer","text":"Techniques like jitter clicking, butterfly clicking and drag clicking can raise your CPS well above a normal click. Practice in short bursts and keep your hand relaxed."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#pad">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🔊</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">CPS Test</li>
+      </ol>
+    </nav>
+
+    <h1>CPS Test — Click Speed Test</h1>
+    <p class="lead">Click as fast as you can. We count every click and turn it into your clicks-per-second score. The clock starts on your first click.</p>
+
+    <!-- ===================== THE TEST (above the fold) ===================== -->
+    <section class="cabinet" id="cps" data-duration="5" aria-label="CPS test">
+      <div class="marquee">Click Speed Test</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="clicks">0</span></div>
+              <div class="readout-label">Clicks</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">5</span></div>
+              <div class="readout-label">Seconds left</div>
+            </div>
+          </div>
+          <div class="play-area">
+            <button class="click-pad is-armed" id="pad" type="button" aria-describedby="cps-help">
+              <span data-pad-title>Click to start</span>
+              <span class="hint" data-pad-hint>Click here as fast as you can for 5s</span>
+            </button>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn p1" id="restart" type="button" hidden>Reset</button>
+      </div>
+
+      <div class="seg-select" role="group" aria-label="Test duration" id="cps-help">
+        <button class="opt" data-dur="1" type="button" aria-pressed="false">1s</button>
+        <button class="opt" data-dur="2" type="button" aria-pressed="false">2s</button>
+        <button class="opt" data-dur="5" type="button" aria-pressed="true">5s</button>
+        <button class="opt" data-dur="10" type="button" aria-pressed="false">10s</button>
+        <button class="opt" data-dur="15" type="button" aria-pressed="false">15s</button>
+        <button class="opt" data-dur="20" type="button" aria-pressed="false">20s</button>
+        <button class="opt" data-dur="30" type="button" aria-pressed="false">30s</button>
+        <button class="opt" data-dur="60" type="button" aria-pressed="false">60s</button>
+        <button class="opt" data-dur="100" type="button" aria-pressed="false">100s</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Personal best <span class="pb-val" data-pb>—</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <!-- Ad slot: between the test and the written content, below the fold -->
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <!-- ===================== WRITTEN CONTENT ===================== -->
+    <div class="content">
+      <h2>How the CPS test works</h2>
+      <p>The CPS test measures your <strong>clicks per second</strong> — how many times you can press the mouse button in a set window of time. Pick a duration, then click the pad as fast as you can. The timer starts on your very first click, so there is no wasted reaction time, and it stops automatically when the clock runs out. Your score is simply the number of clicks divided by the seconds, so 40 clicks in a 5-second test is 8 CPS.</p>
+      <p>Most people run the 5-second test because it is long enough to be fair but short enough to sprint the whole way. Shorter tests reward a fast burst; longer ones reward stamina. Every duration keeps its own separate personal best on this device.</p>
+
+      <h2>What is a good CPS score?</h2>
+      <p>The average click speed sits around <strong>6 to 7 CPS</strong> with a normal single-finger click. Break past 8 and you are clicking faster than most people; get above 11 and you are in the top few percent. Here is how the ranks on this test line up:</p>
+      <ul>
+        <li><strong>Under 4 CPS</strong> — Snail to Turtle. A relaxed, everyday click.</li>
+        <li><strong>6 to 7.5 CPS</strong> — Rabbit. Right around the human average.</li>
+        <li><strong>7.5 to 11 CPS</strong> — Cheetah to Falcon. Clearly fast; you have practised.</li>
+        <li><strong>11+ CPS</strong> — Lightning. Usually a special technique, not a plain click.</li>
+      </ul>
+
+      <h2>How to click faster</h2>
+      <p>A normal click tops out for most people around 7 CPS. To go higher, players use a few well-known techniques, each of which has its own test on this site:</p>
+      <ul>
+        <li><a href="/jitter-click-test/">Jitter clicking</a> — tensing your arm so it vibrates, firing off very rapid clicks.</li>
+        <li><a href="/butterfly-click-test/">Butterfly clicking</a> — alternating two fingers on one mouse button.</li>
+        <li><a href="/drag-click-test/">Drag clicking</a> — dragging a finger across the button so friction registers many clicks at once.</li>
+      </ul>
+      <p>Whatever style you use, keep your hand loose, click in short bursts, and stop if anything starts to ache. Speed comes from staying relaxed, not from forcing it.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is a good CPS score?</summary>
+          <p>Around 6 to 7 CPS is average. Above 8 is fast, and above 11 puts you in the top few percent of clickers.</p>
+        </details>
+        <details>
+          <summary>What is the average CPS?</summary>
+          <p>On a standard 5-second test the average is roughly 6.5 clicks per second with a normal single-finger click.</p>
+        </details>
+        <details>
+          <summary>How is CPS calculated?</summary>
+          <p>It is your total clicks divided by the length of the test. Click 40 times in 5 seconds and your score is 8 CPS.</p>
+        </details>
+        <details>
+          <summary>Does a faster CPS help in games?</summary>
+          <p>In some games a higher click rate helps with actions like combat or building. This test is a fun way to measure and practise, not a guarantee of in-game results.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- Ad slot: after the content, before related tests -->
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <!-- ===================== RELATED TESTS ===================== -->
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/spacebar-clicker/"><span class="t-kbd">Keyboard</span><span class="t-name">Spacebar Clicker</span><span class="t-desc">How fast can you hit the spacebar?</span></a>
+        <a class="tile" href="/kohi-click-test/"><span class="t-kbd">Mouse</span><span class="t-name">Kohi Click Test</span><span class="t-desc">The click test Minecraft players search for.</span></a>
+        <a class="tile" href="/jitter-click-test/"><span class="t-kbd">Mouse</span><span class="t-name">Jitter Click Test</span><span class="t-desc">Measure rapid-fire jitter clicks.</span></a>
+        <a class="tile" href="/butterfly-click-test/"><span class="t-kbd">Mouse</span><span class="t-name">Butterfly Click Test</span><span class="t-desc">Two fingers, one button, double the speed.</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go — how fast do you react?</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">See every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <!-- Ad slot: directly above the footer -->
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device — nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">© 2026 SpeedLab · No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/cps.js?v=1" defer></script>
+</body>
+</html>
