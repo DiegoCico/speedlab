@@ -62,6 +62,9 @@
 
 /* ---- Reset -------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
+/* The [hidden] attribute must win over component display rules (flex/grid),
+   otherwise toggling .hidden on a flex element does nothing. */
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   margin: 0;
