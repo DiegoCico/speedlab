@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Swipe Speed Test — How Fast Can You Swipe | SpeedLab</title>
+<meta name="description" content="Test your swipe speed. Swipe back and forth as fast as you can for 10 seconds and see how many swipes you rack up, your rank, and how you compare.">
+<link rel="canonical" href="https://speedlab.lol/swipe-speed-test/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Swipe Speed Test — How Fast Can You Swipe">
+<meta property="og:description" content="Swipe back and forth as fast as you can for 10 seconds.">
+<meta property="og:url" content="https://speedlab.lol/swipe-speed-test/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/swipe-speed-test.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Swipe Speed Test — How Fast Can You Swipe">
+<meta name="twitter:description" content="Swipe back and forth as fast as you can for 10 seconds.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/swipe-speed-test.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Swipe Speed Test","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/swipe-speed-test/","description":"Count how many swipes you can make in 10 seconds.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Swipe Speed Test","item":"https://speedlab.lol/swipe-speed-test/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What counts as one swipe?","acceptedAnswer":{"@type":"Answer","text":"Each chunk of swipe movement across the pad counts as a swipe, so continuous back-and-forth flicking adds up quickly."}},{"@type":"Question","name":"What is a good swipe speed?","acceptedAnswer":{"@type":"Answer","text":"Around 14 to 20 swipes in 10 seconds is average. 26 to 34 is fast, and 44 or more is excellent."}},{"@type":"Question","name":"Does it work with a mouse?","acceptedAnswer":{"@type":"Answer","text":"Yes. Hold the button and drag across the pad. It is designed for touch, but a mouse drag counts the same way."}},{"@type":"Question","name":"Do swipes count if I lift my finger?","acceptedAnswer":{"@type":"Answer","text":"Swipes only register while your finger or mouse button is down on the pad. Lifting off just pauses the count."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#pad">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Swipe Speed Test</li>
+      </ol>
+    </nav>
+
+    <h1>Swipe Speed Test</h1>
+    <p class="lead">Swipe across the pad as fast as you can, back and forth, for 10 seconds. Every flick of movement counts as a swipe. Built for touchscreens; a mouse drag works too.</p>
+
+    <section class="cabinet" id="swipespeed" aria-label="Swipe speed test">
+      <div class="marquee">Swipe Speed</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="count">0</span></div>
+              <div class="readout-label">Swipes</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">10</span></div>
+              <div class="readout-label">Seconds left</div>
+            </div>
+          </div>
+          <div class="swipe-pad" id="pad">
+            <span>Swipe here</span>
+            <span class="hint">Swipe back and forth as fast as you can for 10s</span>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn p1" id="restart" type="button" hidden>Reset</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the swipe speed test works</h2>
+      <p>Drag your finger &mdash; or the mouse &mdash; across the pad as fast as you can. Every chunk of swipe movement counts as one swipe, so quick back-and-forth flicking racks up your count fastest. The timer starts on your first swipe and runs for 10 seconds, and your score is the total number of swipes. It is the swiping cousin of the <a href="/tap-speed-test/">tap speed test</a>, built for thumbs on a phone.</p>
+
+      <h2>What is a good swipe speed?</h2>
+      <ul>
+        <li><strong>Under 8 swipes</strong> &mdash; a gentle pace.</li>
+        <li><strong>14 to 20 swipes</strong> &mdash; right around average.</li>
+        <li><strong>26 to 34 swipes</strong> &mdash; fast; your thumb is flying.</li>
+        <li><strong>44+ swipes</strong> &mdash; excellent swipe speed.</li>
+      </ul>
+
+      <h2>Tips to swipe faster</h2>
+      <ul>
+        <li><strong>Swipe back and forth</strong> in short, sharp flicks rather than long slow drags.</li>
+        <li><strong>Use your thumb</strong> on a phone and keep the motion loose from the wrist.</li>
+        <li><strong>Stay on the pad</strong> &mdash; swipes only count while your finger is down on it.</li>
+      </ul>
+      <p>More mobile tests: the <a href="/scroll-speed-test/">scroll speed test</a> and the <a href="/tap-speed-test/">tap speed test</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What counts as one swipe?</summary>
+          <p>Each chunk of swipe movement across the pad counts as a swipe, so continuous back-and-forth flicking adds up quickly.</p>
+        </details>
+        <details>
+          <summary>What is a good swipe speed?</summary>
+          <p>Around 14 to 20 swipes in 10 seconds is average. 26 to 34 is fast, and 44 or more is excellent.</p>
+        </details>
+        <details>
+          <summary>Does it work with a mouse?</summary>
+          <p>Yes. Hold the button and drag across the pad. It is designed for touch, but a mouse drag counts the same way.</p>
+        </details>
+        <details>
+          <summary>Do swipes count if I lift my finger?</summary>
+          <p>Swipes only register while your finger or mouse button is down on the pad. Lifting off just pauses the count.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/scroll-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Scroll Speed Test</span><span class="t-desc">How far can you scroll in 10s?</span></a>
+        <a class="tile" href="/tap-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Tap Speed Test</span><span class="t-desc">How fast can you tap?</span></a>
+        <a class="tile" href="/cps-test/"><span class="t-kbd">Mouse</span><span class="t-name">CPS Test</span><span class="t-desc">How fast can you click?</span></a>
+        <a class="tile" href="/emoji-hunt/"><span class="t-kbd">Mobile</span><span class="t-name">Emoji Hunt</span><span class="t-desc">Find the odd emoji out.</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/swipe-speed.js?v=1" defer></script>
+</body>
+</html>

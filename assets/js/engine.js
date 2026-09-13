@@ -120,6 +120,21 @@
       unit: "numbers", higherIsBetter: true,
       bounds: [6, 8, 10, 12, 15, 18],
       dist: [[4,3],[6,15],[8,35],[10,58],[12,76],[14,88],[16,94],[20,99]]
+    },
+    scroll: {                    /* pixels scrolled in 10s — higher is better */
+      unit: "px", higherIsBetter: true,
+      bounds: [6000, 12000, 20000, 30000, 45000, 65000],
+      dist: [[2000,2],[6000,15],[12000,35],[20000,55],[30000,72],[45000,87],[65000,96],[90000,99.5]]
+    },
+    swipe: {                     /* swipes in 10s — higher is better */
+      unit: "swipes", higherIsBetter: true,
+      bounds: [8, 14, 20, 26, 34, 44],
+      dist: [[4,3],[8,15],[14,35],[20,55],[26,72],[34,87],[44,96],[55,99]]
+    },
+    emoji: {                     /* rounds cleared — higher is better */
+      unit: "level", higherIsBetter: true,
+      bounds: [3, 6, 9, 13, 18, 24],
+      dist: [[1,3],[3,18],[6,40],[9,60],[13,78],[18,90],[24,97],[30,99.5]]
     }
   };
 

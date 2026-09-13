@@ -238,6 +238,53 @@
   padding: 0 0.3rem; border-radius: 3px; margin-bottom: 0.35rem;
 }
 
+/* ---- Scroll Speed ------------------------------------------------------- */
+.scroll-box {
+  position: relative; z-index: 2; flex: 0 0 auto; height: 280px;
+  overflow-y: scroll; overflow-x: hidden;
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  background: var(--c-panel-2); box-shadow: inset 0 0 0 3px #05030d;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-inner { height: 4000px; position: relative; }
+.scroll-stripes {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    to bottom, var(--c-p2) 0, var(--c-p2) 26px,
+    var(--c-panel-2) 26px, var(--c-panel-2) 52px);
+  opacity: 0.25;
+}
+.scroll-hint {
+  position: sticky; top: 40%; text-align: center; z-index: 2;
+  font-weight: 900; text-transform: uppercase; color: var(--c-ink);
+  pointer-events: none; font-size: 1.1rem;
+}
+
+/* ---- Swipe Speed -------------------------------------------------------- */
+.swipe-pad {
+  position: relative; z-index: 2; flex: 1; min-height: 240px; width: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
+  border: var(--bd-2) solid var(--c-line); border-radius: 8px;
+  background: var(--c-p2); box-shadow: var(--shadow-hard-lg);
+  color: var(--c-line); font-weight: 900; text-transform: uppercase;
+  cursor: grab; user-select: none; -webkit-user-select: none; touch-action: none;
+  font-size: clamp(1.3rem, 5vw, 2rem);
+}
+.swipe-pad:active { cursor: grabbing; }
+.swipe-pad.flash { background: var(--c-go); }
+.swipe-pad .hint { font-size: 0.8rem; font-weight: 800; color: rgba(0,0,0,0.6); text-transform: none; }
+
+/* ---- Emoji Hunt --------------------------------------------------------- */
+.emoji-grid { display: grid; gap: var(--sp-1); margin: 0 auto; width: 100%; max-width: 460px; }
+.emoji-cell {
+  aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  background: var(--c-panel); cursor: pointer; padding: 0;
+  line-height: 1; touch-action: manipulation; user-select: none;
+}
+.emoji-cell:active { transform: translate(2px,2px); }
+.emoji-cell.bad { background: var(--c-p1); }
+
 /* ---- Memory tests (shared) --------------------------------------------- */
 .mem-stage { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
 .mem-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--sp-3); text-align: center; }

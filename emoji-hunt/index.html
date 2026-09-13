@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Emoji Hunt — Find the Different Emoji | SpeedLab</title>
+<meta name="description" content="Find the one emoji that is different in the grid. Each round the grid grows and the emojis get more alike. How many rounds can you clear?">
+<link rel="canonical" href="https://speedlab.lol/emoji-hunt/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Emoji Hunt — Find the Different Emoji">
+<meta property="og:description" content="Spot the odd emoji out. The grid grows harder each round.">
+<meta property="og:url" content="https://speedlab.lol/emoji-hunt/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/emoji-hunt.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Emoji Hunt — Find the Different Emoji">
+<meta name="twitter:description" content="Spot the odd emoji out. The grid grows harder each round.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/emoji-hunt.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=1">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Emoji Hunt","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/emoji-hunt/","description":"Find the one different emoji in a grid that grows harder each round.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Emoji Hunt","item":"https://speedlab.lol/emoji-hunt/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good emoji hunt score?","acceptedAnswer":{"@type":"Answer","text":"Around 6 to 9 rounds is average. 13 to 18 is sharp, and 24 or more is excellent visual attention."}},{"@type":"Question","name":"What happens if I tap the wrong emoji?","acceptedAnswer":{"@type":"Answer","text":"One wrong tap ends the game. Your score is the number of rounds you cleared before the mistake."}},{"@type":"Question","name":"Does it get harder?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each round the grid grows and the two emojis become more similar, so later rounds are much trickier."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the odd emoji with your finger. It works the same on touch and mouse."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#startBtn">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Emoji Hunt</li>
+      </ol>
+    </nav>
+
+    <h1>Emoji Hunt</h1>
+    <p class="lead">One emoji in the grid is different from all the others. Tap it. Each round the grid gets bigger and the emojis look more alike — how far can you get?</p>
+
+    <section class="cabinet" id="emojihunt" aria-label="Emoji hunt">
+      <div class="marquee">Emoji Hunt</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="level">1</span></div>
+              <div class="readout-label">Level</div>
+            </div>
+          </div>
+          <div class="mem-stage">
+            <p class="mem-feedback" id="status"></p>
+            <div class="emoji-grid" id="grid"></div>
+            <div class="mem-center" id="startWrap">
+              <button class="arcade-btn p1" id="startBtn" type="button">Start</button>
+              <p class="mem-hint">One emoji is different from the rest. Tap it. The grid grows and the emojis get more alike each round.</p>
+            </div>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn" id="restart" type="button" hidden>Restart</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How emoji hunt works</h2>
+      <p>The grid fills with the same emoji &mdash; except one. Find the odd one out and tap it to move to the next round. Each round the grid grows and the two emojis get harder to tell apart, so what starts easy quickly becomes a real test of visual attention. One wrong tap ends the game, and your score is the number of rounds you clear. It is a pure spot-the-difference challenge that keeps ramping up.</p>
+
+      <h2>What is a good emoji hunt score?</h2>
+      <ul>
+        <li><strong>Under 3 rounds</strong> &mdash; just warming up.</li>
+        <li><strong>6 to 9 rounds</strong> &mdash; right around average.</li>
+        <li><strong>13 to 18 rounds</strong> &mdash; sharp eyes.</li>
+        <li><strong>24+ rounds</strong> &mdash; excellent visual attention.</li>
+      </ul>
+
+      <h2>Tips to spot the odd one</h2>
+      <ul>
+        <li><strong>Scan in rows,</strong> left to right, instead of staring at the whole grid at once.</li>
+        <li><strong>Look for the shape or colour that breaks the pattern,</strong> not the whole emoji.</li>
+        <li><strong>Slow down on the hard rounds</strong> &mdash; one wrong tap ends the run, so accuracy beats speed late on.</li>
+      </ul>
+      <p>Like spotting things fast? Try the <a href="/color-match/">color match</a> focus test or the <a href="/aim-trainer/">aim trainer</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is a good emoji hunt score?</summary>
+          <p>Around 6 to 9 rounds is average. 13 to 18 is sharp, and 24 or more is excellent visual attention.</p>
+        </details>
+        <details>
+          <summary>What happens if I tap the wrong emoji?</summary>
+          <p>One wrong tap ends the game. Your score is the number of rounds you cleared before the mistake.</p>
+        </details>
+        <details>
+          <summary>Does it get harder?</summary>
+          <p>Yes. Each round the grid grows and the two emojis become more similar, so later rounds are much trickier.</p>
+        </details>
+        <details>
+          <summary>Does it work on a phone?</summary>
+          <p>Yes. Tap the odd emoji with your finger. It works the same on touch and mouse.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/color-match/"><span class="t-kbd">Reaction</span><span class="t-name">Color Match</span><span class="t-desc">Does the word match the ink?</span></a>
+        <a class="tile" href="/aim-trainer/"><span class="t-kbd">Reaction</span><span class="t-name">Aim Trainer</span><span class="t-desc">Hit 30 targets, measure ms each.</span></a>
+        <a class="tile" href="/visual-memory/"><span class="t-kbd">Memory</span><span class="t-name">Visual Memory</span><span class="t-desc">Reproduce the flashed tiles.</span></a>
+        <a class="tile" href="/scroll-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Scroll Speed Test</span><span class="t-desc">How far can you scroll?</span></a>
+        <a class="tile" href="/swipe-speed-test/"><span class="t-kbd">Mobile</span><span class="t-name">Swipe Speed Test</span><span class="t-desc">How fast can you swipe?</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=1" defer></script>
+<script src="/assets/js/share-card.js?v=1" defer></script>
+<script src="/assets/js/tests/emoji-hunt.js?v=1" defer></script>
+</body>
+</html>

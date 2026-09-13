@@ -286,6 +286,28 @@ h3 { font-weight: 800; font-size: 1.15rem; }
 .site-footer nav { display: flex; flex-direction: column; gap: 0.25rem; }
 .site-footer .fine { color: var(--c-ink-dim); margin-top: var(--sp-4); }
 
+/* ---- Page entrance (smooth load, not pop-in) ---------------------------
+   Only under no-preference, so reduced-motion users and any environment
+   without CSS animation see content fully visible right away. Uses only
+   opacity/transform, so there is zero layout shift and the test stays
+   clickable while it fades in. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sl-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @keyframes sl-drop { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+
+  .site-header { animation: sl-drop .4s ease-out both; }
+
+  main.wrap:not(.layout) > *,
+  main.layout > div > * { animation: sl-rise .5s ease-out both; }
+
+  main.wrap:not(.layout) > *:nth-child(1), main.layout > div > *:nth-child(1) { animation-delay: .03s; }
+  main.wrap:not(.layout) > *:nth-child(2), main.layout > div > *:nth-child(2) { animation-delay: .09s; }
+  main.wrap:not(.layout) > *:nth-child(3), main.layout > div > *:nth-child(3) { animation-delay: .15s; }
+  main.wrap:not(.layout) > *:nth-child(4), main.layout > div > *:nth-child(4) { animation-delay: .21s; }
+  main.wrap:not(.layout) > *:nth-child(5), main.layout > div > *:nth-child(5) { animation-delay: .27s; }
+  main.wrap:not(.layout) > *:nth-child(n+6), main.layout > div > *:nth-child(n+6) { animation-delay: .32s; }
+}
+
 /* ---- Reduced motion ----------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
