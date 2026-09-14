@@ -135,6 +135,11 @@
       unit: "level", higherIsBetter: true,
       bounds: [3, 6, 9, 13, 18, 24],
       dist: [[1,3],[3,18],[6,40],[9,60],[13,78],[18,90],[24,97],[30,99.5]]
+    },
+    wordguess: {                 /* guesses to solve — lower is better */
+      unit: "guesses", higherIsBetter: false,
+      bounds: [1, 2, 3, 4, 5, 6],
+      dist: [[1,2],[2,10],[3,35],[4,68],[5,88],[6,97],[7,100]]
     }
   };
 
