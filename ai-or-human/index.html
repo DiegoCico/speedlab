@@ -26,8 +26,8 @@
 
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/base.css?v=2">
-<link rel="stylesheet" href="/assets/css/arcade.css?v=2">
+<link rel="stylesheet" href="/assets/css/base.css?v=202609132148">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609132148">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI or Human","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/ai-or-human/","description":"Decide whether each line of text was written by a human or an AI, against a 60-second clock.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -36,7 +36,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"AI or Human","item":"https://speedlab.lol/ai-or-human/"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the AI or Human game scored?","acceptedAnswer":{"@type":"Answer","text":"You get one point for every correct call in 60 seconds. Wrong calls are tracked too, and your accuracy is shown at the end. More correct is better."}},{"@type":"Question","name":"Is this a real AI detector?","acceptedAnswer":{"@type":"Answer","text":"No. The lines are labelled using common AI writing tells, so it's a fun, educational game \u2014 not a reliable way to detect AI in the wild."}},{"@type":"Question","name":"How do I answer with a keyboard?","acceptedAnswer":{"@type":"Answer","text":"Press the left arrow (or H) for Human and the right arrow (or A) for AI. On a phone, just tap the Human or AI buttons."}},{"@type":"Question","name":"What's a good score?","acceptedAnswer":{"@type":"Answer","text":"Getting clearly more right than wrong shows a good eye. Around 12 or more correct in 60 seconds with high accuracy is strong."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the AI or Human game scored?","acceptedAnswer":{"@type":"Answer","text":"You get 5 lines and score one point for each you call correctly, so your score is out of 5. Wrong calls are tracked too, and the timer shows how fast you answered."}},{"@type":"Question","name":"Is this a real AI detector?","acceptedAnswer":{"@type":"Answer","text":"No. The lines are labelled using common AI writing tells, so it's a fun, educational game \u2014 not a reliable way to detect AI in the wild."}},{"@type":"Question","name":"How do I answer with a keyboard?","acceptedAnswer":{"@type":"Answer","text":"Press the left arrow (or H) for Human and the right arrow (or A) for AI. On a phone, just tap the Human or AI buttons."}},{"@type":"Question","name":"What's a good score?","acceptedAnswer":{"@type":"Answer","text":"4 or 5 out of 5 shows a sharp eye for AI writing. 3 is around a coin-flip, so aim to beat that consistently and quickly."}}]}
 </script>
 </head>
 <body>
@@ -71,7 +71,7 @@
     </nav>
 
     <h1>AI or Human?</h1>
-    <p class="lead">A line of text appears — decide whether a real person or an AI wrote it, as fast as you can. You have 60 seconds; we count your correct and wrong calls.</p>
+    <p class="lead">Five lines of text, one at a time — decide whether a real person or an AI wrote each, as fast as you can. The timer counts up and we track your correct and wrong calls.</p>
 
     <section class="cabinet" id="aihuman" aria-label="AI or Human game">
       <div class="marquee">AI or Human?</div>
@@ -88,12 +88,13 @@
               <div class="readout-label">Wrong</div>
             </div>
             <div class="readout small">
-              <div class="seg-wrap"><span class="seg-value tnum" id="timer">60</span></div>
-              <div class="readout-label">Seconds left</div>
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">0</span></div>
+              <div class="readout-label">Seconds</div>
             </div>
           </div>
           <div class="aih-area" id="area">
-            <p class="aih-prompt" id="prompt">Tap Start, then decide: did a human or an AI write each line?</p>
+            <div class="aih-progress" id="progress"></div>
+            <p class="aih-prompt" id="prompt">Tap Start, then decide for each line: human or AI?</p>
             <div class="aih-btns">
               <button class="btn btn-p2" id="humanBtn" type="button" disabled>Human</button>
               <button class="btn btn-p1" id="aiBtn" type="button" disabled>AI</button>
@@ -118,7 +119,7 @@
 
     <div class="content">
       <h2>How the AI or Human game works</h2>
-      <p>Press Start and a short line of text appears. Your job: decide whether it was written by a <strong>human</strong> or an <strong>AI</strong>, and tap the matching button. A new line appears instantly. You have <strong>60 seconds</strong>, and we keep a running tally of your <strong>correct</strong> and <strong>wrong</strong> calls. Your score is how many you get right, and we show your accuracy at the end. On a keyboard, the left arrow is Human and the right arrow is AI.</p>
+      <p>Press Start and a short line of text appears. Your job: decide whether it was written by a <strong>human</strong> or an <strong>AI</strong>, and tap the matching button. You get <strong>5 lines</strong> in a row, and the timer <strong>counts up</strong> so you can see how quickly you called them. We keep a running tally of your <strong>correct</strong> and <strong>wrong</strong> answers, and your score is how many of the 5 you get right. On a keyboard, the left arrow is Human and the right arrow is AI.</p>
       <p>The lines are labelled based on <em>common</em> tells, so treat it as a fun, educational game rather than a perfect detector — real AI and real people don't always follow the pattern.</p>
 
       <h2>Tells that a line might be AI</h2>
@@ -141,7 +142,7 @@
       <div class="faq">
         <details>
           <summary>How is the AI or Human game scored?</summary>
-          <p>You get one point for every correct call in 60 seconds. Wrong calls are tracked too, and your accuracy is shown at the end. More correct is better.</p>
+          <p>You get 5 lines and score one point for each you call correctly, so your score is out of 5. Wrong calls are tracked too, and the timer shows how fast you answered.</p>
         </details>
         <details>
           <summary>Is this a real AI detector?</summary>
@@ -153,7 +154,7 @@
         </details>
         <details>
           <summary>What's a good score?</summary>
-          <p>Getting clearly more right than wrong shows a good eye. Around 12 or more correct in 60 seconds with high accuracy is strong.</p>
+          <p>4 or 5 out of 5 shows a sharp eye for AI writing. 3 is around a coin-flip, so aim to beat that consistently and quickly.</p>
         </details>
       </div>
     </div>
@@ -210,8 +211,8 @@
   </div>
 </footer>
 
-<script src="/assets/js/engine.js?v=2" defer></script>
-<script src="/assets/js/share-card.js?v=2" defer></script>
-<script src="/assets/js/tests/ai-or-human.js?v=2" defer></script>
+<script src="/assets/js/engine.js?v=202609132148" defer></script>
+<script src="/assets/js/share-card.js?v=202609132148" defer></script>
+<script src="/assets/js/tests/ai-or-human.js?v=202609132148" defer></script>
 </body>
 </html>

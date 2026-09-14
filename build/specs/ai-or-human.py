@@ -13,12 +13,13 @@ CABINET = """    <section class="cabinet" id="aihuman" aria-label="AI or Human g
               <div class="readout-label">Wrong</div>
             </div>
             <div class="readout small">
-              <div class="seg-wrap"><span class="seg-value tnum" id="timer">60</span></div>
-              <div class="readout-label">Seconds left</div>
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">0</span></div>
+              <div class="readout-label">Seconds</div>
             </div>
           </div>
           <div class="aih-area" id="area">
-            <p class="aih-prompt" id="prompt">Tap Start, then decide: did a human or an AI write each line?</p>
+            <div class="aih-progress" id="progress"></div>
+            <p class="aih-prompt" id="prompt">Tap Start, then decide for each line: human or AI?</p>
             <div class="aih-btns">
               <button class="btn btn-p2" id="humanBtn" type="button" disabled>Human</button>
               <button class="btn btn-p1" id="aiBtn" type="button" disabled>AI</button>
@@ -53,9 +54,9 @@ SPEC = {
     "og_desc": "Read each line and call it Human or AI against the clock. Can you tell?",
     "og_image": "ai-or-human.png",
     "h1": "AI or Human?",
-    "lead": "A line of text appears — decide whether a real person or an AI wrote it, as fast as you can. You have 60 seconds; we count your correct and wrong calls.",
+    "lead": "Five lines of text, one at a time — decide whether a real person or an AI wrote each, as fast as you can. The timer counts up and we track your correct and wrong calls.",
     "content": """      <h2>How the AI or Human game works</h2>
-      <p>Press Start and a short line of text appears. Your job: decide whether it was written by a <strong>human</strong> or an <strong>AI</strong>, and tap the matching button. A new line appears instantly. You have <strong>60 seconds</strong>, and we keep a running tally of your <strong>correct</strong> and <strong>wrong</strong> calls. Your score is how many you get right, and we show your accuracy at the end. On a keyboard, the left arrow is Human and the right arrow is AI.</p>
+      <p>Press Start and a short line of text appears. Your job: decide whether it was written by a <strong>human</strong> or an <strong>AI</strong>, and tap the matching button. You get <strong>5 lines</strong> in a row, and the timer <strong>counts up</strong> so you can see how quickly you called them. We keep a running tally of your <strong>correct</strong> and <strong>wrong</strong> answers, and your score is how many of the 5 you get right. On a keyboard, the left arrow is Human and the right arrow is AI.</p>
       <p>The lines are labelled based on <em>common</em> tells, so treat it as a fun, educational game rather than a perfect detector — real AI and real people don't always follow the pattern.</p>
 
       <h2>Tells that a line might be AI</h2>
@@ -75,13 +76,13 @@ SPEC = {
       <p>Enjoy word puzzles? Try <a href="/woordle/">Woordle</a> or the focus-testing <a href="/color-match/">color match</a>.</p>""",
     "faq": [
         ("How is the AI or Human game scored?",
-         "You get one point for every correct call in 60 seconds. Wrong calls are tracked too, and your accuracy is shown at the end. More correct is better."),
+         "You get 5 lines and score one point for each you call correctly, so your score is out of 5. Wrong calls are tracked too, and the timer shows how fast you answered."),
         ("Is this a real AI detector?",
          "No. The lines are labelled using common AI writing tells, so it's a fun, educational game — not a reliable way to detect AI in the wild."),
         ("How do I answer with a keyboard?",
          "Press the left arrow (or H) for Human and the right arrow (or A) for AI. On a phone, just tap the Human or AI buttons."),
         ("What's a good score?",
-         "Getting clearly more right than wrong shows a good eye. Around 12 or more correct in 60 seconds with high accuracy is strong."),
+         "4 or 5 out of 5 shows a sharp eye for AI writing. 3 is around a coin-flip, so aim to beat that consistently and quickly."),
     ],
     "related": [
         {"slug": "woordle", "kbd": "Word", "name": "Woordle", "desc": "Guess the word in 6 tries."},

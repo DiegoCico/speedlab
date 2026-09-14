@@ -1,15 +1,15 @@
 /* ==========================================================================
    SPEEDLAB — tests/ai-or-human.js
-   AI or Human? A short line of text appears; decide whether a person or an AI
-   wrote it, as fast as you can. 60-second round, tracking correct vs wrong.
-   Score is correct calls (higher is better), with accuracy shown.
+   AI or Human? Five short lines of text appear one at a time; decide whether a
+   person or an AI wrote each, as fast as you can. The timer counts up, and we
+   track correct vs wrong. Score is how many of the 5 you get right.
    The labels reflect common "AI writing tells" — it's a fun/learning game,
    not a definitive detector.
    ========================================================================== */
 (function () {
   "use strict";
   function $(id) { return document.getElementById(id); }
-  var DURATION = 60;
+  var ROUNDS = 5;
 
   // ai:true = written to sound like generic AI; ai:false = a human's messy, specific line
   var SNIPPETS = [
@@ -62,66 +62,71 @@
     var S = window.SPEEDLAB, conf = S.config.aihuman;
     var storageKey = "aihuman", testName = "AI or Human";
     var screen = $("screen"), play = $("play"), result = $("result"), area = $("area");
-    var promptEl = $("prompt"), correctEl = $("correct"), wrongEl = $("wrong"), timerEl = $("timer");
+    var promptEl = $("prompt"), progressEl = $("progress");
+    var correctEl = $("correct"), wrongEl = $("wrong"), timerEl = $("timer");
     var humanBtn = $("humanBtn"), aiBtn = $("aiBtn"), startBtn = $("startBtn"), restart = $("restart");
     var pbValEl = document.querySelector("[data-pb]");
 
-    var state = "idle", correct = 0, wrong = 0, startTs = 0, raf = 0, endTimer = 0;
+    var state = "idle", correct = 0, wrong = 0, round = 0, startTs = 0, raf = 0;
     var pool = [], idx = 0, curAI = false;
 
     function paintPB() {
       var pb = S.getPB(storageKey);
-      pbValEl.textContent = pb === null ? "—" : Math.round(pb) + " correct";
+      pbValEl.textContent = pb === null ? "—" : Math.round(pb) + " / " + ROUNDS;
     }
     function setEnabled(on) { humanBtn.disabled = !on; aiBtn.disabled = !on; }
     function nextPrompt() {
       if (idx >= pool.length) { pool = shuffle(pool); idx = 0; }
       var s = pool[idx++]; curAI = s.ai;
       promptEl.textContent = "“" + s.t + "”";
+      progressEl.textContent = "Question " + (round + 1) + " of " + ROUNDS;
     }
     function flash(good) {
       if (S.reduceMotion) return;
-      area.classList.remove("flash-good", "flash-bad"); void area.offsetWidth;
-      area.classList.add(good ? "flash-good" : "flash-bad");
+      promptEl.classList.remove("flash-good", "flash-bad"); void promptEl.offsetWidth;
+      promptEl.classList.add(good ? "flash-good" : "flash-bad");
     }
     function answer(saidAI) {
       if (state !== "running") return;
       if (saidAI === curAI) { correct++; correctEl.textContent = correct; S.sound.click(); flash(true); }
       else { wrong++; wrongEl.textContent = wrong; flash(false); }
-      nextPrompt();
+      round++;
+      if (round >= ROUNDS) finish(); else nextPrompt();
     }
     function tick() {
       if (state !== "running") return;
-      timerEl.textContent = Math.max(0, Math.ceil(DURATION - (performance.now() - startTs) / 1000));
+      timerEl.textContent = Math.floor((performance.now() - startTs) / 1000);   // counts up
       raf = requestAnimationFrame(tick);
     }
     function begin() {
-      state = "running"; correct = 0; wrong = 0; correctEl.textContent = "0"; wrongEl.textContent = "0";
+      state = "running"; correct = 0; wrong = 0; round = 0;
+      correctEl.textContent = "0"; wrongEl.textContent = "0"; timerEl.textContent = "0";
       pool = shuffle(SNIPPETS.slice()); idx = 0;
       startBtn.hidden = true; restart.hidden = false; setEnabled(true);
-      startTs = performance.now(); endTimer = setTimeout(finish, DURATION * 1000);
+      startTs = performance.now();
       tick(); nextPrompt();
     }
     function finish() {
-      state = "done"; cancelAnimationFrame(raf); clearTimeout(endTimer); setEnabled(false);
+      state = "done"; cancelAnimationFrame(raf); setEnabled(false);
+      var secs = Math.round((performance.now() - startTs) / 1000);
       play.hidden = true;
-      var total = correct + wrong, acc = total ? Math.round(correct / total * 100) : 0;
       S.renderResult({
         cfg: conf, storageKey: storageKey, container: result,
         testName: testName, score: correct, formatted: String(correct),
         screen: screen, onRestart: reset
       });
       var p = document.createElement("p"); p.className = "pct"; p.style.color = "var(--c-ink-dim)";
-      p.textContent = correct + " correct · " + wrong + " wrong · " + acc + "% accuracy";
+      p.textContent = correct + " of " + ROUNDS + " correct · " + wrong + " wrong · " + secs + "s";
       result.appendChild(p);
       paintPB();
     }
     function reset() {
-      state = "idle"; correct = 0; wrong = 0; cancelAnimationFrame(raf); clearTimeout(endTimer);
+      state = "idle"; correct = 0; wrong = 0; round = 0; cancelAnimationFrame(raf);
       play.hidden = false; result.classList.remove("show"); result.innerHTML = "";
       startBtn.hidden = false; restart.hidden = true; setEnabled(false);
-      correctEl.textContent = "0"; wrongEl.textContent = "0"; timerEl.textContent = DURATION;
-      promptEl.textContent = "Tap Start, then decide: did a human or an AI write each line?";
+      correctEl.textContent = "0"; wrongEl.textContent = "0"; timerEl.textContent = "0";
+      progressEl.textContent = "";
+      promptEl.textContent = "Tap Start, then decide for each line: human or AI?";
     }
 
     startBtn.addEventListener("pointerdown", function (e) { e.preventDefault(); begin(); });

@@ -141,10 +141,10 @@
       bounds: [1, 2, 3, 4, 5, 6],
       dist: [[1,2],[2,10],[3,35],[4,68],[5,88],[6,97],[7,100]]
     },
-    aihuman: {                   /* correct calls in 60s — higher is better */
+    aihuman: {                   /* correct out of 5 — higher is better */
       unit: "correct", higherIsBetter: true,
-      bounds: [3, 6, 9, 12, 15, 18],
-      dist: [[1,3],[3,15],[6,35],[9,58],[12,78],[15,90],[18,97],[22,99.5]]
+      bounds: [0, 1, 2, 3, 4, 5],
+      dist: [[0,4],[1,14],[2,32],[3,56],[4,80],[5,95]]
     }
   };
 

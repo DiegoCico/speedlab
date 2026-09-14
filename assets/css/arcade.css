@@ -289,20 +289,22 @@
 .aih-area {
   position: relative; z-index: 2; flex: 1;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: var(--sp-4); text-align: center;
-  border: var(--bd) solid var(--c-line); border-radius: var(--radius);
-  background: var(--c-panel-2); padding: var(--sp-4);
+  gap: var(--sp-4); text-align: center; padding: var(--sp-4) var(--sp-3);
 }
+.aih-progress { font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; color: var(--c-amber); min-height: 1em; }
 .aih-prompt {
-  font-size: clamp(1.05rem, 3.2vw, 1.35rem); font-weight: 600; line-height: 1.55;
-  max-width: 44ch; color: var(--c-ink); min-height: 4.5em;
+  font-size: clamp(1.15rem, 3.4vw, 1.55rem); font-weight: 600; line-height: 1.55;
+  width: 100%; max-width: 42ch; color: var(--c-ink);
+  background: var(--c-panel-2); border: var(--bd) solid var(--c-line);
+  border-radius: var(--radius); box-shadow: var(--shadow-hard);
+  padding: var(--sp-4); min-height: 5em;
   display: flex; align-items: center; justify-content: center;
 }
 .aih-btns { display: flex; gap: var(--sp-3); flex-wrap: wrap; justify-content: center; }
-.aih-btns .btn { min-width: 8rem; font-size: 1.1rem; padding: 0.7rem 1.2rem; }
+.aih-btns .btn { min-width: 9rem; font-size: 1.15rem; padding: 0.8rem 1.4rem; }
 .aih-start { margin-top: var(--sp-1); }
-.aih-area.flash-good { animation: flash-good-k .18s steps(2) 1; }
-.aih-area.flash-bad  { animation: flash-bad-k .18s steps(2) 1; }
+.aih-prompt.flash-good { animation: flash-good-k .18s steps(2) 1; }
+.aih-prompt.flash-bad  { animation: flash-bad-k .18s steps(2) 1; }
 
 /* ---- Word Guess (Wordle-style) ----------------------------------------- */
 .wg-stage { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; align-items: center; gap: var(--sp-3); }
