@@ -69,6 +69,21 @@
     ctx.font = '800 46px Archivo, system-ui, sans-serif';
     ctx.fillText(String(data.unit || ""), S / 2, 650);
 
+    // optional "time it took" line inside the screen
+    if (data.sub) {
+      ctx.fillStyle = C.dim;
+      ctx.font = '700 36px Archivo, system-ui, sans-serif';
+      ctx.fillText("in " + data.sub, S / 2, 700);
+    }
+    // optional detail line (e.g. reaction attempts) — auto-shrunk to fit the screen
+    if (data.detail) {
+      var fs = 34;
+      do { ctx.font = "700 " + fs + "px Archivo, system-ui, sans-serif"; fs -= 2; }
+      while (fs > 16 && ctx.measureText(data.detail).width > S - 240);
+      ctx.fillStyle = C.dim;
+      ctx.fillText(data.detail, S / 2, data.sub ? 700 : 690);
+    }
+
     // rank name + power meter
     ctx.fillStyle = data.rankColor || C.amber;
     ctx.font = '900 92px Archivo, system-ui, sans-serif';

@@ -338,11 +338,15 @@
 
     var pageUrl = (window.location && window.location.origin)
       ? (window.location.origin + window.location.pathname) : "https://speedlab.lol/";
+    var sub = opts.sub || "";        // optional "time it took", e.g. "12s"
+    var detail = opts.detail || "";  // optional extra line, e.g. reaction attempts
+    var scoreLine = opts.formatted + " " + unit + (sub ? " in " + sub : "");
     var shareData = {
-      testName: opts.testName, score: opts.formatted, unit: unit,
+      testName: opts.testName, score: opts.formatted, unit: unit, sub: sub, detail: detail,
       rankName: rank.name, rankColor: rank.color, pct: pct, url: pageUrl,
-      shareText: opts.testName + ": " + opts.formatted + " " + unit + " — " +
-        rank.name + ", faster than " + pct + "% of people. Beat it:"
+      shareText: opts.testName + ": " + scoreLine + " — " +
+        rank.name + ", faster than " + pct + "% of people." +
+        (detail ? " " + detail + "." : "") + " Beat it:"
     };
     opts.container.querySelector('[data-act="again"]').addEventListener("click", function () {
       opts.container.classList.remove("show");
@@ -354,9 +358,7 @@
     });
     var copyBtn = opts.container.querySelector('[data-act="copy"]');
     copyBtn.addEventListener("click", function () {
-      var text = opts.testName + ": " + opts.formatted + " " + unit + " — " +
-        rank.name + ", faster than " + pct + "% of people. Try it: https://speedlab.lol/";
-      copyToClipboard(text, copyBtn);
+      copyToClipboard(shareData.shareText + " " + pageUrl, copyBtn);
     });
 
     return { rank: rank, pct: pct, isNewBest: isNew, pb: pb };

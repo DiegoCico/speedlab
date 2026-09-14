@@ -160,7 +160,7 @@
       S.renderResult({
         cfg: conf, storageKey: storageKey, container: result,
         testName: testName, score: n, formatted: String(n),
-        screen: screen, onRestart: newGame
+        sub: secs + "s", screen: screen, onRestart: newGame
       });
       var p = document.createElement("p"); p.className = "pct"; p.style.color = "var(--c-ink-dim)";
       p.textContent = "Solved “" + answer + "” in " + n + (n === 1 ? " guess" : " guesses") + " · " + secs + "s";

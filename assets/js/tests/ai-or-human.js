@@ -113,7 +113,7 @@
       S.renderResult({
         cfg: conf, storageKey: storageKey, container: result,
         testName: testName, score: correct, formatted: String(correct),
-        screen: screen, onRestart: reset
+        sub: secs + "s", screen: screen, onRestart: reset
       });
       var p = document.createElement("p"); p.className = "pct"; p.style.color = "var(--c-ink-dim)";
       p.textContent = correct + " of " + ROUNDS + " correct · " + wrong + " wrong · " + secs + "s";

@@ -62,6 +62,7 @@
       S.renderResult({
         cfg: conf, storageKey: storageKey, container: result,
         testName: testName, score: avg, formatted: String(Math.round(avg)),
+        detail: "Times: " + attempts.join(", ") + " ms",
         screen: screen, onRestart: fullReset
       });
       var p = document.createElement("p"); p.className = "pct"; p.style.color = "var(--c-ink-dim)";
