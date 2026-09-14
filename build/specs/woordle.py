@@ -1,5 +1,5 @@
-CABINET = """    <section class="cabinet" id="wordguess" aria-label="Word guess game">
-      <div class="marquee">Word Guess</div>
+CABINET = """    <section class="cabinet" id="wordguess" aria-label="Woordle word game">
+      <div class="marquee">Woordle</div>
 
       <div class="screen" id="screen">
         <div id="play" class="play">
@@ -33,22 +33,22 @@ CABINET = """    <section class="cabinet" id="wordguess" aria-label="Word guess 
     </section>"""
 
 SPEC = {
-    "slug": "word-guess",
-    "name": "Word Guess",
-    "crumb": "Word Guess",
+    "slug": "woordle",
+    "name": "Woordle",
+    "crumb": "Woordle",
     "skip_target": "board",
     "cabinet": CABINET,
     "scripts": ["/assets/js/tests/word-guess.js"],
-    "title": "Word Guess — Wordle-Style Word Game | SpeedLab",
-    "desc": "Guess the hidden 5-letter word in 6 tries in this Wordle-style game. Live timer and guess counter, green and amber hints, and your rank when you solve it.",
-    "ld_desc": "Guess the hidden 5-letter word in six tries in this Wordle-style word game.",
-    "og_title": "Word Guess — Wordle-Style Word Game",
+    "title": "Woordle — Daily Word Guessing Game | SpeedLab",
+    "desc": "Play Woordle, a Wordle-style word game. Guess the hidden 5-letter word in 6 tries with a live timer and guess counter, green and amber hints, and a rank.",
+    "ld_desc": "Guess the hidden 5-letter word in six tries in Woordle, a Wordle-style word game.",
+    "og_title": "Woordle — Word Guessing Game",
     "og_desc": "Guess the hidden 5-letter word in 6 tries. Live timer and guess counter.",
-    "og_image": "word-guess.png",
-    "h1": "Word Guess",
+    "og_image": "woordle.png",
+    "h1": "Woordle",
     "lead": "Guess the hidden five-letter word in six tries. Green means the letter is in the right spot, amber means it's in the word somewhere. We time you and count your guesses.",
-    "content": """      <h2>How word guess works</h2>
-      <p>This is a Wordle-style word game: there's a hidden <strong>five-letter word</strong>, and you have <strong>six guesses</strong> to find it. Type any five-letter word and press Enter. Each tile then changes colour:</p>
+    "content": """      <h2>How Woordle works</h2>
+      <p>Woordle is a Wordle-style word game: there's a hidden <strong>five-letter word</strong>, and you have <strong>six guesses</strong> to find it. Type any five-letter word and press Enter. Each tile then changes colour:</p>
       <ul>
         <li><strong>Green</strong> — that letter is correct and in the right spot.</li>
         <li><strong>Amber</strong> — that letter is in the word, but somewhere else.</li>
@@ -56,7 +56,7 @@ SPEC = {
       </ul>
       <p>The on-screen keyboard fills in with those colours too, so you can keep track of what you've ruled out. A timer counts up from your first letter and your guess count is shown live, so you're racing on two fronts: solve it in as few guesses as possible, as fast as possible. Your score is the number of guesses (fewer is better), with your solve time shown next to it.</p>
 
-      <h2>What is a good score?</h2>
+      <h2>What is a good Woordle score?</h2>
       <ul>
         <li><strong>1–2 guesses</strong> — outstanding (and a bit lucky on 1).</li>
         <li><strong>3 guesses</strong> — genuinely sharp.</li>
@@ -72,12 +72,12 @@ SPEC = {
       </ul>
       <p>Want a memory challenge instead? Try <a href="/number-memory/">number memory</a> or the <a href="/chimp-test/">chimp test</a>.</p>""",
     "faq": [
-        ("How many guesses do I get?",
+        ("How many guesses do I get in Woordle?",
          "Six. You have to find the hidden five-letter word within six tries, and your score is how many guesses it takes — fewer is better."),
         ("What do the colours mean?",
          "Green means the letter is correct and in the right spot, amber means it's in the word but in a different spot, and grey means it isn't in the word."),
-        ("Is this Wordle?",
-         "No. It's an independent, Wordle-style word game and is not affiliated with Wordle or The New York Times. The rules are similar because it's a classic format."),
+        ("Is Woordle the same as Wordle?",
+         "No. Woordle is an independent, Wordle-style word game and is not affiliated with Wordle or The New York Times. The rules are similar because it's a classic format."),
         ("Does it work on a phone?",
          "Yes. Use the on-screen keyboard to type your guesses; it colours in your used letters just like the grid."),
     ],

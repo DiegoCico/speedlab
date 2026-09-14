@@ -57,7 +57,7 @@
     var root = $("wordguess");
     if (!root || !window.SPEEDLAB) return;
     var S = window.SPEEDLAB, conf = S.config.wordguess;
-    var storageKey = "wordguess", testName = "Word Guess";
+    var storageKey = "wordguess", testName = "Woordle";
     var screen = $("screen"), play = $("play"), result = $("result");
     var board = $("board"), kbd = $("kbd"), msgEl = $("msg");
     var guessesEl = $("guesses"), timerEl = $("timer"), restart = $("restart");
