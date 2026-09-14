@@ -122,10 +122,10 @@
 /* ---- Duration / mode selector ------------------------------------------ */
 .seg-select { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin: var(--sp-3) 0 0; }
 .seg-select .opt {
-  font-weight: 800; font-size: 0.85rem; cursor: pointer;
+  font-weight: 800; font-size: 0.9rem; cursor: pointer;
   color: var(--c-ink); background: var(--c-panel-2);
   border: var(--bd) solid var(--c-line); border-radius: var(--radius);
-  padding: 0.35rem 0.6rem; box-shadow: 3px 3px 0 var(--c-line);
+  padding: 0.5rem 0.75rem; box-shadow: 3px 3px 0 var(--c-line);
   transition: transform .06s steps(2), box-shadow .06s steps(2);
 }
 .seg-select .opt[aria-pressed="true"] { background: var(--c-amber); color: var(--c-line); }

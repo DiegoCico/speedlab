@@ -163,6 +163,14 @@ h3 { font-weight: 800; font-size: 1.15rem; }
 }
 .site-header nav { margin-left: auto; display: flex; align-items: center; gap: var(--sp-2); }
 .site-header nav a { color: var(--c-ink); font-weight: 700; padding: 0.35rem 0.5rem; }
+/* keep the header inside narrow phones (was overflowing ~8px) */
+@media (max-width: 430px) {
+  .brand { font-size: 1.15rem; }
+  .site-header .bar { gap: var(--sp-2); padding: var(--sp-2); }
+  .site-header nav { gap: 0.3rem; }
+  .site-header nav a { padding: 0.35rem 0.4rem; }
+  .sound-toggle { padding: 0.35rem 0.5rem; }
+}
 
 /* ---- Buttons (generic) -------------------------------------------------- */
 .btn {
