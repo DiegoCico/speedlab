@@ -285,6 +285,25 @@
 .emoji-cell:active { transform: translate(2px,2px); }
 .emoji-cell.bad { background: var(--c-p1); }
 
+/* ---- AI or Human ------------------------------------------------------- */
+.aih-area {
+  position: relative; z-index: 2; flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--sp-4); text-align: center;
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  background: var(--c-panel-2); padding: var(--sp-4);
+}
+.aih-prompt {
+  font-size: clamp(1.05rem, 3.2vw, 1.35rem); font-weight: 600; line-height: 1.55;
+  max-width: 44ch; color: var(--c-ink); min-height: 4.5em;
+  display: flex; align-items: center; justify-content: center;
+}
+.aih-btns { display: flex; gap: var(--sp-3); flex-wrap: wrap; justify-content: center; }
+.aih-btns .btn { min-width: 8rem; font-size: 1.1rem; padding: 0.7rem 1.2rem; }
+.aih-start { margin-top: var(--sp-1); }
+.aih-area.flash-good { animation: flash-good-k .18s steps(2) 1; }
+.aih-area.flash-bad  { animation: flash-bad-k .18s steps(2) 1; }
+
 /* ---- Word Guess (Wordle-style) ----------------------------------------- */
 .wg-stage { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; align-items: center; gap: var(--sp-3); }
 .wg-board { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; width: 100%; max-width: 300px; }
