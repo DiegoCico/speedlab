@@ -325,7 +325,7 @@
         (isNew ? ' ⭐ New best!' : '') + '</span></div>' +
       '<div class="result-actions">' +
         '<button class="btn btn-p1" data-act="again">Play again</button>' +
-        '<button class="btn btn-p2" data-act="save">Save image</button>' +
+        '<button class="btn btn-p2" data-act="share">Share</button>' +
         '<button class="btn btn-ghost" data-act="copy">Copy result</button>' +
       '</div>' +
       '<p class="visually-hidden" role="status">You scored ' + opts.formatted + ' ' + unit +
@@ -336,17 +336,21 @@
 
     if (isNew) { SPEEDLAB.confetti(); SPEEDLAB.shake(opts.screen); sound.success(); }
 
+    var pageUrl = (window.location && window.location.origin)
+      ? (window.location.origin + window.location.pathname) : "https://speedlab.lol/";
     var shareData = {
       testName: opts.testName, score: opts.formatted, unit: unit,
-      rankName: rank.name, rankColor: rank.color, pct: pct
+      rankName: rank.name, rankColor: rank.color, pct: pct, url: pageUrl,
+      shareText: opts.testName + ": " + opts.formatted + " " + unit + " — " +
+        rank.name + ", faster than " + pct + "% of people. Beat it:"
     };
     opts.container.querySelector('[data-act="again"]').addEventListener("click", function () {
       opts.container.classList.remove("show");
       opts.container.innerHTML = "";
       if (opts.onRestart) opts.onRestart();
     });
-    opts.container.querySelector('[data-act="save"]').addEventListener("click", function () {
-      if (SPEEDLAB.shareCard) SPEEDLAB.shareCard.download(shareData);
+    opts.container.querySelector('[data-act="share"]').addEventListener("click", function () {
+      if (SPEEDLAB.shareCard) SPEEDLAB.shareCard.shareResult(shareData);
     });
     var copyBtn = opts.container.querySelector('[data-act="copy"]');
     copyBtn.addEventListener("click", function () {
@@ -362,7 +366,7 @@
   function ghostFor(str) { return String(str).replace(/[0-9]/g, "8"); }
 
   function copyToClipboard(text, btn) {
-    function ok() { var old = btn.textContent; btn.textContent = "Copied!"; setTimeout(function () { btn.textContent = old; }, 1400); }
+    function ok() { if (!btn) return; var old = btn.textContent; btn.textContent = "Copied!"; setTimeout(function () { btn.textContent = old; }, 1400); }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(ok, function () { legacy(); });
     } else { legacy(); }

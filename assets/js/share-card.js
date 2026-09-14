@@ -125,8 +125,42 @@
           trigger(canvas.toDataURL("image/png"), name);
         }
       });
+    },
+    // Opens the native share sheet (Messages, Mail, WhatsApp, etc.). Attaches
+    // the result image where supported, always the text + link. Falls back to
+    // downloading the image on desktop browsers without the Web Share API.
+    shareResult: function (data) {
+      var url = data.url || "https://speedlab.lol/";
+      var text = data.shareText || (data.testName + ": " + data.score + " " + data.unit +
+        " — " + data.rankName + ", faster than " + data.pct + "% of people. Try it:");
+      var name = "speedlab-" + slug(data.testName) + ".png";
+      var S = 1080, canvas = document.createElement("canvas");
+      canvas.width = S; canvas.height = S;
+      render(canvas.getContext("2d"), S, data);   // sync — fonts already loaded by result time
+      var shareObj = { title: "SpeedLab", text: text, url: url }, file = null;
+      try {
+        var blob = dataURLtoBlob(canvas.toDataURL("image/png"));
+        if (window.File) file = new File([blob], name, { type: "image/png" });
+      } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) shareObj.files = [file];
+      if (navigator.share) {
+        navigator.share(shareObj).catch(function () {});
+      } else {
+        // desktop fallback: download the card image
+        if (canvas.toBlob) {
+          canvas.toBlob(function (b) { var u = URL.createObjectURL(b); trigger(u, name); setTimeout(function () { URL.revokeObjectURL(u); }, 4000); }, "image/png");
+        } else { trigger(canvas.toDataURL("image/png"), name); }
+        if (SPEEDLAB.copyText) SPEEDLAB.copyText(text + " " + url, null);
+      }
     }
   };
+
+  function dataURLtoBlob(durl) {
+    var parts = durl.split(","), mime = (parts[0].match(/:(.*?);/) || [])[1] || "image/png";
+    var bin = atob(parts[1]), n = bin.length, arr = new Uint8Array(n);
+    while (n--) arr[n] = bin.charCodeAt(n);
+    return new Blob([arr], { type: mime });
+  }
 
   function trigger(href, name) {
     var a = document.createElement("a");
