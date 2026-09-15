@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Count the Flash — Subitizing Speed Test | SpeedLab</title>
+<meta name="description" content="Dots flash for a split second — count them before they vanish. Each level adds a dot and shortens the flash. Test how fast your brain counts at a glance.">
+<link rel="canonical" href="https://speedlab.lol/count-the-flash/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418545459143038" crossorigin="anonymous"></script>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Count the Flash — Subitizing Speed Test">
+<meta property="og:description" content="How many dots can you count in a flash?">
+<meta property="og:url" content="https://speedlab.lol/count-the-flash/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/count-the-flash.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Count the Flash — Subitizing Speed Test">
+<meta name="twitter:description" content="How many dots can you count in a flash?">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/count-the-flash.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=202609151952">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609151952">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Count the Flash","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/count-the-flash/","description":"Dots flash briefly; count how many there were. Each level adds a dot and shortens the flash.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Count the Flash","item":"https://speedlab.lol/count-the-flash/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is subitizing?","acceptedAnswer":{"@type":"Answer","text":"Subitizing is instantly recognising how many objects are in a small group without counting them one by one. This test pushes that skill by flashing more dots for less time each level."}},{"@type":"Question","name":"How is Count the Flash scored?","acceptedAnswer":{"@type":"Answer","text":"By the highest level you reach. Each level adds a dot and shortens the flash, and one wrong answer ends the run."}},{"@type":"Question","name":"What is a good score?","acceptedAnswer":{"@type":"Answer","text":"Reaching level 5 to 7 is solid, level 9 to 12 is fast, and level 15 or higher is exceptional."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Watch the flash, then tap the answer box to type how many dots you saw."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#startBtn">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Count the Flash</li>
+      </ol>
+    </nav>
+
+    <h1>Count the Flash</h1>
+    <p class="lead">Dots flash on screen for a split second — count them before they disappear. Every level adds another dot and makes the flash faster. How far can you get?</p>
+
+    <section class="cabinet" id="subitize" aria-label="Count the flash">
+      <div class="marquee">Count the Flash</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="level">1</span></div>
+              <div class="readout-label">Level</div>
+            </div>
+          </div>
+          <div class="subit-area">
+            <div class="subit-field" id="field" aria-hidden="true"></div>
+            <div class="subit-prompt" id="prompt">Count the dots that flash.</div>
+            <div class="subit-input-row" id="inputRow" hidden>
+              <input class="math-input" id="answer" type="text" inputmode="numeric" pattern="[0-9]*"
+                autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="How many dots" disabled>
+              <button class="arcade-btn p1" id="checkBtn" type="button">Check</button>
+            </div>
+            <button class="arcade-btn p1" id="startBtn" type="button">Start</button>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn" id="restart" type="button" hidden>Restart</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the count the flash test works</h2>
+      <p>Press Start and a cluster of dots flashes on the screen for a fraction of a second, then vanishes. Type how many you saw. Get it right and you move up a level — one more dot, a shorter flash. Get it wrong and the run ends. Your score is the <strong>highest level you reached</strong>. It measures <em>subitizing</em>: your brain's ability to know a quantity at a glance, without counting one by one.</p>
+
+      <h2>What is a good level?</h2>
+      <ul>
+        <li><strong>Level 3 or below</strong> — just warming up.</li>
+        <li><strong>Level 5 to 7</strong> — a solid, quick eye.</li>
+        <li><strong>Level 9 to 12</strong> — fast; you estimate large groups well.</li>
+        <li><strong>Level 15+</strong> — exceptional.</li>
+      </ul>
+
+      <h2>Tips to count faster</h2>
+      <ul>
+        <li><strong>See groups, not dots</strong> — break the cluster into small chunks of two and three.</li>
+        <li><strong>Soften your focus</strong> so you take in the whole field at once.</li>
+        <li><strong>Trust your first impression</strong> — there's no time to recount.</li>
+      </ul>
+      <p>Enjoy quick-glance challenges? Try <a href="/visual-memory/">visual memory</a> or the <a href="/reaction-time-test/">reaction time test</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is subitizing?</summary>
+          <p>Subitizing is instantly recognising how many objects are in a small group without counting them one by one. This test pushes that skill by flashing more dots for less time each level.</p>
+        </details>
+        <details>
+          <summary>How is Count the Flash scored?</summary>
+          <p>By the highest level you reach. Each level adds a dot and shortens the flash, and one wrong answer ends the run.</p>
+        </details>
+        <details>
+          <summary>What is a good score?</summary>
+          <p>Reaching level 5 to 7 is solid, level 9 to 12 is fast, and level 15 or higher is exceptional.</p>
+        </details>
+        <details>
+          <summary>Does it work on a phone?</summary>
+          <p>Yes. Watch the flash, then tap the answer box to type how many dots you saw.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/visual-memory/"><span class="t-kbd">Memory</span><span class="t-name">Visual Memory</span><span class="t-desc">Remember the flashed tiles.</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/mental-math/"><span class="t-kbd">Brain</span><span class="t-name">Mental Math Sprint</span><span class="t-desc">Solve as many as you can.</span></a>
+        <a class="tile" href="/chimp-test/"><span class="t-kbd">Memory</span><span class="t-name">Chimp Test</span><span class="t-desc">Click the numbers in order.</span></a>
+        <a class="tile" href="/number-memory/"><span class="t-kbd">Memory</span><span class="t-name">Number Memory</span><span class="t-desc">Remember the growing number.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=202609151952" defer></script>
+<script src="/assets/js/share-card.js?v=202609151952" defer></script>
+<script src="/assets/js/tests/subitize.js?v=202609151952" defer></script>
+</body>
+</html>
