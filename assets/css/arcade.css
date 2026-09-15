@@ -317,6 +317,28 @@
 .clock-face.win { color: var(--c-p2, #3DF5A0); }
 .clock-msg { font-weight: 800; font-size: clamp(1rem, 4vw, 1.35rem); min-height: 1.4em; color: var(--c-ink); }
 
+/* ---- Memory Match ------------------------------------------------------- */
+.mm-board {
+  position: relative; z-index: 2; flex: 1;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2);
+  align-content: center; padding: var(--sp-3);
+  width: 100%; max-width: 420px; margin: 0 auto;
+}
+.mm-card {
+  aspect-ratio: 1 / 1; border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  background: var(--c-p1); color: var(--c-screen);
+  font-size: clamp(1.4rem, 7vw, 2.4rem); font-weight: 900; line-height: 1;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  box-shadow: 0 4px 0 var(--c-line); transition: transform .08s;
+}
+.mm-card .sym { opacity: 0; }
+.mm-card.up { background: var(--c-screen); }
+.mm-card.up .sym { opacity: 1; }
+.mm-card.matched { background: var(--c-p2, #3DF5A0); box-shadow: 0 4px 0 var(--c-line); cursor: default; }
+.mm-card.matched .sym { opacity: 1; }
+.mm-card:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--c-line); }
+.mm-card:disabled { cursor: default; }
+
 /* ---- AI or Human ------------------------------------------------------- */
 .aih-area {
   position: relative; z-index: 2; flex: 1;

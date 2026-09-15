@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Memory Match — Concentration Card Game | SpeedLab</title>
+<meta name="description" content="Flip cards two at a time and find all eight pairs as fast as you can. The classic concentration memory game, timed and ranked. No sign-up.">
+<link rel="canonical" href="https://speedlab.lol/memory-match/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418545459143038" crossorigin="anonymous"></script>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Memory Match — Concentration Card Game">
+<meta property="og:description" content="Find all eight pairs as fast as you can.">
+<meta property="og:url" content="https://speedlab.lol/memory-match/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/memory-match.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Memory Match — Concentration Card Game">
+<meta name="twitter:description" content="Find all eight pairs as fast as you can.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/memory-match.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=202609151949">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609151949">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Memory Match","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/memory-match/","description":"Flip cards two at a time to find all eight matching pairs as fast as possible.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Memory Match","item":"https://speedlab.lol/memory-match/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is Memory Match scored?","acceptedAnswer":{"@type":"Answer","text":"By the time it takes to clear the whole board. The clock starts on your first flip and stops when the last pair is matched, so a lower time is better."}},{"@type":"Question","name":"How many pairs are there?","acceptedAnswer":{"@type":"Answer","text":"Eight pairs \u2014 sixteen cards in a four-by-four grid \u2014 reshuffled every time you start a new board."}},{"@type":"Question","name":"What is a good memory match time?","acceptedAnswer":{"@type":"Answer","text":"Around 40 to 55 seconds is solid, 20 to 30 seconds is fast, and under 20 seconds is excellent."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the cards to flip them; the grid fits any screen size."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#board">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Memory Match</li>
+      </ol>
+    </nav>
+
+    <h1>Memory Match</h1>
+    <p class="lead">Flip the cards two at a time and find all eight pairs. The clock starts on your first flip and stops when the board is clear — fastest time wins.</p>
+
+    <section class="cabinet" id="memorymatch" aria-label="Memory match">
+      <div class="marquee">Memory Match</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="matches">0/8</span></div>
+              <div class="readout-label">Pairs found</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">0.0</span></div>
+              <div class="readout-label">Seconds</div>
+            </div>
+          </div>
+          <div class="mm-board" id="board" role="grid" aria-label="Card grid"></div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn p1" id="restart" type="button">New board</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the memory match game works</h2>
+      <p>Sixteen cards sit face down in a grid, hiding eight matching pairs. Flip one, then flip another. If they match, they stay up; if they don't, they flip back and you try again. The <strong>timer starts on your first flip</strong> and stops the moment the last pair is found, so your score is simply how fast you clear the board. It's the classic game of concentration — a pure working-memory workout.</p>
+
+      <h2>What is a good time?</h2>
+      <ul>
+        <li><strong>Over 75 seconds</strong> — relying mostly on luck.</li>
+        <li><strong>40 to 55 seconds</strong> — a solid, steady clear.</li>
+        <li><strong>20 to 30 seconds</strong> — fast; you're remembering positions well.</li>
+        <li><strong>Under 20 seconds</strong> — excellent recall.</li>
+      </ul>
+
+      <h2>Tips to clear it faster</h2>
+      <ul>
+        <li><strong>Build a mental map</strong> — remember where a symbol was even when it flips back.</li>
+        <li><strong>Work in rows</strong> so positions are easier to picture.</li>
+        <li><strong>Chase known pairs first</strong> once you've seen both of a kind.</li>
+      </ul>
+      <p>Want more memory tests? Try <a href="/visual-memory/">visual memory</a> or <a href="/sequence-memory/">sequence memory</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How is Memory Match scored?</summary>
+          <p>By the time it takes to clear the whole board. The clock starts on your first flip and stops when the last pair is matched, so a lower time is better.</p>
+        </details>
+        <details>
+          <summary>How many pairs are there?</summary>
+          <p>Eight pairs — sixteen cards in a four-by-four grid — reshuffled every time you start a new board.</p>
+        </details>
+        <details>
+          <summary>What is a good memory match time?</summary>
+          <p>Around 40 to 55 seconds is solid, 20 to 30 seconds is fast, and under 20 seconds is excellent.</p>
+        </details>
+        <details>
+          <summary>Does it work on a phone?</summary>
+          <p>Yes. Tap the cards to flip them; the grid fits any screen size.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/visual-memory/"><span class="t-kbd">Memory</span><span class="t-name">Visual Memory</span><span class="t-desc">Remember the flashed tiles.</span></a>
+        <a class="tile" href="/sequence-memory/"><span class="t-kbd">Memory</span><span class="t-name">Sequence Memory</span><span class="t-desc">Repeat the growing pattern.</span></a>
+        <a class="tile" href="/number-memory/"><span class="t-kbd">Memory</span><span class="t-name">Number Memory</span><span class="t-desc">Remember the growing number.</span></a>
+        <a class="tile" href="/chimp-test/"><span class="t-kbd">Memory</span><span class="t-name">Chimp Test</span><span class="t-desc">Click the numbers in order.</span></a>
+        <a class="tile" href="/mental-math/"><span class="t-kbd">Brain</span><span class="t-name">Mental Math Sprint</span><span class="t-desc">Solve as many as you can.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=202609151949" defer></script>
+<script src="/assets/js/share-card.js?v=202609151949" defer></script>
+<script src="/assets/js/tests/memory-match.js?v=202609151949" defer></script>
+</body>
+</html>
