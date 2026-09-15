@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mental Math Sprint — Math Speed Test | SpeedLab</title>
+<meta name="description" content="Test your mental math speed. Solve as many quick addition, subtraction and multiplication problems as you can in 60 seconds, and see how you rank.">
+<link rel="canonical" href="https://speedlab.lol/mental-math/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418545459143038" crossorigin="anonymous"></script>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Mental Math Sprint — Math Speed Test">
+<meta property="og:description" content="How many math problems can you solve in 60 seconds?">
+<meta property="og:url" content="https://speedlab.lol/mental-math/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/mental-math.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mental Math Sprint — Math Speed Test">
+<meta name="twitter:description" content="How many math problems can you solve in 60 seconds?">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/mental-math.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=202609151943">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609151943">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Mental Math","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/mental-math/","description":"Solve as many quick arithmetic problems as you can in 60 seconds.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Mental Math","item":"https://speedlab.lol/mental-math/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What kind of math is on the test?","acceptedAnswer":{"@type":"Answer","text":"Quick addition, subtraction, and multiplication with small numbers \u2014 the kind you can do in your head. No calculators needed or allowed."}},{"@type":"Question","name":"How is it scored?","acceptedAnswer":{"@type":"Answer","text":"One point for each correct answer in 60 seconds. The answer checks itself as you type, so you never lose time pressing submit."}},{"@type":"Question","name":"What is a good mental math score?","acceptedAnswer":{"@type":"Answer","text":"Around 14 to 20 in 60 seconds is solid. 27 to 35 is fast, and 45 or more is excellent."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the answer box to bring up the number pad and type your answers."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#answer">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Mental Math</li>
+      </ol>
+    </nav>
+
+    <h1>Mental Math Sprint</h1>
+    <p class="lead">Solve as many quick math problems as you can in 60 seconds. Just type the answer — it checks itself the instant it's right, then throws the next one at you.</p>
+
+    <section class="cabinet" id="mathsprint" aria-label="Mental math sprint">
+      <div class="marquee">Mental Math</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="correct">0</span></div>
+              <div class="readout-label">Correct</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">60</span></div>
+              <div class="readout-label">Seconds left</div>
+            </div>
+          </div>
+          <div class="math-area">
+            <div class="math-problem" id="problem">7 &times; 8 =</div>
+            <input class="math-input" id="answer" type="text" inputmode="numeric" pattern="[0-9]*"
+              autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Your answer" disabled>
+            <button class="arcade-btn p1" id="startBtn" type="button">Start</button>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn" id="restart" type="button" hidden>Restart</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the mental math test works</h2>
+      <p>Press Start and a problem appears — addition, subtraction, or multiplication. Type the answer and it's checked <strong>automatically</strong> the moment it's correct, so there's no button to press between problems. You have <strong>60 seconds</strong>, and your score is how many you solve. It's a pure test of mental arithmetic speed, and it gets addictive fast.</p>
+
+      <h2>What is a good score?</h2>
+      <ul>
+        <li><strong>Under 8</strong> — taking your time on each one.</li>
+        <li><strong>14 to 20</strong> — a solid, quick pace.</li>
+        <li><strong>27 to 35</strong> — fast; your times tables are locked in.</li>
+        <li><strong>45+</strong> — excellent mental math.</li>
+      </ul>
+
+      <h2>Tips to go faster</h2>
+      <ul>
+        <li><strong>Know your times tables cold</strong> — multiplication is where most people slow down.</li>
+        <li><strong>Break big additions apart</strong>: 47 + 38 → 47 + 40 − 2.</li>
+        <li><strong>Don't second-guess</strong> the easy ones — trust the first answer and move on.</li>
+      </ul>
+      <p>Want a different kind of brain test? Try <a href="/number-memory/">number memory</a> or the <a href="/chimp-test/">chimp test</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What kind of math is on the test?</summary>
+          <p>Quick addition, subtraction, and multiplication with small numbers — the kind you can do in your head. No calculators needed or allowed.</p>
+        </details>
+        <details>
+          <summary>How is it scored?</summary>
+          <p>One point for each correct answer in 60 seconds. The answer checks itself as you type, so you never lose time pressing submit.</p>
+        </details>
+        <details>
+          <summary>What is a good mental math score?</summary>
+          <p>Around 14 to 20 in 60 seconds is solid. 27 to 35 is fast, and 45 or more is excellent.</p>
+        </details>
+        <details>
+          <summary>Does it work on a phone?</summary>
+          <p>Yes. Tap the answer box to bring up the number pad and type your answers.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/number-memory/"><span class="t-kbd">Memory</span><span class="t-name">Number Memory</span><span class="t-desc">Remember the growing number.</span></a>
+        <a class="tile" href="/chimp-test/"><span class="t-kbd">Memory</span><span class="t-name">Chimp Test</span><span class="t-desc">Click the numbers in order.</span></a>
+        <a class="tile" href="/number-typing-test/"><span class="t-kbd">Keyboard</span><span class="t-name">Number Typing Test</span><span class="t-desc">Race from 1 to 100.</span></a>
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/typing-speed-test/"><span class="t-kbd">Keyboard</span><span class="t-name">Typing Speed Test</span><span class="t-desc">Words per minute.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=202609151943" defer></script>
+<script src="/assets/js/share-card.js?v=202609151943" defer></script>
+<script src="/assets/js/tests/math-sprint.js?v=202609151943" defer></script>
+</body>
+</html>

@@ -145,6 +145,41 @@
       unit: "correct", higherIsBetter: true,
       bounds: [0, 1, 2, 3, 4, 5],
       dist: [[0,4],[1,14],[2,32],[3,56],[4,80],[5,95]]
+    },
+    mathsprint: {                /* correct answers in 60s — higher is better */
+      unit: "correct", higherIsBetter: true,
+      bounds: [8, 14, 20, 27, 35, 45],
+      dist: [[4,3],[8,15],[14,35],[20,55],[27,75],[35,90],[45,97],[55,99.5]]
+    },
+    stopclock: {                 /* miss from target in ms — lower is better */
+      unit: "ms", higherIsBetter: false,
+      bounds: [40, 90, 150, 250, 400, 700],
+      dist: [[10,1],[40,10],[90,28],[150,48],[250,68],[400,85],[700,96],[1200,99.5]]
+    },
+    memorymatch: {               /* seconds to clear the board — lower is better */
+      unit: "s", higherIsBetter: false,
+      bounds: [20, 30, 40, 55, 75, 100],
+      dist: [[12,2],[20,15],[30,38],[40,60],[55,80],[75,92],[100,98]]
+    },
+    subitize: {                  /* level reached — higher is better */
+      unit: "level", higherIsBetter: true,
+      bounds: [3, 5, 7, 9, 12, 15],
+      dist: [[1,3],[3,20],[5,42],[7,62],[9,80],[12,92],[15,98]]
+    },
+    gonogo: {                    /* correct out of 25 — higher is better */
+      unit: "correct", higherIsBetter: true,
+      bounds: [8, 13, 17, 21, 24, 25],
+      dist: [[4,3],[8,12],[13,30],[17,52],[21,74],[24,90],[25,97]]
+    },
+    mentalrotation: {            /* correct in 60s — higher is better */
+      unit: "correct", higherIsBetter: true,
+      bounds: [6, 10, 15, 20, 26, 32],
+      dist: [[3,3],[6,15],[10,33],[15,55],[20,74],[26,89],[32,97]]
+    },
+    unscramble: {                /* words solved in 60s — higher is better */
+      unit: "correct", higherIsBetter: true,
+      bounds: [3, 6, 9, 13, 17, 22],
+      dist: [[1,3],[3,16],[6,36],[9,58],[13,78],[17,90],[22,97]]
     }
   };
 

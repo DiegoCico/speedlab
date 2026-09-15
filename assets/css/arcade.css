@@ -285,6 +285,23 @@
 .emoji-cell:active { transform: translate(2px,2px); }
 .emoji-cell.bad { background: var(--c-p1); }
 
+/* ---- Mental Math -------------------------------------------------------- */
+.math-area {
+  position: relative; z-index: 2; flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--sp-4); text-align: center; padding: var(--sp-4) var(--sp-3);
+}
+.math-problem {
+  font-weight: 900; font-size: clamp(2.6rem, 12vw, 4.5rem); line-height: 1;
+  color: var(--c-ink); letter-spacing: 0.02em;
+}
+.math-input {
+  font-family: var(--font-seg); font-size: 2.2rem; text-align: center; width: min(220px, 70%);
+  color: var(--c-amber); background: var(--c-screen);
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius); padding: 0.4rem 0.6rem;
+}
+.math-input.flash-bad { animation: flash-bad-k .18s steps(2) 1; }
+
 /* ---- AI or Human ------------------------------------------------------- */
 .aih-area {
   position: relative; z-index: 2; flex: 1;
