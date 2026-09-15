@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Same or Mirror — Mental Rotation Test | SpeedLab</title>
+<meta name="description" content="Is the rotated letter the same shape or a mirror image? A fast mental rotation test — decide as many as you can in 60 seconds and see how you rank.">
+<link rel="canonical" href="https://speedlab.lol/same-or-mirror/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418545459143038" crossorigin="anonymous"></script>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Same or Mirror — Mental Rotation Test">
+<meta property="og:description" content="Same shape or mirror image? Decide fast.">
+<meta property="og:url" content="https://speedlab.lol/same-or-mirror/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/same-or-mirror.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Same or Mirror — Mental Rotation Test">
+<meta name="twitter:description" content="Same shape or mirror image? Decide fast.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/same-or-mirror.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=202609151958">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609151958">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Same or Mirror","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/same-or-mirror/","description":"Decide whether a rotated letter is the same shape or a mirror image, as fast as you can in 60 seconds.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Same or Mirror","item":"https://speedlab.lol/same-or-mirror/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is mental rotation?","acceptedAnswer":{"@type":"Answer","text":"Mental rotation is the ability to picture how a shape would look if it were turned to a different angle. This test challenges it by asking whether a rotated letter is the same shape or a mirror image."}},{"@type":"Question","name":"How is Same or Mirror scored?","acceptedAnswer":{"@type":"Answer","text":"By how many pairs you answer correctly in 60 seconds. Right answers score a point; wrong answers add a short delay before the next pair."}},{"@type":"Question","name":"What is a good score?","acceptedAnswer":{"@type":"Answer","text":"Getting 10 to 15 correct is a good pace, 20 to 26 is fast, and 32 or more is excellent."}},{"@type":"Question","name":"Can I use the keyboard?","acceptedAnswer":{"@type":"Answer","text":"Yes. Press S or the Left arrow for Same, and M or the Right arrow for Mirror. On a phone, just tap the buttons."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#startBtn">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Same or Mirror</li>
+      </ol>
+    </nav>
+
+    <h1>Same or Mirror</h1>
+    <p class="lead">One letter, then a rotated copy. Is it the same shape just turned around, or a mirror image? Decide as many as you can in 60 seconds.</p>
+
+    <section class="cabinet" id="mentalrotation" aria-label="Same or mirror">
+      <div class="marquee">Same or Mirror</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="correct">0</span></div>
+              <div class="readout-label">Correct</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">60</span></div>
+              <div class="readout-label">Seconds left</div>
+            </div>
+          </div>
+          <div class="rot-area" id="rotArea">
+            <div class="rot-pair">
+              <div class="rot-glyph ref" id="refShape" aria-label="Reference shape">F</div>
+              <div class="rot-vs">vs</div>
+              <div class="rot-glyph" id="testShape" aria-label="Shape to compare" style="transform:rotate(90deg)">F</div>
+            </div>
+            <div class="rot-buttons">
+              <button class="arcade-btn p2" id="sameBtn" type="button" disabled>Same</button>
+              <button class="arcade-btn p1" id="mirrorBtn" type="button" disabled>Mirror</button>
+            </div>
+            <button class="arcade-btn p1" id="startBtn" type="button">Start</button>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn" id="restart" type="button" hidden>Restart</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the mental rotation test works</h2>
+      <p>You see a reference letter on the left and a rotated copy on the right. Your job: tell whether the copy is the <strong>same</strong> shape simply turned to a new angle, or a <strong>mirror</strong> image of it. Press Same or Mirror. Right answers score a point; wrong answers cost you a moment before the next pair. You have 60 seconds, and your score is how many you get right. It measures <em>mental rotation</em> — spinning a shape in your mind's eye.</p>
+
+      <h2>What is a good score?</h2>
+      <ul>
+        <li><strong>Under 6</strong> — still finding the trick.</li>
+        <li><strong>10 to 15</strong> — a good pace.</li>
+        <li><strong>20 to 26</strong> — fast spatial reasoning.</li>
+        <li><strong>32+</strong> — excellent.</li>
+      </ul>
+
+      <h2>Tips to decide faster</h2>
+      <ul>
+        <li><strong>Find one distinctive feature</strong> — like which way an F's arms point — and track just that.</li>
+        <li><strong>Mentally rotate the copy upright</strong>, then check if it matches or is flipped.</li>
+        <li><strong>Don't guess</strong> — a wrong answer costs more time than thinking for a beat.</li>
+      </ul>
+      <p>Keyboard shortcuts: press <strong>S</strong> or Left for Same, <strong>M</strong> or Right for Mirror. Enjoy spatial puzzles? Try <a href="/visual-memory/">visual memory</a> or the <a href="/chimp-test/">chimp test</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is mental rotation?</summary>
+          <p>Mental rotation is the ability to picture how a shape would look if it were turned to a different angle. This test challenges it by asking whether a rotated letter is the same shape or a mirror image.</p>
+        </details>
+        <details>
+          <summary>How is Same or Mirror scored?</summary>
+          <p>By how many pairs you answer correctly in 60 seconds. Right answers score a point; wrong answers add a short delay before the next pair.</p>
+        </details>
+        <details>
+          <summary>What is a good score?</summary>
+          <p>Getting 10 to 15 correct is a good pace, 20 to 26 is fast, and 32 or more is excellent.</p>
+        </details>
+        <details>
+          <summary>Can I use the keyboard?</summary>
+          <p>Yes. Press S or the Left arrow for Same, and M or the Right arrow for Mirror. On a phone, just tap the buttons.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/visual-memory/"><span class="t-kbd">Memory</span><span class="t-name">Visual Memory</span><span class="t-desc">Remember the flashed tiles.</span></a>
+        <a class="tile" href="/chimp-test/"><span class="t-kbd">Memory</span><span class="t-name">Chimp Test</span><span class="t-desc">Click the numbers in order.</span></a>
+        <a class="tile" href="/count-the-flash/"><span class="t-kbd">Brain</span><span class="t-name">Count the Flash</span><span class="t-desc">Count the dots in a flash.</span></a>
+        <a class="tile" href="/color-match/"><span class="t-kbd">Reaction</span><span class="t-name">Color Match (Stroop)</span><span class="t-desc">Word vs ink colour.</span></a>
+        <a class="tile" href="/mental-math/"><span class="t-kbd">Brain</span><span class="t-name">Mental Math Sprint</span><span class="t-desc">Solve as many as you can.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=202609151958" defer></script>
+<script src="/assets/js/share-card.js?v=202609151958" defer></script>
+<script src="/assets/js/tests/mental-rotation.js?v=202609151958" defer></script>
+</body>
+</html>

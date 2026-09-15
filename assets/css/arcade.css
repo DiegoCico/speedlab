@@ -378,6 +378,30 @@
 .gng-sub { font-weight: 700; font-size: clamp(.9rem, 3.6vw, 1.1rem); color: var(--c-screen); min-height: 1.3em; }
 .gng-stage:not(.go):not(.nogo) .gng-sub { color: var(--c-ink-dim); }
 
+/* ---- Same or Mirror (mental rotation) ----------------------------------- */
+.rot-area {
+  position: relative; z-index: 2; flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--sp-3); text-align: center; padding: var(--sp-3);
+}
+.rot-pair {
+  display: flex; align-items: center; justify-content: center; gap: clamp(1rem, 6vw, 3rem);
+  width: 100%;
+}
+.rot-glyph {
+  width: clamp(74px, 22vw, 120px); height: clamp(74px, 22vw, 120px);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: clamp(3.2rem, 15vw, 5.5rem); line-height: 1;
+  color: var(--c-amber); background: var(--c-screen);
+  border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+}
+.rot-glyph.ref { color: var(--c-ink); }
+.rot-vs { font-weight: 800; color: var(--c-ink-dim); font-size: 1.1rem; }
+.rot-buttons { display: flex; gap: var(--sp-2); justify-content: center; flex-wrap: wrap; }
+.rot-buttons .arcade-btn { min-width: 120px; }
+.rot-area.ok .rot-glyph:not(.ref) { box-shadow: 0 0 0 5px var(--c-p2, #3DF5A0); }
+.rot-area.bad .rot-glyph:not(.ref) { box-shadow: 0 0 0 5px var(--c-p1); }
+
 /* ---- AI or Human ------------------------------------------------------- */
 .aih-area {
   position: relative; z-index: 2; flex: 1;
