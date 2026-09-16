@@ -301,6 +301,9 @@
   border: var(--bd) solid var(--c-line); border-radius: var(--radius); padding: 0.4rem 0.6rem;
 }
 .math-input.flash-bad { animation: flash-bad-k .18s steps(2) 1; }
+.scram-word { text-transform: uppercase; letter-spacing: clamp(.3rem, 3vw, .9rem); }
+.math-input.flash-good { animation: flash-good-k .3s ease 1; }
+@keyframes flash-good-k { 0% { background: var(--c-p2, #3DF5A0); } 100% { background: var(--c-screen); } }
 
 /* ---- Stop the Clock ----------------------------------------------------- */
 .clock-area {

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word Unscramble — Anagram Speed Game | SpeedLab</title>
+<meta name="description" content="Jumbled letters, one real word. Unscramble as many as you can in 60 seconds. A fast anagram game that checks itself as you type — no sign-up.">
+<link rel="canonical" href="https://speedlab.lol/word-unscramble/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418545459143038" crossorigin="anonymous"></script>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Word Unscramble — Anagram Speed Game">
+<meta property="og:description" content="How many jumbled words can you solve in 60s?">
+<meta property="og:url" content="https://speedlab.lol/word-unscramble/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/word-unscramble.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Word Unscramble — Anagram Speed Game">
+<meta name="twitter:description" content="How many jumbled words can you solve in 60s?">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/word-unscramble.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=202609152001">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609152001">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Word Unscramble","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/word-unscramble/","description":"Unscramble jumbled letters into real words, as many as you can in 60 seconds.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Word Unscramble","item":"https://speedlab.lol/word-unscramble/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is Word Unscramble scored?","acceptedAnswer":{"@type":"Answer","text":"By how many words you unscramble in 60 seconds. Each word checks itself as you type it correctly, so you never lose time submitting."}},{"@type":"Question","name":"Where do the words come from?","acceptedAnswer":{"@type":"Answer","text":"From a large, varied built-in list of common English words, so runs stay fresh and you can't just memorise a fixed set."}},{"@type":"Question","name":"What is a good score?","acceptedAnswer":{"@type":"Answer","text":"Solving 6 to 9 words is a good pace, 13 to 17 is fast, and 22 or more is excellent."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the answer box to bring up the keyboard and type each word; use Skip to pass a tricky one."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#answer">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Word Unscramble</li>
+      </ol>
+    </nav>
+
+    <h1>Word Unscramble</h1>
+    <p class="lead">Jumbled letters, one real word hiding inside. Type it out — it checks itself the instant you get it right, then serves the next. How many can you solve in 60 seconds?</p>
+
+    <section class="cabinet" id="unscramble" aria-label="Word unscramble">
+      <div class="marquee">Word Unscramble</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="solved">0</span></div>
+              <div class="readout-label">Solved</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="timer">60</span></div>
+              <div class="readout-label">Seconds left</div>
+            </div>
+          </div>
+          <div class="math-area">
+            <div class="math-problem scram-word" id="scrambled">SPEED</div>
+            <input class="math-input" id="answer" type="text" inputmode="text"
+              autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Your word" disabled>
+            <div class="rot-buttons">
+              <button class="arcade-btn p2" id="skipBtn" type="button" disabled>Skip</button>
+              <button class="arcade-btn p1" id="startBtn" type="button">Start</button>
+            </div>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn" id="restart" type="button" hidden>Restart</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How the word unscramble game works</h2>
+      <p>Press Start and a scrambled word appears. Rearrange the letters in your head and type the real word — it's checked <strong>automatically</strong> the moment you spell it correctly, so there's nothing to submit. Stuck on one? Hit Skip for a fresh word, though it costs you time. You have <strong>60 seconds</strong>, and your score is how many words you unscramble. The word list is large and varied, so no two runs feel the same.</p>
+
+      <h2>What is a good score?</h2>
+      <ul>
+        <li><strong>Under 3</strong> — just warming up.</li>
+        <li><strong>6 to 9</strong> — a good, steady pace.</li>
+        <li><strong>13 to 17</strong> — fast; you spot anagrams quickly.</li>
+        <li><strong>22+</strong> — excellent word power.</li>
+      </ul>
+
+      <h2>Tips to solve faster</h2>
+      <ul>
+        <li><strong>Look for common endings</strong> like -ing, -er, or -le and build backwards.</li>
+        <li><strong>Spot pairs</strong> — th, ch, st — that often sit together.</li>
+        <li><strong>Say the letters aloud</strong> in your head; the word often jumps out.</li>
+      </ul>
+      <p>Love word games? Try <a href="/woordle/">Woordle</a> or the <a href="/typing-speed-test/">typing speed test</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How is Word Unscramble scored?</summary>
+          <p>By how many words you unscramble in 60 seconds. Each word checks itself as you type it correctly, so you never lose time submitting.</p>
+        </details>
+        <details>
+          <summary>Where do the words come from?</summary>
+          <p>From a large, varied built-in list of common English words, so runs stay fresh and you can't just memorise a fixed set.</p>
+        </details>
+        <details>
+          <summary>What is a good score?</summary>
+          <p>Solving 6 to 9 words is a good pace, 13 to 17 is fast, and 22 or more is excellent.</p>
+        </details>
+        <details>
+          <summary>Does it work on a phone?</summary>
+          <p>Yes. Tap the answer box to bring up the keyboard and type each word; use Skip to pass a tricky one.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/woordle/"><span class="t-kbd">Brain</span><span class="t-name">Woordle</span><span class="t-desc">Guess the word in 6 tries.</span></a>
+        <a class="tile" href="/typing-speed-test/"><span class="t-kbd">Keyboard</span><span class="t-name">Typing Speed Test</span><span class="t-desc">Words per minute.</span></a>
+        <a class="tile" href="/mental-math/"><span class="t-kbd">Brain</span><span class="t-name">Mental Math Sprint</span><span class="t-desc">Solve as many as you can.</span></a>
+        <a class="tile" href="/alphabet-typing-test/"><span class="t-kbd">Keyboard</span><span class="t-name">Alphabet Typing Test</span><span class="t-desc">Type A to Z fast.</span></a>
+        <a class="tile" href="/same-or-mirror/"><span class="t-kbd">Brain</span><span class="t-name">Same or Mirror</span><span class="t-desc">Rotated shape or mirror?</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=202609152001" defer></script>
+<script src="/assets/js/share-card.js?v=202609152001" defer></script>
+<script src="/assets/js/tests/word-unscramble.js?v=202609152001" defer></script>
+</body>
+</html>
