@@ -6,7 +6,7 @@
 (function () {
   "use strict";
   function $(id) { return document.getElementById(id); }
-  var TRIALS = 25, GO_PROB = 0.7, WINDOW = 1000;
+  var TRIALS = 10, GO_PROB = 0.7, WINDOW = 1000;
 
   function init() {
     var root = $("gonogo");

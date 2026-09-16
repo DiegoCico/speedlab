@@ -8,7 +8,13 @@
   "use strict";
   function $(id) { return document.getElementById(id); }
 
-  function dotsFor(level) { return level + 2; }            // level 1 -> 3 dots
+  function dotsFor(level) {
+    // Centre grows with level, but the exact count jiggles ±2 so no two runs
+    // (and no two players' level 1) are the same. Never below 1 dot.
+    var center = level + 2;
+    var spread = Math.floor(Math.random() * 5) - 2;   // -2 .. +2
+    return Math.max(1, center + spread);
+  }
   function flashFor(level) { return Math.max(240, 950 - level * 55); } // ms
 
   function init() {

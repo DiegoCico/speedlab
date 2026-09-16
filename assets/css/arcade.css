@@ -170,7 +170,7 @@
   background: var(--c-panel-2); border: var(--bd) solid var(--c-line);
   border-radius: var(--radius); font-weight: 800; font-size: 0.9rem;
 }
-.pb-strip .pb-val { color: var(--c-amber); font-family: var(--font-seg); font-size: 1.1rem; }
+.pb-strip .pb-val { color: var(--c-amber); font-family: var(--font-ui); font-weight: 800; font-size: 1.1rem; }
 .pb-strip button { color: var(--c-ink-dim); background: none; border: none; cursor: pointer; font-weight: 700; text-decoration: underline; font-size: 0.8rem; }
 
 /* ---- Consequence-only motion ------------------------------------------- */
@@ -296,8 +296,8 @@
   color: var(--c-ink); letter-spacing: 0.02em;
 }
 .math-input {
-  font-family: var(--font-seg); font-size: 2.2rem; text-align: center; width: min(220px, 70%);
-  color: var(--c-amber); background: var(--c-screen);
+  font-family: var(--font-ui); font-weight: 800; font-size: 2rem; text-align: center; width: min(240px, 80%);
+  color: var(--c-amber); background: var(--c-screen); letter-spacing: .04em;
   border: var(--bd) solid var(--c-line); border-radius: var(--radius); padding: 0.4rem 0.6rem;
 }
 .math-input.flash-bad { animation: flash-bad-k .18s steps(2) 1; }

@@ -166,10 +166,10 @@
       bounds: [3, 5, 7, 9, 12, 15],
       dist: [[1,3],[3,20],[5,42],[7,62],[9,80],[12,92],[15,98]]
     },
-    gonogo: {                    /* correct out of 25 — higher is better */
+    gonogo: {                    /* correct out of 10 — higher is better */
       unit: "correct", higherIsBetter: true,
-      bounds: [8, 13, 17, 21, 24, 25],
-      dist: [[4,3],[8,12],[13,30],[17,52],[21,74],[24,90],[25,97]]
+      bounds: [2, 4, 5, 6, 7, 9],
+      dist: [[1,3],[2,10],[4,25],[5,42],[6,60],[7,76],[8,88],[9,95],[10,99]]
     },
     mentalrotation: {            /* correct in 60s — higher is better */
       unit: "correct", higherIsBetter: true,

@@ -5,7 +5,7 @@ CABINET = """    <section class="cabinet" id="gonogo" aria-label="Go / No-Go tes
         <div id="play" class="play">
           <div class="readout-row">
             <div class="readout">
-              <div class="seg-wrap"><span class="seg-value tnum" id="trial">0/25</span></div>
+              <div class="seg-wrap"><span class="seg-value tnum" id="trial">0/10</span></div>
               <div class="readout-label">Trial</div>
             </div>
             <div class="readout small">
@@ -40,22 +40,22 @@ SPEC = {
     "cabinet": CABINET,
     "scripts": ["/assets/js/tests/go-no-go.js"],
     "title": "Go / No-Go Test — Impulse Control Game | SpeedLab",
-    "desc": "Tap on green, hold still on red. The Go/No-Go test measures your impulse control and reaction across 25 trials. See how many you get right.",
-    "ld_desc": "Tap on green (Go) and hold still on red (No-Go) across 25 trials measuring impulse control.",
+    "desc": "Tap on green, hold still on red. The Go/No-Go test measures your impulse control and reaction across 10 quick trials. See how many you get right.",
+    "ld_desc": "Tap on green (Go) and hold still on red (No-Go) across 10 trials measuring impulse control.",
     "og_title": "Go / No-Go Test — Impulse Control Game",
     "og_desc": "Tap on green, hold still on red. Can you resist?",
     "og_image": "go-no-go.png",
     "h1": "Go / No-Go Test",
-    "lead": "Tap the instant the screen turns green — but hold still when it turns red. Twenty-five trials that test your reaction and, harder still, your impulse control.",
+    "lead": "Tap the instant the screen turns green — but hold still when it turns red. Ten quick trials that test your reaction and, harder still, your impulse control.",
     "content": """      <h2>How the Go / No-Go test works</h2>
-      <p>Each trial flashes a signal. When it's <strong>green (Go)</strong>, tap as fast as you can. When it's <strong>red (No-Go)</strong>, do nothing at all. Green comes up most of the time, so your reflex builds a habit of tapping — and the red trials test whether you can stop yourself in time. You get one point for every correct response across 25 trials. Tapping on red, or missing a green, costs you.</p>
+      <p>Each trial flashes a signal. When it's <strong>green (Go)</strong>, tap as fast as you can. When it's <strong>red (No-Go)</strong>, do nothing at all. Green comes up most of the time, so your reflex builds a habit of tapping — and the red trials test whether you can stop yourself in time. You get one point for every correct response across 10 trials. Tapping on red, or missing a green, costs you.</p>
 
       <h2>What is a good score?</h2>
       <ul>
-        <li><strong>Under 13 / 25</strong> — jumping the gun a lot.</li>
-        <li><strong>17 to 21 / 25</strong> — good control.</li>
-        <li><strong>22 to 24 / 25</strong> — sharp reflexes and discipline.</li>
-        <li><strong>25 / 25</strong> — flawless.</li>
+        <li><strong>Under 5 / 10</strong> — jumping the gun a lot.</li>
+        <li><strong>6 to 7 / 10</strong> — good control.</li>
+        <li><strong>8 to 9 / 10</strong> — sharp reflexes and discipline.</li>
+        <li><strong>10 / 10</strong> — flawless.</li>
       </ul>
 
       <h2>Tips to score higher</h2>
@@ -69,9 +69,9 @@ SPEC = {
         ("What does the Go / No-Go test measure?",
          "Response inhibition — your ability to act quickly on a Go signal while stopping yourself from acting on a No-Go signal. It's a classic measure of impulse control."),
         ("How is it scored?",
-         "One point for each correct response across 25 trials: tapping on green, and holding still on red. Tapping on red or missing a green loses the point."),
+         "One point for each correct response across 10 trials: tapping on green, and holding still on red. Tapping on red or missing a green loses the point."),
         ("What is a good Go / No-Go score?",
-         "17 to 21 out of 25 is good control, 22 to 24 is sharp, and 25 is flawless."),
+         "6 to 7 out of 10 is good control, 8 to 9 is sharp, and 10 is flawless."),
         ("Does it work on a phone?",
          "Yes. Tap the screen on green and keep your hands off on red."),
     ],

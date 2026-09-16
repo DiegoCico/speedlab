@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Go / No-Go Test — Impulse Control Game | SpeedLab</title>
-<meta name="description" content="Tap on green, hold still on red. The Go/No-Go test measures your impulse control and reaction across 25 trials. See how many you get right.">
+<meta name="description" content="Tap on green, hold still on red. The Go/No-Go test measures your impulse control and reaction across 10 quick trials. See how many you get right.">
 <link rel="canonical" href="https://speedlab.lol/go-no-go/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#1A1030">
@@ -26,17 +26,17 @@
 
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/base.css?v=202609152001">
-<link rel="stylesheet" href="/assets/css/arcade.css?v=202609152001">
+<link rel="stylesheet" href="/assets/css/base.css?v=202609152020">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609152020">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Go / No-Go","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/go-no-go/","description":"Tap on green (Go) and hold still on red (No-Go) across 25 trials measuring impulse control.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Go / No-Go","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/go-no-go/","description":"Tap on green (Go) and hold still on red (No-Go) across 10 trials measuring impulse control.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Go / No-Go","item":"https://speedlab.lol/go-no-go/"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the Go / No-Go test measure?","acceptedAnswer":{"@type":"Answer","text":"Response inhibition \u2014 your ability to act quickly on a Go signal while stopping yourself from acting on a No-Go signal. It's a classic measure of impulse control."}},{"@type":"Question","name":"How is it scored?","acceptedAnswer":{"@type":"Answer","text":"One point for each correct response across 25 trials: tapping on green, and holding still on red. Tapping on red or missing a green loses the point."}},{"@type":"Question","name":"What is a good Go / No-Go score?","acceptedAnswer":{"@type":"Answer","text":"17 to 21 out of 25 is good control, 22 to 24 is sharp, and 25 is flawless."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the screen on green and keep your hands off on red."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the Go / No-Go test measure?","acceptedAnswer":{"@type":"Answer","text":"Response inhibition \u2014 your ability to act quickly on a Go signal while stopping yourself from acting on a No-Go signal. It's a classic measure of impulse control."}},{"@type":"Question","name":"How is it scored?","acceptedAnswer":{"@type":"Answer","text":"One point for each correct response across 10 trials: tapping on green, and holding still on red. Tapping on red or missing a green loses the point."}},{"@type":"Question","name":"What is a good Go / No-Go score?","acceptedAnswer":{"@type":"Answer","text":"6 to 7 out of 10 is good control, 8 to 9 is sharp, and 10 is flawless."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the screen on green and keep your hands off on red."}}]}
 </script>
 </head>
 <body>
@@ -71,7 +71,7 @@
     </nav>
 
     <h1>Go / No-Go Test</h1>
-    <p class="lead">Tap the instant the screen turns green — but hold still when it turns red. Twenty-five trials that test your reaction and, harder still, your impulse control.</p>
+    <p class="lead">Tap the instant the screen turns green — but hold still when it turns red. Ten quick trials that test your reaction and, harder still, your impulse control.</p>
 
     <section class="cabinet" id="gonogo" aria-label="Go / No-Go test">
       <div class="marquee">Go / No-Go</div>
@@ -80,7 +80,7 @@
         <div id="play" class="play">
           <div class="readout-row">
             <div class="readout">
-              <div class="seg-wrap"><span class="seg-value tnum" id="trial">0/25</span></div>
+              <div class="seg-wrap"><span class="seg-value tnum" id="trial">0/10</span></div>
               <div class="readout-label">Trial</div>
             </div>
             <div class="readout small">
@@ -111,14 +111,14 @@
 
     <div class="content">
       <h2>How the Go / No-Go test works</h2>
-      <p>Each trial flashes a signal. When it's <strong>green (Go)</strong>, tap as fast as you can. When it's <strong>red (No-Go)</strong>, do nothing at all. Green comes up most of the time, so your reflex builds a habit of tapping — and the red trials test whether you can stop yourself in time. You get one point for every correct response across 25 trials. Tapping on red, or missing a green, costs you.</p>
+      <p>Each trial flashes a signal. When it's <strong>green (Go)</strong>, tap as fast as you can. When it's <strong>red (No-Go)</strong>, do nothing at all. Green comes up most of the time, so your reflex builds a habit of tapping — and the red trials test whether you can stop yourself in time. You get one point for every correct response across 10 trials. Tapping on red, or missing a green, costs you.</p>
 
       <h2>What is a good score?</h2>
       <ul>
-        <li><strong>Under 13 / 25</strong> — jumping the gun a lot.</li>
-        <li><strong>17 to 21 / 25</strong> — good control.</li>
-        <li><strong>22 to 24 / 25</strong> — sharp reflexes and discipline.</li>
-        <li><strong>25 / 25</strong> — flawless.</li>
+        <li><strong>Under 5 / 10</strong> — jumping the gun a lot.</li>
+        <li><strong>6 to 7 / 10</strong> — good control.</li>
+        <li><strong>8 to 9 / 10</strong> — sharp reflexes and discipline.</li>
+        <li><strong>10 / 10</strong> — flawless.</li>
       </ul>
 
       <h2>Tips to score higher</h2>
@@ -137,11 +137,11 @@
         </details>
         <details>
           <summary>How is it scored?</summary>
-          <p>One point for each correct response across 25 trials: tapping on green, and holding still on red. Tapping on red or missing a green loses the point.</p>
+          <p>One point for each correct response across 10 trials: tapping on green, and holding still on red. Tapping on red or missing a green loses the point.</p>
         </details>
         <details>
           <summary>What is a good Go / No-Go score?</summary>
-          <p>17 to 21 out of 25 is good control, 22 to 24 is sharp, and 25 is flawless.</p>
+          <p>6 to 7 out of 10 is good control, 8 to 9 is sharp, and 10 is flawless.</p>
         </details>
         <details>
           <summary>Does it work on a phone?</summary>
@@ -202,8 +202,8 @@
   </div>
 </footer>
 
-<script src="/assets/js/engine.js?v=202609152001" defer></script>
-<script src="/assets/js/share-card.js?v=202609152001" defer></script>
-<script src="/assets/js/tests/go-no-go.js?v=202609152001" defer></script>
+<script src="/assets/js/engine.js?v=202609152020" defer></script>
+<script src="/assets/js/share-card.js?v=202609152020" defer></script>
+<script src="/assets/js/tests/go-no-go.js?v=202609152020" defer></script>
 </body>
 </html>
