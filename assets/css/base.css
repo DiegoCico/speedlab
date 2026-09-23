@@ -165,11 +165,21 @@ h3 { font-weight: 800; font-size: 1.15rem; }
 .site-header nav a { color: var(--c-ink); font-weight: 700; padding: 0.35rem 0.5rem; }
 /* keep the header inside narrow phones (was overflowing ~8px) */
 @media (max-width: 430px) {
-  .brand { font-size: 1.15rem; }
-  .site-header .bar { gap: var(--sp-2); padding: var(--sp-2); }
-  .site-header nav { gap: 0.3rem; }
-  .site-header nav a { padding: 0.35rem 0.4rem; }
-  .sound-toggle { padding: 0.35rem 0.5rem; }
+  .brand { font-size: 1.05rem; }
+  .site-header .bar { gap: 0.4rem; padding: 0.4rem 0.5rem; }
+  .site-header nav { gap: 0.2rem; }
+  .site-header nav a { padding: 0.35rem 0.3rem; }
+  .sound-toggle { padding: 0.35rem 0.4rem; }
+  /* Reclaim space for the nav: show only the speaker icon; the label stays for
+     screen readers, and on/off is still shown by the toggle's background. */
+  .sound-toggle [data-sound-label] {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+}
+@media (max-width: 360px) {
+  .brand { font-size: 0.95rem; }
+  .site-header nav a { padding: 0.35rem 0.25rem; font-size: 0.95rem; }
 }
 
 /* ---- Buttons (generic) -------------------------------------------------- */

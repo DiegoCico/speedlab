@@ -33,9 +33,9 @@ def main():
             continue
         if bump(f):
             n += 1
-    genp = os.path.join(ROOT, "build", "gen.py")
-    bump(genp)
-    print("stamped %d HTML files + gen.py to ?v=%s" % (n, VER))
+    for tool in ("gen.py", "gen-guides.py"):
+        bump(os.path.join(ROOT, "build", tool))
+    print("stamped %d HTML files + generators to ?v=%s" % (n, VER))
 
 if __name__ == "__main__":
     main()

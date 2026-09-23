@@ -343,6 +343,10 @@ def main():
     total = 0
     for g in groups:
         for spec in GROUPS[g]():
+            # Duration variants are intentionally near-duplicate long-tail pages.
+            # Keep them usable for visitors but out of the search index so they
+            # don't read as thin/doorway content (AdSense & Search quality).
+            spec["robots"] = "noindex,follow"
             outdir = os.path.join(ROOT, spec["slug"])
             os.makedirs(outdir, exist_ok=True)
             with open(os.path.join(outdir, "index.html"), "w") as f:

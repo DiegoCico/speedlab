@@ -81,10 +81,10 @@ def related_html(spec):
     return "\n".join(tiles)
 
 def scripts_html(spec):
-    tags = ['<script src="/assets/js/engine.js?v=202609152020" defer></script>',
-            '<script src="/assets/js/share-card.js?v=202609152020" defer></script>']
+    tags = ['<script src="/assets/js/engine.js?v=202609231808" defer></script>',
+            '<script src="/assets/js/share-card.js?v=202609231808" defer></script>']
     for s in spec["scripts"]:
-        tags.append(f'<script src="{s}?v=202609152020" defer></script>')
+        tags.append(f'<script src="{s}?v=202609231808" defer></script>')
     return "\n".join(tags)
 
 # --------------------------------------------------------------------------- #
@@ -96,7 +96,7 @@ SHELL = """<!doctype html>
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{domain}/{slug}/">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="{robots}">
 <meta name="theme-color" content="#1A1030">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418545459143038" crossorigin="anonymous"></script>
@@ -116,8 +116,8 @@ SHELL = """<!doctype html>
 
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/base.css?v=202609152020">
-<link rel="stylesheet" href="/assets/css/arcade.css?v=202609152020">
+<link rel="stylesheet" href="/assets/css/base.css?v=202609231808">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231808">
 
 {software_ld}
 {breadcrumb_ld}
@@ -137,6 +137,7 @@ SHELL = """<!doctype html>
     <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
     <nav aria-label="Primary">
       <a href="/all-tests/">All Tests</a>
+      <a href="/guides/">Guides</a>
       <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
         <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
       </button>
@@ -194,6 +195,7 @@ SHELL = """<!doctype html>
         <h3>Explore</h3>
         <nav aria-label="Footer">
           <a href="/all-tests/">All Tests</a>
+          <a href="/guides/">Guides</a>
           <a href="/cps-test/">CPS Test</a>
           <a href="/spacebar-clicker/">Spacebar Clicker</a>
           <a href="/reaction-time-test/">Reaction Time</a>
@@ -278,6 +280,7 @@ def render(spec):
         spec["scripts"] = ["/assets/js/tests/clicker.js"]
     return SHELL.format(
         domain=DOMAIN, slug=spec["slug"],
+        robots=spec.get("robots", "index,follow,max-image-preview:large"),
         title=esc(spec["title"]), desc=esc(spec["desc"]),
         og_title=esc(spec["og_title"]), og_desc=esc(spec["og_desc"]),
         og_image=spec["og_image"],
