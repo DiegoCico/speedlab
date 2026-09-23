@@ -190,6 +190,11 @@
       unit: "pts", higherIsBetter: true,
       bounds: [20, 40, 60, 80, 95, 100],
       dist: [[0,8],[20,22],[40,42],[60,62],[80,82],[100,97]]
+    },
+    wordspam: {                  /* effective WPM typing one word on repeat — higher is better */
+      unit: "WPM", higherIsBetter: true,
+      bounds: [40, 70, 100, 130, 160, 200],
+      dist: [[20,4],[40,16],[70,38],[100,60],[130,78],[160,90],[200,97],[260,99.5]]
     }
   };
 

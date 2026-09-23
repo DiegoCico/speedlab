@@ -302,6 +302,10 @@
 }
 .math-input.flash-bad { animation: flash-bad-k .18s steps(2) 1; }
 .scram-word { text-transform: uppercase; letter-spacing: clamp(.3rem, 3vw, .9rem); }
+.ws-label { font-weight: 800; color: var(--c-ink-dim); font-size: .95rem; text-align: center; }
+.ws-target { font-weight: 900; font-size: clamp(2rem, 10vw, 3.6rem); line-height: 1.05; color: var(--c-ink); word-break: break-word; text-align: center; letter-spacing: .01em; }
+.ws-target .done { color: var(--c-p2, #2BE86B); }
+.ws-input-wide { width: min(320px, 88%) !important; }
 .math-input.flash-good { animation: flash-good-k .3s ease 1; }
 @keyframes flash-good-k { 0% { background: var(--c-p2, #3DF5A0); } 100% { background: var(--c-screen); } }
 
