@@ -26,8 +26,8 @@
 
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/base.css?v=202609231903">
-<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231903">
+<link rel="stylesheet" href="/assets/css/base.css?v=202609231909">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231909">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Typing Speed Test (15 Seconds)","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/typing-speed-test/15-second/","description":"Measure your typing speed in words per minute over 15 seconds.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -40,6 +40,8 @@
 </script>
 </head>
 <body>
+<script>try{if(!sessionStorage.getItem('sl_intro')&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('intro-on');}}catch(e){}</script>
+<div id="intro" aria-hidden="true"><div id="introMark"><span class="brand">speedlab<span class="lab">.lol</span></span></div></div>
 <a class="skip-link" href="#passage">Skip to the test</a>
 
 <!-- Consent Management Platform (CMP) mount point.
@@ -188,8 +190,9 @@
   </div>
 </footer>
 
-<script src="/assets/js/engine.js?v=202609231903" defer></script>
-<script src="/assets/js/share-card.js?v=202609231903" defer></script>
-<script src="/assets/js/tests/typing.js?v=202609231903" defer></script>
+<script src="/assets/js/intro.js?v=202609231909" defer></script>
+<script src="/assets/js/engine.js?v=202609231909" defer></script>
+<script src="/assets/js/share-card.js?v=202609231909" defer></script>
+<script src="/assets/js/tests/typing.js?v=202609231909" defer></script>
 </body>
 </html>

@@ -81,10 +81,11 @@ def related_html(spec):
     return "\n".join(tiles)
 
 def scripts_html(spec):
-    tags = ['<script src="/assets/js/engine.js?v=202609231903" defer></script>',
-            '<script src="/assets/js/share-card.js?v=202609231903" defer></script>']
+    tags = ['<script src="/assets/js/intro.js?v=202609231909" defer></script>',
+            '<script src="/assets/js/engine.js?v=202609231909" defer></script>',
+            '<script src="/assets/js/share-card.js?v=202609231909" defer></script>']
     for s in spec["scripts"]:
-        tags.append(f'<script src="{s}?v=202609231903" defer></script>')
+        tags.append(f'<script src="{s}?v=202609231909" defer></script>')
     return "\n".join(tags)
 
 # --------------------------------------------------------------------------- #
@@ -116,14 +117,16 @@ SHELL = """<!doctype html>
 
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/base.css?v=202609231903">
-<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231903">
+<link rel="stylesheet" href="/assets/css/base.css?v=202609231909">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231909">
 
 {software_ld}
 {breadcrumb_ld}
 {faq_ld}
 </head>
 <body>
+<script>try{{if(!sessionStorage.getItem('sl_intro')&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){{document.documentElement.classList.add('intro-on');}}}}catch(e){{}}</script>
+<div id="intro" aria-hidden="true"><div id="introMark"><span class="brand">speedlab<span class="lab">.lol</span></span></div></div>
 <a class="skip-link" href="#{skip_target}">Skip to the test</a>
 
 <!-- Consent Management Platform (CMP) mount point.

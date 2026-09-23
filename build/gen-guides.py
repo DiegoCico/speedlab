@@ -57,6 +57,8 @@ HEAD_CHROME = """<!doctype html>
 {ld}
 </head>
 <body>
+<script>try{{if(!sessionStorage.getItem('sl_intro')&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){{document.documentElement.classList.add('intro-on');}}}}catch(e){{}}</script>
+<div id="intro" aria-hidden="true"><div id="introMark"><span class="brand">speedlab<span class="lab">.lol</span></span></div></div>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- Consent Management Platform (CMP) mount point.
@@ -109,6 +111,7 @@ FOOTER = """<footer class="site-footer">
   </div>
 </footer>
 
+<script src="/assets/js/intro.js?v={ver}" defer></script>
 <script src="/assets/js/engine.js?v={ver}" defer></script>
 </body>
 </html>
