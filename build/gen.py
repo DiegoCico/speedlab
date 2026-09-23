@@ -81,11 +81,11 @@ def related_html(spec):
     return "\n".join(tiles)
 
 def scripts_html(spec):
-    tags = ['<script src="/assets/js/intro.js?v=202609231909" defer></script>',
-            '<script src="/assets/js/engine.js?v=202609231909" defer></script>',
-            '<script src="/assets/js/share-card.js?v=202609231909" defer></script>']
+    tags = ['<script src="/assets/js/intro.js?v=202609231916" defer></script>',
+            '<script src="/assets/js/engine.js?v=202609231916" defer></script>',
+            '<script src="/assets/js/share-card.js?v=202609231916" defer></script>']
     for s in spec["scripts"]:
-        tags.append(f'<script src="{s}?v=202609231909" defer></script>')
+        tags.append(f'<script src="{s}?v=202609231916" defer></script>')
     return "\n".join(tags)
 
 # --------------------------------------------------------------------------- #
@@ -117,8 +117,8 @@ SHELL = """<!doctype html>
 
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/base.css?v=202609231909">
-<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231909">
+<link rel="stylesheet" href="/assets/css/base.css?v=202609231916">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231916">
 
 {software_ld}
 {breadcrumb_ld}

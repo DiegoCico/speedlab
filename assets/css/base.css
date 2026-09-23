@@ -205,13 +205,25 @@ h3 { font-weight: 800; font-size: 1.15rem; }
   box-shadow: 3px 3px 0 var(--c-line);
 }
 .site-header nav { margin-left: auto; display: flex; align-items: center; gap: var(--sp-2); }
-.site-header nav a { color: var(--c-ink); font-weight: 700; padding: 0.35rem 0.5rem; }
+/* chunky arcade "sticker" chips */
+.site-header nav a {
+  color: var(--c-line); font-weight: 800; font-size: 0.82rem;
+  text-transform: uppercase; letter-spacing: 0.02em;
+  padding: 0.38rem 0.7rem; border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  box-shadow: 3px 3px 0 var(--c-line);
+  transition: transform .06s steps(2), box-shadow .06s steps(2), filter .1s;
+}
+.site-header nav a:nth-of-type(1) { background: var(--c-p2); }
+.site-header nav a:nth-of-type(2) { background: var(--c-p1); }
+.site-header nav a:hover { text-decoration: none; transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--c-line); filter: brightness(1.08); }
+.site-header nav a:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--c-line); }
 /* keep the header inside narrow phones (was overflowing ~8px) */
 @media (max-width: 430px) {
   .brand { font-size: 1.05rem; }
   .site-header .bar { gap: 0.4rem; padding: 0.4rem 0.5rem; }
-  .site-header nav { gap: 0.2rem; }
-  .site-header nav a { padding: 0.35rem 0.3rem; }
+  .site-header nav { gap: 0.35rem; }
+  .site-header nav a { padding: 0.32rem 0.45rem; font-size: 0.72rem; box-shadow: 2px 2px 0 var(--c-line); }
+  .site-header nav a:active { box-shadow: 0 0 0 var(--c-line); }
   .sound-toggle { padding: 0.35rem 0.4rem; }
   /* Reclaim space for the nav: show only the speaker icon; the label stays for
      screen readers, and on/off is still shown by the toggle's background. */
@@ -221,8 +233,9 @@ h3 { font-weight: 800; font-size: 1.15rem; }
   }
 }
 @media (max-width: 360px) {
-  .brand { font-size: 0.95rem; }
-  .site-header nav a { padding: 0.35rem 0.25rem; font-size: 0.95rem; }
+  .brand { font-size: 0.92rem; }
+  .site-header nav { gap: 0.3rem; }
+  .site-header nav a { padding: 0.3rem 0.36rem; font-size: 0.68rem; }
 }
 
 /* ---- Buttons (generic) -------------------------------------------------- */
