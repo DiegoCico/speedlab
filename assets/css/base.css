@@ -60,6 +60,49 @@
   --font-seg: "DSEG7", "Archivo", monospace;
 }
 
+/* ---- Intro animation (homepage, once per session) ----------------------- */
+#intro { display: none; }
+html.intro-on { overflow: hidden; }
+html.intro-on #intro {
+  display: block; position: fixed; inset: 0; z-index: 100;
+  background-color: var(--c-bg);
+  background-image: radial-gradient(var(--c-panel) 2px, transparent 2px);
+  background-size: 26px 26px;
+  opacity: 1;
+}
+#introMark {
+  position: fixed; left: 0; top: 0; transform-origin: top left; will-change: transform;
+}
+#introMark .brand {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-weight: 900; font-size: 1.35rem; letter-spacing: -0.03em;
+  text-transform: uppercase; color: var(--c-ink);
+}
+#introMark .brand .lab {
+  color: var(--c-line); background: var(--c-amber);
+  padding: 0 0.35rem; border: var(--bd) solid var(--c-line);
+  box-shadow: 3px 3px 0 var(--c-line);
+}
+html.intro-on #introMark .brand { animation: sl-stamp .5s cubic-bezier(.2,.7,.3,1.25) both; }
+html.intro-on #introMark .brand .lab {
+  transform-origin: center; animation: sl-stamp-pill .34s .2s cubic-bezier(.2,.7,.3,1.5) both;
+}
+@keyframes sl-stamp {
+  0%   { transform: scale(1.7); opacity: 0; }
+  55%  { transform: scale(.93); opacity: 1; }
+  78%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+@keyframes sl-stamp-pill {
+  0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+  70%  { transform: scale(1.18) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.intro-on #intro { display: none; }
+  html.intro-on { overflow: auto; }
+}
+
 /* ---- Reset -------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 /* The [hidden] attribute must win over component display rules (flex/grid),
