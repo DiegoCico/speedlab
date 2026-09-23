@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clusters — Word Grouping Puzzle Game | SpeedLab</title>
+<meta name="description" content="Sort 16 words into 4 hidden groups of four. A free word-grouping puzzle in the style of Connections — four mistakes allowed. No sign-up, new puzzle every time.">
+<link rel="canonical" href="https://speedlab.lol/clusters/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418545459143038" crossorigin="anonymous"></script>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Clusters — Word Grouping Puzzle">
+<meta property="og:description" content="Sort 16 words into 4 hidden groups. Can you find them all?">
+<meta property="og:url" content="https://speedlab.lol/clusters/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Clusters — Word Grouping Puzzle">
+<meta name="twitter:description" content="Sort 16 words into 4 hidden groups. Can you find them all?">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/default.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=202609231825">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231825">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Clusters","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/clusters/","description":"Sort 16 words into 4 hidden groups of four, with four mistakes allowed.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Clusters","item":"https://speedlab.lol/clusters/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Clusters?","acceptedAnswer":{"@type":"Answer","text":"Sort 16 words into 4 hidden groups of four. Select four words and submit; a correct group locks in, a wrong guess costs one of your four mistakes. Find all four groups to win."}},{"@type":"Question","name":"How is Clusters scored?","acceptedAnswer":{"@type":"Answer","text":"A perfect solve with no mistakes is 100 points, dropping by 20 for each mistake. If you run out of tries, you still score 20 points for each group you found."}},{"@type":"Question","name":"Is this the same as Connections?","acceptedAnswer":{"@type":"Answer","text":"It's the same style of word-grouping puzzle, but Clusters is its own game with its own puzzles, and it serves a fresh random board every time rather than one shared daily puzzle."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap words to select them, then tap Submit. The board and buttons are sized for touchscreens."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#clGrid">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <a href="/guides/">Guides</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Clusters</li>
+      </ol>
+    </nav>
+
+    <h1>Clusters</h1>
+    <p class="lead">Sixteen words, four hidden groups of four. Tap four words you think belong together and submit. Find all four groups before you run out of your four mistakes.</p>
+
+    <section class="cabinet" id="clusters" aria-label="Clusters word groups">
+      <div class="marquee">Clusters</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="solvedCount">0/4</span></div>
+              <div class="readout-label">Groups</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="lives">4</span></div>
+              <div class="readout-label">Mistakes left</div>
+            </div>
+          </div>
+          <div class="cl-area">
+            <div class="cl-solved" id="clSolved"></div>
+            <div class="cl-grid" id="clGrid" aria-label="Word grid"></div>
+            <div class="cl-msg" id="clMsg">Find the four hidden groups of four.</div>
+            <div class="cl-buttons">
+              <button class="arcade-btn" id="shuffleBtn" type="button">Shuffle</button>
+              <button class="arcade-btn p1" id="submitBtn" type="button" disabled>Submit</button>
+            </div>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn" id="restart" type="button">New puzzle</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How to play Clusters</h2>
+      <p>The board shows <strong>16 words</strong>. Hidden among them are <strong>four groups of four</strong> that share something — a theme, a category, a common word. Select four words you think go together and hit Submit. Guess a full group correctly and it locks in with its colour and category name. Guess wrong and you lose one of your <strong>four mistakes</strong>. Find all four groups to win. The catch: some words look like they fit more than one group, and only one arrangement is correct.</p>
+
+      <h2>How scoring works</h2>
+      <ul>
+        <li><strong>100 points</strong> — a flawless solve with no mistakes.</li>
+        <li><strong>80 / 60 / 40</strong> — solved with one, two or three mistakes.</li>
+        <li><strong>Ran out of tries?</strong> You still score for the groups you found.</li>
+      </ul>
+
+      <h2>Tips for solving</h2>
+      <ul>
+        <li><strong>Start with what's obvious</strong>, but stay suspicious — the easy-looking group often hides a trap word.</li>
+        <li><strong>Look for the trap.</strong> If five words seem to fit one theme, one of them belongs elsewhere.</li>
+        <li><strong>Use the Shuffle button</strong> to rearrange the board and see the words fresh.</li>
+        <li><strong>Save the group you're unsure of for last</strong> — the final four are decided for you.</li>
+      </ul>
+      <p>Like word puzzles? Try <a href="/woordle/">Woordle</a> or <a href="/word-unscramble/">Word Unscramble</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do you play Clusters?</summary>
+          <p>Sort 16 words into 4 hidden groups of four. Select four words and submit; a correct group locks in, a wrong guess costs one of your four mistakes. Find all four groups to win.</p>
+        </details>
+        <details>
+          <summary>How is Clusters scored?</summary>
+          <p>A perfect solve with no mistakes is 100 points, dropping by 20 for each mistake. If you run out of tries, you still score 20 points for each group you found.</p>
+        </details>
+        <details>
+          <summary>Is this the same as Connections?</summary>
+          <p>It's the same style of word-grouping puzzle, but Clusters is its own game with its own puzzles, and it serves a fresh random board every time rather than one shared daily puzzle.</p>
+        </details>
+        <details>
+          <summary>Does it work on a phone?</summary>
+          <p>Yes. Tap words to select them, then tap Submit. The board and buttons are sized for touchscreens.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/woordle/"><span class="t-kbd">Brain</span><span class="t-name">Woordle</span><span class="t-desc">Guess the word in 6 tries.</span></a>
+        <a class="tile" href="/word-unscramble/"><span class="t-kbd">Brain</span><span class="t-name">Word Unscramble</span><span class="t-desc">Untangle jumbled words.</span></a>
+        <a class="tile" href="/2048/"><span class="t-kbd">Brain</span><span class="t-name">2048</span><span class="t-desc">Merge tiles to reach 2048.</span></a>
+        <a class="tile" href="/mental-math/"><span class="t-kbd">Brain</span><span class="t-name">Mental Math Sprint</span><span class="t-desc">Solve as many as you can.</span></a>
+        <a class="tile" href="/chimp-test/"><span class="t-kbd">Memory</span><span class="t-name">Chimp Test</span><span class="t-desc">Click the numbers in order.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/guides/">Guides</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=202609231825" defer></script>
+<script src="/assets/js/share-card.js?v=202609231825" defer></script>
+<script src="/assets/js/tests/clusters.js?v=202609231825" defer></script>
+</body>
+</html>
