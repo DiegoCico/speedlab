@@ -48,7 +48,7 @@ SPEC = {
     "ld_desc": "Sort 16 words into 4 hidden groups of four, with four mistakes allowed.",
     "og_title": "Clusters — Word Grouping Puzzle",
     "og_desc": "Sort 16 words into 4 hidden groups. Can you find them all?",
-    "og_image": "default.png",
+    "og_image": "clusters.png",
     "h1": "Clusters",
     "lead": "Sixteen words, four hidden groups of four. Tap four words you think belong together and submit. Find all four groups before you run out of your four mistakes.",
     "content": """      <h2>How to play Clusters</h2>

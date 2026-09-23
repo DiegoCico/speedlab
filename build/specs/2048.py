@@ -51,7 +51,7 @@ SPEC = {
     "ld_desc": "Slide and merge numbered tiles to reach 2048; your score is the running total.",
     "og_title": "2048 — Number Merge Puzzle",
     "og_desc": "Slide, merge, and reach the 2048 tile.",
-    "og_image": "default.png",
+    "og_image": "2048.png",
     "h1": "2048",
     "lead": "Slide the tiles with your arrow keys or a swipe. When two tiles with the same number touch, they merge into one. Keep going and try to build the 2048 tile.",
     "content": """      <h2>How to play 2048</h2>

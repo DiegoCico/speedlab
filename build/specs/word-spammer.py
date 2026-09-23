@@ -67,7 +67,7 @@ SPEC = {
     "ld_desc": "Pick a word and type it repeatedly as fast as possible within a chosen time limit.",
     "og_title": "Word Spammer — Type a Word Fast",
     "og_desc": "Pick a word and spam it as fast as you can. How many reps?",
-    "og_image": "default.png",
+    "og_image": "word-spammer.png",
     "h1": "Word Spammer",
     "lead": "Pick any word, choose a time limit, and type that word over and over as fast as you possibly can. Count your reps and see your words-per-minute — then beat it.",
     "content": """      <h2>How Word Spammer works</h2>
