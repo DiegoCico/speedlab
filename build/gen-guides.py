@@ -42,13 +42,13 @@ HEAD_CHROME = """<!doctype html>
 <meta property="og:title" content="{og_title}">
 <meta property="og:description" content="{og_desc}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{domain}/assets/img/og/default.png">
+<meta property="og:image" content="{domain}/assets/img/og/{og_image}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{og_title}">
 <meta name="twitter:description" content="{og_desc}">
-<meta name="twitter:image" content="{domain}/assets/img/og/default.png">
+<meta name="twitter:image" content="{domain}/assets/img/og/{og_image}">
 
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/base.css?v={ver}">
@@ -144,8 +144,16 @@ def crumbs_html(trail, current):
     return "\n        ".join(lis)
 
 # --------------------------------------------------------------------------- #
+OG_MAP = {
+    "what-is-a-good-cps": "guide-cps.png",
+    "how-to-improve-reaction-time": "guide-reaction.png",
+    "average-typing-speed": "guide-typing.png",
+    "do-brain-training-games-work": "guide-brain.png",
+}
+
 def render_guide(g):
     trail = [("Home", "/"), ("Guides", "/guides/")]
+    og_image = OG_MAP.get(g["slug"], "default.png")
     article_ld = jsonld({
         "@context": "https://schema.org", "@type": "Article",
         "headline": g["h1"], "description": g["ld_desc"],
@@ -153,7 +161,7 @@ def render_guide(g):
         "author": {"@type": "Organization", "name": "SpeedLab"},
         "publisher": {"@type": "Organization", "name": "SpeedLab"},
         "mainEntityOfPage": f'{DOMAIN}/guides/{g["slug"]}/',
-        "image": f"{DOMAIN}/assets/img/og/default.png",
+        "image": f"{DOMAIN}/assets/img/og/{og_image}",
     })
     ld = article_ld + "\n" + breadcrumb_ld(trail + [(g["crumb"], f'/guides/{g["slug"]}/')])
     if g.get("faq"):
@@ -162,6 +170,7 @@ def render_guide(g):
     head = HEAD_CHROME.format(
         title=esc(g["title"]), desc=esc(g["desc"]), canonical=f'{DOMAIN}/guides/{g["slug"]}/',
         og_type="article", og_title=esc(g["og_title"]), og_desc=esc(g["og_desc"]),
+        og_image=OG_MAP.get(g["slug"], "default.png"),
         domain=DOMAIN, ver=VER, ld=ld)
 
     faq_block = ""
@@ -229,7 +238,7 @@ def render_hub(guides):
         desc="Plain-English guides to the metrics behind our tests: what a good CPS is, how to improve your reaction time, average typing speed, and whether brain games work.",
         canonical=f"{DOMAIN}/guides/", og_type="website",
         og_title="SpeedLab Guides", og_desc="Guides to click speed, reaction time, typing speed and memory.",
-        domain=DOMAIN, ver=VER, ld=ld)
+        og_image="guides.png", domain=DOMAIN, ver=VER, ld=ld)
 
     cards = []
     for g in guides:

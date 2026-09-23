@@ -45,7 +45,7 @@ def rounded(d, box, r, fill=None, outline=None, width=1):
     d.rounded_rectangle(box, radius=r, fill=fill, outline=outline, width=width)
 
 # --------------------------------------------------------------------------- #
-def make(name, title, subtitle, value, label=""):
+def make(name, title, subtitle, value=None, label=""):
     W, H = 1200, 630
     img = Image.new("RGB", (W, H), C["bg"])
     d = ImageDraw.Draw(img)
@@ -66,36 +66,44 @@ def make(name, title, subtitle, value, label=""):
     rounded(d, pill, 14, fill=C["p1"])
     d.text((pill[0] + 26 - tb[0], pill[1] + 17 - tb[1]), "SPEEDLAB", font=wm, fill=C["line"])
 
-    # screen panel (right)
-    sx0, sy0, sx1, sy1 = 712, 170, 1150, 482
-    rounded(d, [sx0 - 6, sy0 - 6, sx1 + 6, sy1 + 6], 26, fill=C["line"])
-    rounded(d, [sx0, sy0, sx1, sy1], 20, fill=C["screen"])
-    scan = Image.new("RGB", (sx1 - sx0 - 8, sy1 - sy0 - 8), C["screen"])
-    sd = ImageDraw.Draw(scan)
-    for yy in range(0, scan.height, 6):
-        sd.line([(0, yy), (scan.width, yy)], fill=C["scan"], width=2)
-    img.paste(scan, (sx0 + 4, sy0 + 4))
-    d = ImageDraw.Draw(img)
+    paneled = value is not None
+    if paneled:
+        # screen panel (right)
+        sx0, sy0, sx1, sy1 = 712, 170, 1150, 482
+        rounded(d, [sx0 - 6, sy0 - 6, sx1 + 6, sy1 + 6], 26, fill=C["line"])
+        rounded(d, [sx0, sy0, sx1, sy1], 20, fill=C["screen"])
+        scan = Image.new("RGB", (sx1 - sx0 - 8, sy1 - sy0 - 8), C["screen"])
+        sd = ImageDraw.Draw(scan)
+        for yy in range(0, scan.height, 6):
+            sd.line([(0, yy), (scan.width, yy)], fill=C["scan"], width=2)
+        img.paste(scan, (sx0 + 4, sy0 + 4))
+        d = ImageDraw.Draw(img)
 
-    # value (auto-fit to the panel)
-    inner_w, inner_h = (sx1 - sx0) - 80, (sy1 - sy0) - (110 if label else 70)
-    size = 210
-    while size > 40:
+        inner_w, inner_h = (sx1 - sx0) - 80, (sy1 - sy0) - (110 if label else 70)
+        size = 210
+        while size > 40:
+            vf = dseg(size); vW, vH, vb = tw(d, value, vf)
+            if vW <= inner_w and vH <= inner_h: break
+            size -= 6
         vf = dseg(size); vW, vH, vb = tw(d, value, vf)
-        if vW <= inner_w and vH <= inner_h: break
-        size -= 6
-    vf = dseg(size); vW, vH, vb = tw(d, value, vf)
-    cx = (sx0 + sx1) / 2
-    vy = (sy0 + sy1) / 2 - vH / 2 - vb[1] - (18 if label else 0)
-    d.text((cx - vW / 2 - vb[0], vy), value, font=vf, fill=C["amber"])
-    if label:
-        lf = archivo(30, 800); lW, lH, lb = tw(d, label, lf)
-        d.text((cx - lW / 2 - lb[0], sy1 - 66), label, font=lf, fill=C["dim"])
+        cx = (sx0 + sx1) / 2
+        vy = (sy0 + sy1) / 2 - vH / 2 - vb[1] - (18 if label else 0)
+        d.text((cx - vW / 2 - vb[0], vy), value, font=vf, fill=C["amber"])
+        if label:
+            lf = archivo(30, 800); lW, lH, lb = tw(d, label, lf)
+            d.text((cx - lW / 2 - lb[0], sy1 - 66), label, font=lf, fill=C["dim"])
+        maxw = sx0 - 80 - 40
+        base = 118 if len(title) == 1 else 96
+        step = 130 if len(title) == 1 else 104
+        ty = 200 if len(title) == 1 else 188
+    else:
+        # full-width layout (no seg panel) — for content & legal pages
+        maxw = W - 160
+        base = 150 if len(title) == 1 else 120
+        step = 164 if len(title) == 1 else 130
+        ty = 236 if len(title) == 1 else 206
 
-    # title (1-2 lines, auto-shrink to the left column)
-    maxw = sx0 - 80 - 40
-    ty = 200 if len(title) == 1 else 188
-    base = 118 if len(title) == 1 else 96
+    # title (1-2 lines, auto-shrink)
     for line in title:
         size = base
         while size > 44:
@@ -104,10 +112,10 @@ def make(name, title, subtitle, value, label=""):
             size -= 4
         f = archivo(size, 900); _, _, b = tw(d, line, f)
         d.text((80 - b[0], ty), line, font=f, fill=C["ink"])
-        ty += (130 if len(title) == 1 else 104)
+        ty += step
 
     # subtitle
-    sf = archivo(34, 800)
+    sf = archivo(34 if paneled else 38, 800)
     _, _, sb = tw(d, subtitle, sf)
     d.text((80 - sb[0], ty + 6), subtitle, font=sf, fill=C["dim"])
 
@@ -126,9 +134,24 @@ def make(name, title, subtitle, value, label=""):
 
 # --------------------------------------------------------------------------- #
 CARDS = [
+    # games (paneled seg value)
     ("2048.png", ["2048"], "Slide, merge, reach 2048", "2048", ""),
     ("clusters.png", ["CLUSTERS"], "Sort 16 words into 4 groups", "16", ""),
     ("word-spammer.png", ["WORD", "SPAMMER"], "Type your word as fast as you can", "150", "WPM"),
+    # brand / hubs
+    ("home.png", ["SPEED", "TESTS"], "Reaction, clicks, memory and typing", "270", "MS"),
+    ("all-tests.png", ["ALL", "TESTS"], "Every speed and reflex test in one place"),
+    ("guides.png", ["GUIDES"], "Click speed, reaction, typing and memory explained"),
+    # guides
+    ("guide-cps.png", ["WHAT'S A", "GOOD CPS?"], "Average click speed, explained"),
+    ("guide-reaction.png", ["IMPROVE YOUR", "REACTION TIME"], "What's average and how to train it"),
+    ("guide-typing.png", ["AVERAGE", "TYPING SPEED"], "What counts as a good WPM?"),
+    ("guide-brain.png", ["DO BRAIN", "GAMES WORK?"], "What memory tests really measure"),
+    # legal / info
+    ("about.png", ["ABOUT"], "Short, sharp speed and reflex tests"),
+    ("privacy.png", ["PRIVACY"], "No accounts, no tracking, no cookies"),
+    ("terms.png", ["TERMS"], "The plain-English rules"),
+    ("contact.png", ["CONTACT"], "Get in touch with SpeedLab"),
 ]
 
 def main():
