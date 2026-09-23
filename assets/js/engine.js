@@ -195,6 +195,11 @@
       unit: "WPM", higherIsBetter: true,
       bounds: [40, 70, 100, 130, 160, 200],
       dist: [[20,4],[40,16],[70,38],[100,60],[130,78],[160,90],[200,97],[260,99.5]]
+    },
+    dino: {                      /* endless-runner distance score — higher is better */
+      unit: "score", higherIsBetter: true,
+      bounds: [150, 350, 600, 1000, 1600, 2500],
+      dist: [[50,4],[150,16],[350,36],[600,56],[1000,74],[1600,88],[2500,96],[4000,99.5]]
     }
   };
 

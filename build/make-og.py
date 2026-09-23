@@ -138,6 +138,7 @@ CARDS = [
     ("2048.png", ["2048"], "Slide, merge, reach 2048", "2048", ""),
     ("clusters.png", ["CLUSTERS"], "Sort 16 words into 4 groups", "16", ""),
     ("word-spammer.png", ["WORD", "SPAMMER"], "Type your word as fast as you can", "150", "WPM"),
+    ("dino-game.png", ["DINO", "DASH"], "Jump the cacti, duck the birds", "1240", "M"),
     # brand / hubs
     ("home.png", ["SPEED", "TESTS"], "Reaction, clicks, memory and typing", "270", "MS"),
     ("all-tests.png", ["ALL", "TESTS"], "Every speed and reflex test in one place"),

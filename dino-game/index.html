@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dino Game — Jump &amp; Duck Endless Runner | SpeedLab</title>
+<meta name="description" content="Play the dino game: run, jump over cacti and duck under birds as it speeds up. A free offline-style dinosaur runner that tests your reflexes. No sign-up, works on any device.">
+<link rel="canonical" href="https://speedlab.lol/dino-game/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1030">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418545459143038" crossorigin="anonymous"></script>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpeedLab">
+<meta property="og:title" content="Dino Dash — Jump &amp; Duck Runner">
+<meta property="og:description" content="Jump the cacti, duck the birds, survive as it speeds up.">
+<meta property="og:url" content="https://speedlab.lol/dino-game/">
+<meta property="og:image" content="https://speedlab.lol/assets/img/og/dino-game.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dino Dash — Jump &amp; Duck Runner">
+<meta name="twitter:description" content="Jump the cacti, duck the birds, survive as it speeds up.">
+<meta name="twitter:image" content="https://speedlab.lol/assets/img/og/dino-game.png">
+
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dseg7-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/base.css?v=202609231859">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231859">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dino Dash","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","url":"https://speedlab.lol/dino-game/","description":"Run, jump over cacti and duck under birds in an endless runner that gets faster over time.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"All Tests","item":"https://speedlab.lol/all-tests/"},{"@type":"ListItem","position":3,"name":"Dino Dash","item":"https://speedlab.lol/dino-game/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play the dino game?","acceptedAnswer":{"@type":"Answer","text":"Your dino runs automatically. Jump over the cacti and duck under the birds. It gets faster over time, and one hit ends the run \u2014 your score is how far you got."}},{"@type":"Question","name":"How do I duck?","acceptedAnswer":{"@type":"Answer","text":"Hold the Down arrow or S on a keyboard, or press and hold the Duck button on a touchscreen. Ducking lowers your dino so birds pass safely overhead."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the game or the Jump button to jump, and hold the Duck button to duck. The game scales to any screen size."}},{"@type":"Question","name":"Is it like the Chrome offline dinosaur game?","acceptedAnswer":{"@type":"Answer","text":"It's the same style of endless runner \u2014 jump and duck through obstacles that speed up \u2014 built as its own original game that runs right in your browser."}}]}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#jumpBtn">Skip to the test</a>
+
+<!-- Consent Management Platform (CMP) mount point.
+     A Google-certified CMP is required for EEA, UK and Switzerland traffic once
+     AdSense is enabled. Uncomment and insert the certified CMP snippet here.
+<div id="cmp-consent" aria-live="polite"></div>
+-->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">speedlab<span class="lab">.lol</span></a>
+    <nav aria-label="Primary">
+      <a href="/all-tests/">All Tests</a>
+      <a href="/guides/">Guides</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">&#128266;</span><span data-sound-label>Sound: Off</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-tests/">All Tests</a></li>
+        <li aria-current="page">Dino Dash</li>
+      </ol>
+    </nav>
+
+    <h1>Dino Dash</h1>
+    <p class="lead">Run, jump over the cacti, and duck under the birds. The longer you last the faster it gets — how far can your reflexes take you?</p>
+
+    <section class="cabinet" id="dino" aria-label="Dino Dash runner">
+      <div class="marquee">Dino Dash</div>
+
+      <div class="screen" id="screen">
+        <div id="play" class="play">
+          <div class="readout-row">
+            <div class="readout">
+              <div class="seg-wrap"><span class="seg-value tnum" id="score">0</span></div>
+              <div class="readout-label">Score</div>
+            </div>
+            <div class="readout small">
+              <div class="seg-wrap"><span class="seg-value tnum" id="best">0</span></div>
+              <div class="readout-label">Best</div>
+            </div>
+          </div>
+          <div class="dino-area">
+            <div class="dino-stage" id="dinoStage">
+              <canvas id="dinoCanvas" width="900" height="260" aria-label="Dino Dash game"></canvas>
+              <div class="dino-hint" id="dinoHint">Press Space or tap to run</div>
+            </div>
+            <div class="dino-controls" id="dinoControls">
+              <button class="arcade-btn p1" id="jumpBtn" type="button">Jump</button>
+              <button class="arcade-btn p2" id="duckBtn" type="button">Duck</button>
+            </div>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1rem">
+        <button class="arcade-btn" id="restart" type="button" hidden>Restart</button>
+      </div>
+
+      <div class="pb-strip">
+        <span>Best <span class="pb-val" data-pb>&mdash;</span></span>
+        <button data-clear type="button">Clear my scores</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="content-top" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <div class="content">
+      <h2>How to play Dino Dash</h2>
+      <p>Your dino runs on its own. Your job is to react in time: <strong>jump</strong> over the cacti coming along the ground, and <strong>duck</strong> under the birds flying at head height. Every second the whole world speeds up, so the gaps get tighter and your reactions have to get sharper. One hit ends the run, and your score is the distance you covered. It's a pure reflex-and-timing test in the style of the offline dinosaur game.</p>
+
+      <h2>Controls</h2>
+      <ul>
+        <li><strong>Jump:</strong> Space, Up arrow, W, tap the game, or the Jump button.</li>
+        <li><strong>Duck:</strong> hold the Down arrow, S, or the Duck button.</li>
+        <li>It works the same with a keyboard, a mouse, or a touchscreen.</li>
+      </ul>
+
+      <h2>What is a good score?</h2>
+      <ul>
+        <li><strong>Under 350</strong> — still finding your rhythm.</li>
+        <li><strong>600 to 1000</strong> — solid; your timing is dialled in.</li>
+        <li><strong>1600 to 2500</strong> — fast reflexes under real pressure.</li>
+        <li><strong>2500+</strong> — excellent.</li>
+      </ul>
+
+      <h2>Tips to last longer</h2>
+      <ul>
+        <li><strong>Jump late, not early.</strong> Jumping too soon lands you right on the next cactus.</li>
+        <li><strong>Only duck for birds</strong> — stay standing so you're ready to jump the moment a cactus appears.</li>
+        <li><strong>Look ahead</strong>, not at your dino, so you read obstacles sooner as the speed climbs.</li>
+      </ul>
+      <p>Want more reflex challenges? Try the <a href="/reaction-time-test/">reaction time test</a>, <a href="/aim-trainer/">aim trainer</a>, or <a href="/go-no-go/">Go / No-Go</a>.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do you play the dino game?</summary>
+          <p>Your dino runs automatically. Jump over the cacti and duck under the birds. It gets faster over time, and one hit ends the run — your score is how far you got.</p>
+        </details>
+        <details>
+          <summary>How do I duck?</summary>
+          <p>Hold the Down arrow or S on a keyboard, or press and hold the Duck button on a touchscreen. Ducking lowers your dino so birds pass safely overhead.</p>
+        </details>
+        <details>
+          <summary>Does it work on mobile?</summary>
+          <p>Yes. Tap the game or the Jump button to jump, and hold the Duck button to duck. The game scales to any screen size.</p>
+        </details>
+        <details>
+          <summary>Is it like the Chrome offline dinosaur game?</summary>
+          <p>It's the same style of endless runner — jump and duck through obstacles that speed up — built as its own original game that runs right in your browser.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-slot="content-bottom" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+
+    <section class="related" aria-label="Related tests">
+      <h2>Related speed tests</h2>
+      <div class="tile-grid">
+        <a class="tile" href="/reaction-time-test/"><span class="t-kbd">Reaction</span><span class="t-name">Reaction Time Test</span><span class="t-desc">Green means go.</span></a>
+        <a class="tile" href="/aim-trainer/"><span class="t-kbd">Reaction</span><span class="t-name">Aim Trainer</span><span class="t-desc">Hit 30 targets fast.</span></a>
+        <a class="tile" href="/go-no-go/"><span class="t-kbd">Reaction</span><span class="t-name">Go / No-Go</span><span class="t-desc">Tap green, hold on red.</span></a>
+        <a class="tile" href="/whack-a-mole/"><span class="t-kbd">Reaction</span><span class="t-name">Whack-a-Mole</span><span class="t-desc">Bop the moles.</span></a>
+        <a class="tile" href="/stop-the-clock/"><span class="t-kbd">Reaction</span><span class="t-name">Stop the Clock</span><span class="t-desc">Stop the timer on target.</span></a>
+        <a class="tile" href="/all-tests/"><span class="t-kbd">Browse</span><span class="t-name">All Tests</span><span class="t-desc">Every speed and reflex test.</span></a>
+      </div>
+    </section>
+
+    <div class="ad-slot" data-slot="footer" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </div>
+
+  <aside class="sidebar-rail" aria-label="Advertisement">
+    <div class="ad-slot" data-slot="sidebar" aria-hidden="true"><!-- AdSense: paste unit here --></div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>SpeedLab</h3>
+        <p style="max-width:34ch;color:var(--c-ink-dim)">Short, sharp speed and reflex tests. Your scores are saved on your device &mdash; nowhere else.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav aria-label="Footer">
+          <a href="/all-tests/">All Tests</a>
+          <a href="/guides/">Guides</a>
+          <a href="/cps-test/">CPS Test</a>
+          <a href="/spacebar-clicker/">Spacebar Clicker</a>
+          <a href="/reaction-time-test/">Reaction Time</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <nav aria-label="Legal">
+          <a href="/about/">About</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 SpeedLab &middot; No accounts, no tracking, no cookies. Scores stay in your browser.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/engine.js?v=202609231859" defer></script>
+<script src="/assets/js/share-card.js?v=202609231859" defer></script>
+<script src="/assets/js/tests/dino-dash.js?v=202609231859" defer></script>
+</body>
+</html>
