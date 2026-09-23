@@ -305,6 +305,50 @@
 .math-input.flash-good { animation: flash-good-k .3s ease 1; }
 @keyframes flash-good-k { 0% { background: var(--c-p2, #3DF5A0); } 100% { background: var(--c-screen); } }
 
+/* ---- 2048 / Number Merge ------------------------------------------------ */
+.g2048-area {
+  position: relative; z-index: 2; flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--sp-3); padding: var(--sp-2); width: 100%;
+}
+.g2048-board {
+  position: relative; width: min(92vw, 380px); aspect-ratio: 1 / 1;
+  background: var(--c-line); border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  padding: 2.5%; touch-action: none; user-select: none;
+}
+.g2048-grid {
+  position: absolute; inset: 2.5%;
+  display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: 3%;
+}
+.g2048-cell { background: var(--c-screen); border-radius: calc(var(--radius) * 0.7); }
+.g2048-tiles { position: absolute; inset: 2.5%; }
+.g2048-tile {
+  position: absolute; width: 22.75%; height: 22.75%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: clamp(1.1rem, 6vw, 2rem); line-height: 1;
+  border-radius: calc(var(--radius) * 0.7); border: 3px solid var(--c-line);
+  color: var(--c-line); background: var(--c-amber);
+  transition: left .1s ease, top .1s ease;
+}
+.g2048-tile.pop { animation: g2048-pop .16s ease; }
+.g2048-tile.new { animation: g2048-new .16s ease; }
+@keyframes g2048-pop { 0% { transform: scale(1); } 50% { transform: scale(1.12); } 100% { transform: scale(1); } }
+@keyframes g2048-new { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+/* tile palette by value */
+.g2048-tile[data-v="2"]    { background: #F6F1FF; }
+.g2048-tile[data-v="4"]    { background: #FFE9A8; }
+.g2048-tile[data-v="8"]    { background: #FFC531; }
+.g2048-tile[data-v="16"]   { background: #FF9E3D; color: var(--c-line); }
+.g2048-tile[data-v="32"]   { background: #FF6B3D; color: #fff; }
+.g2048-tile[data-v="64"]   { background: #FF3D7F; color: #fff; }
+.g2048-tile[data-v="128"]  { background: #C23DFF; color: #fff; font-size: clamp(1rem, 5.2vw, 1.7rem); }
+.g2048-tile[data-v="256"]  { background: #7B3DFF; color: #fff; font-size: clamp(1rem, 5.2vw, 1.7rem); }
+.g2048-tile[data-v="512"]  { background: #3D6BFF; color: #fff; font-size: clamp(1rem, 5.2vw, 1.7rem); }
+.g2048-tile[data-v="1024"] { background: #00C2FF; color: var(--c-line); font-size: clamp(.85rem, 4.4vw, 1.4rem); }
+.g2048-tile[data-v="2048"] { background: #2BE86B; color: var(--c-line); font-size: clamp(.85rem, 4.4vw, 1.4rem); box-shadow: 0 0 14px rgba(43,232,107,.6); }
+.g2048-tile[data-v="4096"], .g2048-tile[data-v="8192"] { background: var(--c-line); color: var(--c-amber); font-size: clamp(.8rem, 4vw, 1.3rem); }
+.g2048-hint { color: var(--c-ink-dim); font-size: .9rem; text-align: center; }
+
 /* ---- Stop the Clock ----------------------------------------------------- */
 .clock-area {
   position: relative; z-index: 2; flex: 1;

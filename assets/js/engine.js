@@ -180,6 +180,16 @@
       unit: "correct", higherIsBetter: true,
       bounds: [3, 6, 9, 13, 17, 22],
       dist: [[1,3],[3,16],[6,36],[9,58],[13,78],[17,90],[22,97]]
+    },
+    g2048: {                     /* game score (points) — higher is better */
+      unit: "points", higherIsBetter: true,
+      bounds: [800, 2000, 4000, 8000, 16000, 24000],
+      dist: [[200,5],[800,20],[2000,40],[4000,58],[8000,75],[16000,90],[24000,97],[40000,99.5]]
+    },
+    clusters: {                  /* solve score out of 100 — higher is better */
+      unit: "pts", higherIsBetter: true,
+      bounds: [20, 40, 60, 80, 95, 100],
+      dist: [[0,8],[20,22],[40,42],[60,62],[80,82],[100,97]]
     }
   };
 
