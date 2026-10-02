@@ -148,11 +148,20 @@ CARDS = [
     ("guide-reaction.png", ["IMPROVE YOUR", "REACTION TIME"], "What's average and how to train it"),
     ("guide-typing.png", ["AVERAGE", "TYPING SPEED"], "What counts as a good WPM?"),
     ("guide-brain.png", ["DO BRAIN", "GAMES WORK?"], "What memory tests really measure"),
+    ("guide-rt-good.png", ["GOOD", "REACTIONS"], "What counts as a fast reaction time"),
+    ("guide-click-faster.png", ["CLICK", "FASTER"], "Jitter, butterfly and drag clicking"),
+    ("guide-type-faster.png", ["TYPE", "FASTER"], "Touch typing, step by step"),
+    ("guide-gaming-rt.png", ["REACTION", "IN GAMING"], "Why milliseconds win matches"),
+    ("guide-hand-eye.png", ["HAND-EYE", "COORDINATION"], "Drills that actually help"),
+    ("guide-reflexes.png", ["TRAIN YOUR", "REFLEXES"], "What the science really says"),
+    ("guide-memory.png", ["WORKING", "MEMORY"], "Remember more, forget less"),
+    ("guide-warmup.png", ["GAMING", "WARM-UP"], "A 5-minute routine before you play"),
     # legal / info
     ("about.png", ["ABOUT"], "Short, sharp speed and reflex tests"),
     ("privacy.png", ["PRIVACY"], "No accounts, no tracking, no cookies"),
     ("terms.png", ["TERMS"], "The plain-English rules"),
     ("contact.png", ["CONTACT"], "Get in touch with SpeedLab"),
+    ("disclaimer.png", ["DISCLAIMER"], "The important fine print"),
 ]
 
 def main():

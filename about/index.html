@@ -21,8 +21,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://speedlab.lol/assets/img/og/about.png">
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/base.css?v=202609231916">
-<link rel="stylesheet" href="/assets/css/arcade.css?v=202609231916">
+<link rel="stylesheet" href="/assets/css/base.css?v=202610020905">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202610020905">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"About","item":"https://speedlab.lol/about/"}]}
 </script>
@@ -60,20 +60,33 @@
   <p class="lead">SpeedLab is a set of short, sharp browser tests for click speed, reaction time, memory, and typing — the kind of thing you open to settle an argument and close ten minutes later, one more try in.</p>
 
   <div class="content">
-    <h2>What it is</h2>
-    <p>Every test does one thing and does it fast. You land on a page, the test is right there, and you start playing without a splash screen or a sign-up wall. Each result maps to a rank and tells you how you compare to typical scores, and your personal bests are always in view so there's something to beat.</p>
+    <h2>Why we built it</h2>
+    <p>SpeedLab started with a simple frustration: most "test your reflexes" sites bury a two-second game under pop-ups, sign-up walls, autoplay sound, and a loading screen that takes longer than the test itself. We wanted the opposite — open a page, and the test is <em>right there</em>, playable in under a second, on a phone or a laptop, with nothing to install and nobody asking for your email. Everything on the site is built around that one rule.</p>
+    <p>It grew from there into a small collection that now spans clicking, reaction and timing, keyboard speed, memory, and quick arcade games, with new tests and written guides added regularly. Each one is designed to be the sort of thing you open to settle an argument and close ten minutes later, one more try in.</p>
+
+    <h2>What's on the site</h2>
+    <ul>
+      <li><strong>Mouse &amp; clicking</strong> — click speed (CPS), tap speed, right-click and a plain click counter.</li>
+      <li><strong>Reaction &amp; timing</strong> — visual and audio reaction time, an aim trainer, whack-a-mole, Go/No-Go, stop-the-clock and an endless runner.</li>
+      <li><strong>Keyboard</strong> — typing speed (WPM), key mashing, alphabet and number sprints, and type-a-word-fast.</li>
+      <li><strong>Memory &amp; brain</strong> — number, sequence and visual memory, the chimp test, mental math, word puzzles and 2048.</li>
+      <li><strong>Guides</strong> — plain-English <a href="/guides/">articles</a> explaining what each metric means, what a good score is, and how to actually improve, from <a href="/guides/what-is-a-good-cps/">average click speed</a> to <a href="/guides/how-to-improve-reaction-time/">training your reaction time</a>.</li>
+    </ul>
+
+    <h2>How scoring and ranks work</h2>
+    <p>Every test turns your result into a number and then into one of seven ranks — from Snail up to Lightning — so a bare score has context. Those ranks and the "faster than X% of people" line are based on typical score distributions for each test: the reaction figures sit around the well-documented 200–250&nbsp;ms human average, the CPS bands around the usual 6–7 clicks-per-second, typing around the ~40&nbsp;WPM average, and so on. They're honest reference ranges to show where you land, not a scientific instrument — your exact number also depends on your device, screen and how warmed up you are. Where it matters, like reaction time, we average several attempts rather than trusting a single lucky tap, because one try is too noisy to mean anything.</p>
 
     <h2>How it's built</h2>
-    <p>The whole site is plain HTML, CSS, and JavaScript — no frameworks, no build step, no external services. Fonts are hosted here, so nothing loads from anywhere else. Once a page has loaded once, it works offline. Your scores and settings live in your browser and go no further; there are no accounts, no tracking, and no cookies.</p>
+    <p>The whole site is plain HTML, CSS, and JavaScript — no frameworks, no build step, no external services. Fonts are hosted here, so nothing loads from anywhere else. Once a page has loaded once, it works offline. Your scores and settings live in your browser's local storage and go no further; there are no accounts, no tracking pixels, no analytics, and no cookies. The only third-party code is the advertising that keeps the site free, and even that loads nothing until the page is ready.</p>
 
-    <h2>Sound is off by default</h2>
-    <p>A lot of people play these on shared or school computers. Sound stays off until you turn it on, and the toggle is right in the header.</p>
+    <h2>Who it's for</h2>
+    <p>Anyone curious how fast they really are — gamers warming up before a match, people comparing scores with friends, students on a break, or someone who just wants to know if their reaction time is any good. Because sound is off by default and there's nothing to sign up for, it's safe to open on a shared or school computer.</p>
 
     <h2>Not affiliated with anyone</h2>
-    <p>SpeedLab is an independent site. It is <strong>not affiliated with, endorsed by, or sponsored by Mojang, Microsoft, or any game publisher</strong>. Where a test uses a term that players commonly search for, it is only to describe what the test measures. No game logos, fonts, or trademarked artwork are used anywhere on this site, and no endorsement by any company is implied.</p>
+    <p>SpeedLab is an independent site. It is <strong>not affiliated with, endorsed by, or sponsored by Mojang, Microsoft, Google, or any game publisher</strong>. Where a test uses a term that players commonly search for, it is only to describe what the test measures. No game logos, fonts, or trademarked artwork are used anywhere on this site, and no endorsement by any company is implied. See our <a href="/disclaimer/">disclaimer</a> for more.</p>
 
     <h2>Get in touch</h2>
-    <p>Found a bug, or have a test you'd love to see? <a href="/contact/">Contact us</a>.</p>
+    <p>Found a bug, want to suggest a test, or just want to say hello? <a href="/contact/">Contact us</a> — feedback genuinely shapes what gets built next.</p>
   </div>
 </main>
 
@@ -100,6 +113,7 @@
           <a href="/about/">About</a>
           <a href="/privacy/">Privacy</a>
           <a href="/terms/">Terms</a>
+          <a href="/disclaimer/">Disclaimer</a>
           <a href="/contact/">Contact</a>
         </nav>
       </div>
@@ -108,8 +122,8 @@
   </div>
 </footer>
 
-<script src="/assets/js/engine.js?v=202609231916" defer></script>
-<script src="/assets/js/site.js?v=202609231916" defer></script>
-<script src="/assets/js/intro.js?v=202609231916" defer></script>
+<script src="/assets/js/engine.js?v=202610020905" defer></script>
+<script src="/assets/js/site.js?v=202610020905" defer></script>
+<script src="/assets/js/intro.js?v=202610020905" defer></script>
 </body>
 </html>
