@@ -162,6 +162,7 @@ OG_MAP = {
     "can-you-train-your-reflexes": "guide-reflexes.png",
     "how-to-improve-working-memory": "guide-memory.png",
     "gaming-warm-up-routine": "guide-warmup.png",
+    "what-is-a-good-tapping-speed": "guide-tapping.png",
 }
 
 def render_guide(g):
@@ -894,6 +895,62 @@ GUIDES = [
                       {"slug": "dino-game", "kbd": "Reaction", "name": "Dino Dash", "desc": "Reflex runner that speeds up."},
                       {"slug": "all-tests", "kbd": "Browse", "name": "All Tests", "desc": "Every reflex test."}],
     "related_guides": ["reaction-time-in-gaming", "how-to-improve-reaction-time"],
+},
+{
+    "slug": "what-is-a-good-tapping-speed",
+    "crumb": "What is a good tapping speed?",
+    "card_title": "What is a good tapping speed?",
+    "card_desc": "Average taps per second, and how to tap faster.",
+    "title": "What Is a Good Tapping Speed? Average Taps Per Second | SpeedLab",
+    "desc": "What's a good tapping speed? The average is about 6-7 taps per second with one finger. See the full ranges, how two-finger tapping compares, and how to tap faster.",
+    "ld_desc": "The average tapping speed is around 6-7 taps per second; this guide explains the ranges and how to improve.",
+    "og_title": "What Is a Good Tapping Speed?",
+    "og_desc": "Average is 6-7 taps per second. Here's what's fast.",
+    "og_image": "guide-tapping.png",
+    "h1": "What is a good tapping speed?",
+    "lead": "You took a tap speed test, got a taps-per-second number, and want to know if it's any good. Short answer: the average is around 6-7 with one finger. Here's the full picture and how to go faster.",
+    "body": """      <p>If you've just hammered the <a href="/tap-speed-test/">tap speed test</a> and want to know where your number lands, here's the honest breakdown. Tapping speed is measured in <strong>taps per second (TPS)</strong>, and for most people it sits close to mouse-clicking speed &mdash; because it's the same motion on a touchscreen.</p>
+
+      <h2>Average taps per second</h2>
+      <p>On a standard test with one finger, here's a fair rule of thumb:</p>
+      <ul>
+        <li><strong>Under 4 TPS</strong> &mdash; a relaxed, everyday tap.</li>
+        <li><strong>6 to 7.5 TPS</strong> &mdash; right around average; where most people land.</li>
+        <li><strong>8 to 11 TPS</strong> &mdash; fast; you've clearly practised.</li>
+        <li><strong>11+ TPS</strong> &mdash; very fast, and almost always two fingers rather than one.</li>
+      </ul>
+      <p>So if you're tapping 7 per second, you're bang on average. Cross 8 and you're quick; hold double digits and you're among the fastest.</p>
+
+      <h2>One finger vs two</h2>
+      <p>The single biggest jump in tapping speed isn't practice &mdash; it's technique. A single finger tops out around 7-8 TPS for most people because the muscle has to lift and drop in one rhythm. <strong>Two fingers (or two thumbs) alternating</strong>, like a tiny drum roll, lets one land while the other lifts, which can push you well past 10 TPS. It's the touchscreen version of butterfly clicking, and it's the fastest legitimate method for a raw score.</p>
+
+      <h2>How the test length changes your score</h2>
+      <p>Your peak burst is always faster than the pace you can hold. A short 5-second test rewards one explosive flurry and reads high; a 30 or 60-second run drags your average down toward the rate you can genuinely sustain. When you compare with a friend, make sure you're on the same length &mdash; a 9 TPS burst and a 6 TPS minute can come from the same thumbs.</p>
+
+      <h2>How to tap faster</h2>
+      <ul>
+        <li><strong>Use two fingers or two thumbs,</strong> alternating them steadily rather than mashing.</li>
+        <li><strong>Rest your device on a table</strong> so your hand is free to move instead of gripping.</li>
+        <li><strong>Keep taps light and quick.</strong> Hard, tense taps are slower and tire you out fast.</li>
+        <li><strong>Match effort to the clock</strong> &mdash; burst on short runs, settle into a rhythm on long ones.</li>
+        <li><strong>Warm up.</strong> A couple of practice runs reliably adds a tap or two per second.</li>
+      </ul>
+
+      <h2>Tapping speed vs CPS</h2>
+      <p>Tapping speed and clicks-per-second are the same measurement with different input: a finger on glass versus a mouse button. The numbers land in a similar range, so your tap TPS and your <a href="/guides/what-is-a-good-cps/">CPS</a> are usually close. If you play on a computer, the <a href="/cps-test/">CPS test</a> is the mouse equivalent and the <a href="/spacebar-clicker/">spacebar clicker</a> the keyboard one.</p>
+
+      <h2>Test yourself</h2>
+      <p>Take the <a href="/tap-speed-test/">tap speed test</a> a few times, try one finger then two, and keep your best &mdash; each length saves its own personal best on your device. Then see how your clicking compares with the <a href="/guides/how-to-click-faster/">how to click faster</a> guide.</p>""",
+    "faq": [
+        ("What is a good tapping speed?", "Around 6 to 7 taps per second with one finger is average. Above 8 is fast, and holding over 10 taps per second usually means using two fingers."),
+        ("What is the average taps per second?", "About 6 to 7 taps per second for a single finger on a tap speed test. Two fingers alternating can reach well past 10."),
+        ("How can I tap faster?", "Alternate two fingers or thumbs like a drum roll, rest your device on a surface, keep taps light and quick, and warm up first."),
+        ("Is tapping speed the same as CPS?", "Essentially yes. It's the same measurement, just on a touchscreen instead of a mouse, so your taps-per-second and clicks-per-second are usually close."),
+    ],
+    "related_tests": [g_ref("tap"), g_ref("cps"), g_ref("spacebar"), g_ref("keypress"),
+                      {"slug": "swipe-speed-test", "kbd": "Mobile", "name": "Swipe Speed Test", "desc": "How fast can you swipe?"},
+                      {"slug": "all-tests", "kbd": "Browse", "name": "All Tests", "desc": "Every speed test."}],
+    "related_guides": ["what-is-a-good-cps", "how-to-click-faster"],
 },
 ]
 

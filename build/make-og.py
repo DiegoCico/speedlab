@@ -163,6 +163,7 @@ CARDS = [
     ("contact.png", ["CONTACT"], "Get in touch with SpeedLab"),
     ("disclaimer.png", ["DISCLAIMER"], "The important fine print"),
     ("updates.png", ["WHAT'S", "NEW"], "The latest games and guides"),
+    ("guide-tapping.png", ["TAPS PER", "SECOND"], "What's a good tapping speed?"),
 ]
 
 def main():
