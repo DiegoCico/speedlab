@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Contact | SpeedLab</title>
-<meta name="description" content="Get in touch with SpeedLab about a bug, a broken test, or an idea for a new one. There is no contact form and no data collected — just an email address.">
+<meta name="description" content="Get in touch with SpeedLab about a bug, a broken test, or an idea for a new game. Suggest a game with our no-data suggestion box, or email us directly.">
 <link rel="canonical" href="https://speedlab.lol/contact/">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#1A1030">
@@ -21,8 +21,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://speedlab.lol/assets/img/og/contact.png">
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/base.css?v=202610020905">
-<link rel="stylesheet" href="/assets/css/arcade.css?v=202610020905">
+<link rel="stylesheet" href="/assets/css/base.css?v=202610020918">
+<link rel="stylesheet" href="/assets/css/arcade.css?v=202610020918">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://speedlab.lol/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://speedlab.lol/contact/"}]}
 </script>
@@ -57,19 +57,49 @@
   </nav>
 
   <h1>Contact</h1>
-  <p class="lead">No contact form — that would mean collecting your data, and we don't do that. Just send an email.</p>
+  <p class="lead">Got a bug, a broken test, or an idea for a game we should build? We read everything. Nothing is collected here — the suggestion box simply opens your own email app, pre-filled and ready to send.</p>
 
   <div class="content">
+    <h2 id="suggest">Suggest a game</h2>
+    <p>Tell us what test or game you'd love to see on SpeedLab. Write it below and hit send &mdash; your email app opens with the message ready for you to send to us. (We can't receive data directly, so your own email client does the sending. If nothing opens, just email the address below.)</p>
+    <div class="sg-box">
+      <label class="sg-label" for="sgName">Your name <span style="font-weight:500;color:var(--c-ink-dim)">(optional)</span></label>
+      <input class="sg-input" id="sgName" type="text" maxlength="60" autocomplete="off" placeholder="optional">
+      <label class="sg-label" for="sgIdea">Your game idea</label>
+      <textarea class="sg-text" id="sgIdea" maxlength="1200" placeholder="e.g. a rhythm-tapping test where you keep a beat and it speeds up&hellip;"></textarea>
+      <div class="sg-actions">
+        <button class="arcade-btn p1" id="sgSend" type="button">Send suggestion</button>
+      </div>
+      <p class="sg-note" id="sgNote" role="status"></p>
+    </div>
+
     <h2>Email</h2>
-    <p>Bugs, broken tests, ideas for new ones, or anything else:</p>
+    <p>Prefer to write directly? Bugs, broken tests, ideas, or anything else:</p>
     <p style="font-size:1.3rem;font-weight:800">
       <a href="mailto:bunisesheck@gmail.com">bunisesheck@gmail.com</a>
     </p>
-    <p>We read everything. We can't promise a reply to every message, but a good bug report or a genuinely fun test idea will always get one.</p>
+    <p>We can't promise a reply to every message, but a good bug report or a genuinely fun game idea will always get one.</p>
 
     <h2>Before you write about a score</h2>
-    <p>If your personal bests vanished, your browser data was probably cleared — scores are only ever stored on your own device, so we have no copy to restore. Everything else, we're happy to hear about.</p>
+    <p>If your personal bests vanished, your browser data was probably cleared &mdash; scores are only ever stored on your own device, so we have no copy to restore. Everything else, we're happy to hear about.</p>
   </div>
+
+  <script>
+  (function () {
+    var send = document.getElementById("sgSend");
+    if (!send) return;
+    send.addEventListener("click", function () {
+      var idea = (document.getElementById("sgIdea").value || "").trim();
+      var name = (document.getElementById("sgName").value || "").trim();
+      var note = document.getElementById("sgNote");
+      if (!idea) { note.textContent = "Write your game idea first, then hit send."; document.getElementById("sgIdea").focus(); return; }
+      var body = "Game idea:\n" + idea + (name ? "\n\nFrom: " + name : "");
+      var url = "mailto:bunisesheck@gmail.com?subject=" + encodeURIComponent("SpeedLab game suggestion") + "&body=" + encodeURIComponent(body);
+      note.textContent = "Opening your email app… if nothing happens, email bunisesheck@gmail.com directly.";
+      window.location.href = url;
+    });
+  })();
+  </script>
 </main>
 
 <footer class="site-footer">
@@ -84,6 +114,7 @@
         <nav aria-label="Footer">
           <a href="/all-tests/">All Tests</a>
           <a href="/guides/">Guides</a>
+          <a href="/updates/">What's New</a>
           <a href="/cps-test/">CPS Test</a>
           <a href="/spacebar-clicker/">Spacebar Clicker</a>
           <a href="/reaction-time-test/">Reaction Time</a>
@@ -104,8 +135,8 @@
   </div>
 </footer>
 
-<script src="/assets/js/engine.js?v=202610020905" defer></script>
-<script src="/assets/js/site.js?v=202610020905" defer></script>
-<script src="/assets/js/intro.js?v=202610020905" defer></script>
+<script src="/assets/js/engine.js?v=202610020918" defer></script>
+<script src="/assets/js/site.js?v=202610020918" defer></script>
+<script src="/assets/js/intro.js?v=202610020918" defer></script>
 </body>
 </html>

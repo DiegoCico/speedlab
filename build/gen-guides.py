@@ -93,6 +93,7 @@ FOOTER = """<footer class="site-footer">
         <nav aria-label="Footer">
           <a href="/all-tests/">All Tests</a>
           <a href="/guides/">Guides</a>
+          <a href="/updates/">What's New</a>
           <a href="/cps-test/">CPS Test</a>
           <a href="/reaction-time-test/">Reaction Time</a>
         </nav>

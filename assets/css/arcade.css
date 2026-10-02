@@ -385,6 +385,18 @@
 .cl-msg { text-align: center; min-height: 1.3em; font-weight: 700; color: var(--c-ink); }
 @keyframes sl-shake { 10%,90%{transform:translateX(-2px);} 30%,70%{transform:translateX(4px);} 50%{transform:translateX(-4px);} }
 
+/* ---- Suggestion box ----------------------------------------------------- */
+.sg-box { max-width: 580px; margin-top: 0.5rem; }
+.sg-label { display: block; font-weight: 800; margin: 0.7rem 0 0.3rem; }
+.sg-input, .sg-text {
+  width: 100%; font-family: var(--font-ui); font-size: 1rem; color: var(--c-ink);
+  background: var(--c-panel-2); border: var(--bd) solid var(--c-line); border-radius: var(--radius);
+  padding: 0.55rem 0.7rem;
+}
+.sg-text { resize: vertical; min-height: 130px; line-height: 1.5; }
+.sg-actions { margin-top: 0.9rem; }
+.sg-note { min-height: 1.3em; font-weight: 700; margin-top: 0.6rem; color: var(--c-ink-dim); }
+
 /* ---- Dino Dash (endless runner) ----------------------------------------- */
 .dino-area {
   position: relative; z-index: 2; flex: 1;

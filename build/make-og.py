@@ -162,6 +162,7 @@ CARDS = [
     ("terms.png", ["TERMS"], "The plain-English rules"),
     ("contact.png", ["CONTACT"], "Get in touch with SpeedLab"),
     ("disclaimer.png", ["DISCLAIMER"], "The important fine print"),
+    ("updates.png", ["WHAT'S", "NEW"], "The latest games and guides"),
 ]
 
 def main():
